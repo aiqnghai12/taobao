@@ -9,21 +9,13 @@
     <link rel="stylesheet" href="./css/font_d72pqdvv4sg/iconfont.css">
     <link rel="stylesheet" href="./css/font_nzpr7n9pvu/iconfont.css">
     <style>
-            * {
-                padding: 0;
-                margin: 0;
-            }
-    
             .smallpic {
                 width: 450px;
                 height: 450px;
                 border: 1px solid #ccc;
-                float: left;
                 position: relative;
             }
-    
-    
-            .smallpic img {
+            .smallpic img{
                 width: 450px;
                 height: 450px;
             }
@@ -40,18 +32,18 @@
             }
     
             .bf {
-                width: 540px;
-                height: 540px;
+                width: 450px;
+                height: 450px;
+                left: 460px;top:0;z-index: 100;
                 border: 1px solid #ccc;
-                float: left;
                 overflow: hidden;
-                position: relative;
+                position: absolute;
                 visibility: hidden;
             }
     
             .bigpic {
-                width: 800px;
-                height: 800px;
+                width: 1000px;
+                height: 1000px;
                 position: absolute;
                 left: 0;
                 top: 0;
@@ -59,25 +51,27 @@
         </style>
         <link rel="stylesheet" href="./css/first.css">
         <style>
-        .message{position: absolute;top: 150px;left: 550px;z-index: -100;text-align: center}
+        body{background: #fff !important;}
+        .message{position: relative;text-align: center;float: right;}
         .gouwuche{position: absolute;right:-200px;top: 50px;background: pink;color: #fff;border: 1px solid #000;display: block;
         width: 100px;height: 40px;cursor:pointer;line-height: 40px;text-align: center}
         .gouwuche span{position: absolute;background: red;color: #fff;border-radius: 50%;width: 12px;height: 12px;
         line-height: 12px;font-size: 12px;text-align: center;top: 0;right: 0}
         .left,.right{width: 20px;height: 22px;display: inline-block}
-        #goods_main{position: relative;}
+        #goods_main{height: 700px;}
+        .scale{float: left;position: relative;}
         </style>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="./js/Cookie.js"></script>
 </head>
 <body>
-         <div class="hearder">
+    <div class="hearder">
         <div id="hearhtml"></div>
     </div>
     <div id="searchfirst">
     </div>
 
-
+    <!-- 搜索 login 页面  -->
         <script type="text/javascript">
             //在js中引入
             $(document).ready(function () {
@@ -85,11 +79,12 @@
             });
         </script>
 
- <div id="goods_main" class=" main1">
+ <!-- 数据主要布局 -->
+ <div id="goods_main" class="main1">
         <div class="scale">
                 <div class="smallpic">
                     <!--小图-->
-                    <img >
+                    <img>
                     <!--小放大镜-->
                     <div class="sf"></div>
                 </div>
@@ -105,8 +100,19 @@
                 <button class="left">-</button><input type="text" value="1" class="goodsnumber"><button class="right">+</button> <button class="but">加入购物车</button>
             </div>
         </div>
+  
+       <!-- 屁股导入 -->
+  <div id="footer"></div>
+  
+      <script type="text/javascript">
+        $(document).ready(function () {
+            $('#footer').load('foot.html');
+        });
+    </script>
 
    <script>
+
+
 !function($){
        const smallpicSf = $(".smallpic img");
        const bigpic = $(".bf .bigpic");
@@ -247,21 +253,22 @@ function leftAright(){
                     this.sf.style.visibility = 'visible';
                     this.bf.style.visibility = 'visible';
                     //4.鼠标移动的时候，小放跟随鼠标
-                    this.scale.onmousemove = (ev) => {
+                    this.smallpic.onmousemove = (ev) => {
                         var ev = ev || window.event;
                         this.move(ev);
                     }
                 };
 
                 // 一处隐藏
-                this.scale.onmouseout = () => {
+                this.smallpic.onmouseout = () => {
                     this.sf.style.visibility = 'hidden';
                     this.bf.style.visibility = 'hidden';
                 };
             }
             move(ev) {
-                let leftvalue = ev.clientX -  this.goods_main.offsetLeft- this.sf.clientWidth/2;
-                let topvalue = ev.clientY -  this.goods_main.offsetTop - this.sf.clientHeight/2;
+ 
+                let leftvalue = ev.pageX-this.scale.offsetLeft - this.sf.clientWidth/2;
+                let topvalue = ev.pageY-this.scale.offsetTop - this.sf.clientHeight/2;
               
                 if (leftvalue < 0) {
                     leftvalue = 0;

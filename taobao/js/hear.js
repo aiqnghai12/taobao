@@ -14,8 +14,10 @@
     //   -----------------  父元素添加下菜单 类-------------
     !function($){
     class  oneMenu{
+    
     // 下拉框需要父元素 添加的title数组  数组对应的跳转数组  ul 的宽度  ul 相对于父元素的位置 左上角 或 右上角
     constructor(option){
+        this.success = function(){}
     Object.assign(this,option)
     this.width = !this.width ? this.$fat.innerWidth() : this.width;
     this.liList = new Array();
@@ -47,6 +49,9 @@
     },()=>{
     this.ul.style.display="none"
     })
+
+    this.success($(this.liList));
+
     }
 
     creatLi(){
@@ -68,11 +73,14 @@
             },function(){
                 this.style.background="#fff";
             })
+
+
     }
 
 
     creatcustomLi(){
     $.each(this.customLi,(index,item)=>{
+        this.liList[index] = item;
       this.ul.append(item);
     })
 
@@ -177,12 +185,24 @@
                 this.arrclick.forEach((item,index)=>{
                     item.attr("href",this.arrhref[index]);
                 })
-               
-                //  验证成功  提取数据库用户的shopcar数据    好页面中的购物车进行合并。 再存入数据库。
-                 
-            //   console.log(this.arrclick[this.shopcar]) 
-                  
-                 
+                
+                // 验证成功后  需要改变
+                // 账户菜单   拥有退出个和个人
+                new $.oneMenu({
+                    titleList: ['个人信息','退出'],   // 数据
+                    hrefList: ['http://10.31.162.16/taobao/','http://10.31.162.16/taobao/'],   // 导向
+                    width: 100,    // ul 长
+                    height:50,    // ul 搞
+                    $fat: $("#Pleaselogin"),  // 父元素
+                    direction: 1,   // 靠左 1  靠右 0
+                    success:function(list){
+                        list.eq(1).on("click",function(){
+                            cookie2.clearCookie("email");
+                            cookie2.clearCookie("password");
+                        })
+                
+                    }
+                });
             
 
             }else{
@@ -305,19 +325,15 @@ new $.shopcarInitialize({cookie : new Cookiefn(),
 }()
 
 
-
-
-
-
 //  用户 登录后   cookie 购物车数据 和 mysql 数据库的交互
 //------------- 用户数据合并类------------
 !function($){
    class userShopcar{
      constructor(option){
     Object.assign(this,option);
-      this.user_shopcar_id = (this.arrsid && this.arrsid.split(","));
-      this.arr_goods_number = (this.arrnumber && this.arrnumber.split(","));
       
+      this.user_shopcar_id = (this.arrsid ? this.arrsid.split(",") : new Array() );
+      this.arr_goods_number = (this.arrnumber ? this.arrnumber.split(",") : new Array() );
       this.obtainuserShopcar();
      }
 
@@ -330,10 +346,8 @@ new $.shopcarInitialize({cookie : new Cookiefn(),
                 user:this.user,password:this.password,shopcar:1
             },
             success:data=>{
-                console.log(data)
                // 如果用户没有数据
-                if(data===null){
-
+                if(data!==null){
                     let user_json_shop =  JSON.parse(data).shopcar.split(",");
                     let user_json_num = JSON.parse(data).shopcar_number.split(",");
                     // 遍历后台购物车数据   有则数据相加   否则添加进入数组
@@ -346,16 +360,15 @@ new $.shopcarInitialize({cookie : new Cookiefn(),
                   }
                 })
                 this.success(this.user_shopcar_id,this.arr_goods_number);
+                                    //  得到合并的数据   返回实例对象数据
+                    //  后台返回合并的数据
+                    this.user_shopcar_id = this.user_shopcar_id.join(",");
+                    this.arr_goods_number = this.arr_goods_number.join(",");
         }else{
             this.error("用户没有购物车数据")
         }
-                    //  得到合并的数据   返回实例对象数据
 
-                    //  后台返回合并的数据
-                    console.log(this.user_shopcar_id)
-                    this.user_shopcar_id = this.user_shopcar_id.join(",");
-                    this.arr_goods_number = this.arr_goods_number.join(",");
-              
+            if(this.user_shopcar_id[0]!==null)
             $.ajax({
                 type:"post",
                 url:url+"php/userpassword/user_shopcar_save.php",
@@ -398,6 +411,5 @@ $.$userShopcar = userShopcar;
               console.log(error)
           }
       }
-    
     );
 
