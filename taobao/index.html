@@ -143,7 +143,7 @@
                 <nav class="main1">
                     <li class="SelectArea"><a href="function:;" target="_top">中国大陆</a><span class="iconfont">&#xe541;</span></li>
                     <li><a  target="_top" style="color: red;" id="Pleaselogin" >请登陆</a></li>
-                    <li><a href="http://10.31.162.16/taobao/newUser.html" target="_top">免费注册</a></li>
+                    <li><a href="./newUser.html" target="_top">免费注册</a></li>
                     <li><a href="function:;" target="_top">手机逛淘宝</a></li>
                     <li id="Webnavigation"><a href="function:;" target="_top"><span class="iconfont">&#xe50c;</span>网站导航</a><span class="iconfont">&#xe541;</span></li>
                     <li class="CustomerService"><a href="function:;" target="_top">联系客服</a><span class="iconfont">&#xe541;</span></li>
@@ -161,10 +161,10 @@
 	 <div id="hearhtml"></div>
 	 
 	 <script type="text/javascript">
-    //在js中引入
-    $(document).ready(function () {
+  //在js中引入
+  $(document).ready(function () {
         $('#hearhtml').load('hear.html');
-    });
+	});
 </script>
 
 		<link rel="stylesheet" href="../taobao/css/font_d72pqdvv4sg/iconfont.css">
@@ -302,7 +302,7 @@
 								<a href="">
 	<svg class="icon" aria-hidden="true"><use xlink:href="#icon-huiyuan"></use></svg>
 	会员俱乐部</a></div>
-							<div class="our_btns"><a href="http://10.31.162.16/taobao/denglu.html">登录</a><a href="http://10.31.162.16/taobao/newUser.html">注册</a><a href="">开店</a></div>
+							<div class="our_btns"><a href="./denglu.html">登录</a><a href="./newUser.html">注册</a><a href="">开店</a></div>
 					 
 							</div>
 							<a href="" class="jubao">网上有害信息举报专区<span class="iconfont">&#xe675;</span></a>
@@ -571,7 +571,7 @@
 	<script src="../taobao/js/lun_.js"></script>
 <script src="../taobao/js/our_message.js"></script>
 <script>
-	// const url = "http://10.31.162.16/taobao/";
+	// const url = "./";
 	//   右边的导航 
 
 !function($){
@@ -835,6 +835,16 @@ function scrollwin(){
 }(jQuery)
 
 
+
+ 
+ setTimeout(function(){
+ 
+  //在js中引入
+  $(document).ready(function () {
+        $('#hearhtml').load('hear.html');
+	});
+ 
+ },1000);
 
 
 </script>

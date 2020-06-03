@@ -71,7 +71,7 @@ $ip = $_SERVER["REMOTE_ADDR"];
 $text2 = "淘宝测试";
 // $text2 = "=?UTF-8?B?".base64_encode($text2)."?=";  
 $text1 = '<html><body>';
-$text1.= "<a style='color:red;' href='http://10.31.162.16/taobao/mailmatram.html?ip={$ip}&matram={$matram}&email={$text}'>";
+$text1.= "<a style='color:red;' href='http://10.31.162.16/dist/mailmatram.html?ip={$ip}&matram={$matram}&email={$text}'>";
 $text1.= $text2;
 $text1.= '</a>    <script>
 alert(ceshi2);

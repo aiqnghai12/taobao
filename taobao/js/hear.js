@@ -100,9 +100,9 @@
 
 
     let arr1 = ['全国','中国大陆','中国香港','中国台湾','中国澳门','韩国','马来西亚','澳大利亚','澳大利亚','新加坡'];
-    let arr2 = ['http://10.31.162.16/taobao','http://10.31.162.16/taobao','http://10.31.162.16/taobao',
-    'http://10.31.162.16/taobao','http://10.31.162.16/taobao','http://10.31.162.16/taobao','http://10.31.162.16/taobao',
-    'http://10.31.162.16/taobao','http://10.31.162.16/taobao','http://10.31.162.16/taobao'];
+    let arr2 = ['./index.html','./index.html','./index.html',
+    './index.html','./index.html','./index.html','./index.html',
+    './index.html','./index.html','./index.html'];
 
     //   -----------------  父元素添加下菜单 实例-------------
                 new $.oneMenu({
@@ -190,15 +190,17 @@
                 // 账户菜单   拥有退出个和个人
                 new $.oneMenu({
                     titleList: ['个人信息','退出'],   // 数据
-                    hrefList: ['http://10.31.162.16/taobao/','http://10.31.162.16/taobao/'],   // 导向
+                    hrefList: ['./index.html','./index.html'],   // 导向
                     width: 100,    // ul 长
                     height:50,    // ul 搞
                     $fat: $("#Pleaselogin"),  // 父元素
                     direction: 1,   // 靠左 1  靠右 0
                     success:function(list){
                         list.eq(1).on("click",function(){
-                            cookie2.clearCookie("email");
-                            cookie2.clearCookie("password");
+                         cookie2.clearCookie("email");
+                         cookie2.clearCookie("password");
+                         cookie2.clearCookie("arrsid");
+                         cookie2.clearCookie("arrnum");
                         })
                     }
                 });
@@ -206,17 +208,18 @@
 
             }else{
                 this.arrclick.forEach((item,index)=>{
-                    index == this.mytaobao ? item.html("我的淘宝") : "";
-                    item.attr("href","http://10.31.162.16/taobao/denglu.html");
+                    index == this.mytaobao ? item.html("我的淘宝") : ""; 
+                    item.attr("href","./denglu.html");
                 })
             }
 
 
-
+      
             //   通过数组id  查询到返回商品数据 传入商品数据数组
-            if(this.arrsid)
+            if(this.arrsid && this.arrsid[0]!=""){
             this.ajax_goods_select(this.arrsid)
             // this.creat(this.arrsid);
+        }
          }
 
 
@@ -229,7 +232,7 @@
                         arrsid
                     },
                     success:data=>{
-                    this.data =  JSON.parse(data);
+                    this.data = JSON.parse(data);
                     this.creat(this.data);
                     }
                 })
@@ -254,7 +257,7 @@
               display:"flex",justifyContent: "center",alignItems: "center",cursor:"pointer"
             });
             this.liList[index].onclick = function(){
-                window.location.href =  "http://10.31.162.16/taobao/goods.html?"+item.id;
+                window.location.href =  "./goods.html?"+item.id;
             }
         
             this.liList[index].innerHTML = `<img src="${item.goods_img}" style="height:60px"> <span style="width:250px; font-size:12px;padding:2px 5px">${item.goods_name}</span>
@@ -296,7 +299,7 @@ $.shopcarInitialize = shopcarInitialize;
 //  购物车验证类   传入 在用户登录前后不同点击的按钮  
 let arrclick = [$("#shopcar"),$("#favorites"),$("#mytaobao")];
 //  购物车验证类 传入 在用户登录后点击的按钮 的 跳转   和按钮一一对应
-let arrhref = ["http://10.31.162.16/taobao/shopcar.html","http://10.31.162.16/taobao/shopcar.html","http://10.31.162.16/taobao/shopcar.html"];
+let arrhref = ["./shopcar.html","./shopcar.html","./shopcar.html"];
 // ------------------- 用户购物车操作 实例 -----------
 new $.shopcarInitialize({cookie : new Cookiefn(),
     arrclick:arrclick
@@ -332,7 +335,7 @@ new $.shopcarInitialize({cookie : new Cookiefn(),
     Object.assign(this,option);
       
       this.user_shopcar_id = (this.arrsid ? this.arrsid.split(",") : new Array() );
-      this.arr_goods_number = (this.arrnumber ? this.arrnumber.split(",") : new Array() );
+      this.arr_goods_number = (this.arrnumber ? this.arrnumber.split(",") : new Array());
       this.obtainuserShopcar();
      }
 
@@ -346,9 +349,12 @@ new $.shopcarInitialize({cookie : new Cookiefn(),
             },
             success:data=>{
                // 如果用户没有数据
-                if(data!==null){
-                    let user_json_shop =  JSON.parse(data).shopcar.split(",");
-                    let user_json_num = JSON.parse(data).shopcar_number.split(",");
+               this.userdata = JSON.parse(data)
+                if(data!=="null"){
+                    //  data = JSON.parse(data);
+                    if(this.userdata.shopcar!=""){
+                    let user_json_shop =  this.userdata.shopcar.split(",");
+                    let user_json_num = this.userdata.shopcar_number.split(",");
                     // 遍历后台购物车数据   有则数据相加   否则添加进入数组
                 user_json_shop.forEach((item,index)=>{
                   if( this.user_shopcar_id.indexOf(item) != -1 ){
@@ -360,13 +366,16 @@ new $.shopcarInitialize({cookie : new Cookiefn(),
                 })
                 this.success(this.user_shopcar_id,this.arr_goods_number);
                                     //  得到合并的数据   返回实例对象数据
+                                }else{
+                                    this.error("用户没有购物车数据")
+                                }
+        }else{
+            console.log(1);
+            this.error("用户错误没有登录")
+        }
                     //  后台返回合并的数据
                     this.user_shopcar_id = this.user_shopcar_id.join(",");
                     this.arr_goods_number = this.arr_goods_number.join(",");
-        }else{
-            this.error("用户没有购物车数据")
-        }
-
             if(this.user_shopcar_id[0]!==null)
             $.ajax({
                 type:"post",

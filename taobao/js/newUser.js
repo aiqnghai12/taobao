@@ -12,7 +12,7 @@
 //  console.log(new Set([...arr1,...arr2]))
 
 
-//    http://10.31.162.16/taobao/ 
+//    ./ 
 const url = "http://10.31.162.16/";
 const eMail = document.querySelector(".eMail");
 const yanzhneg = document.querySelector(".yanzhneg");
@@ -111,7 +111,7 @@ eMail.onblur = e=>{
                                          timerscecond -= 0.01
                                          if(timerscecond<=0){
                                          clearInterval(timer);
-                                         window.location.href = "http://10.31.162.16/taobao/denglu.html";
+                                         window.location.href = "./denglu.html";
                                          }
                                          
                                          $(".timersetout").html((timerscecond).toFixed(2));
@@ -142,7 +142,7 @@ eMail.onblur = e=>{
                  if(data==1 || data==="数据库连接失败"){
                  eMail.style.border = "1px solid #ccc";
                  alert("你已经注册了");
-                 setTimeout(function(){ window.location.href = "http://10.31.162.16/taobao/denglu.html"; },500)
+                 setTimeout(function(){ window.location.href = "./denglu.html"; },500)
               
                  }else{
                      cookie.addCookie('email',eMail.value);
