@@ -58,7 +58,7 @@
 	height: 28px;color: #fff;background: rgba(200, 200, 200, 0.7);font-size: 30px;line-height: 20px;text-align: center}
 	
 	/* 个人信息  以及分类 */
-	.our_message .our_img{width: 100%;padding: 3px 0 10px 0;background: no-repeat url('../taobao/img/hear.jpg');background-size: cover;
+	.our_message .our_img{width: 100%;padding: 3px 0 10px 0;background: no-repeat url('../src/img/hear.jpg');background-size: cover;
     height: 132px;    font: 12px/1.5 tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;
     padding-right: inherit;
     text-align: center;}
@@ -167,13 +167,13 @@
 		
 		<div style="background-color: #f40d4d;height:71px;">
 				<!-- 头广告 图片-->
-		<img src="../taobao/img/header.jpg" class="headerImag main1"></div>
+		<img src="../src/img/header.jpg" class="headerImag main1"></div>
 
 			
 		<div style="background-color: #fff;">
 			<div class="main1" style="height: 121px;background-color: #fff;padding-top:24px;box-sizing: border-box;">
 				<!-- 主页面-->
-				<img src="../taobao/img/login.png" class="login" alt="">
+				<img src="../src/img/login.png" class="login" alt="">
 				<div class="search">
 					<ul class="shopClass">
 						<li>宝贝</li>
@@ -209,7 +209,7 @@
 					<!-- 二维码 扫码 -->
 					<a href="https://skinsdog.cc/?lang=zh&source=bdpc1610" style="display: block;text-align: center;">
                     <p>手机淘宝</p>
-					<img src="../taobao/img/csgo.png" alt="" style="width: 66px;height: 66px;">
+					<img src="../src/img/csgo.png" alt="" style="width: 66px;height: 66px;">
 				    </a>
 				</div>
 			</div>
@@ -221,7 +221,7 @@
 	<!-- 隐藏的搜索框     通过页面滚动显示。 -->
 	<div id="suspension">
 		<div class="main1 " >
-			<img src="../taobao/img/login.png" class="login" alt="">
+			<img src="../src/img/login.png" class="login" alt="">
 			<div class="searchinput " style="position: relative;">
 					<input type="text" placeholder="        请输入" class="inputSearch">
 					<span class="iconfont searchfadaj">&#xe607;</span> 
@@ -383,11 +383,11 @@
 						 <div class="taobao-icons">
 							 <span>阿里APP</span><span><a href="" >更多>></a></span>
 							 <ul>
-								 <li><div class="erweima"><img src="../taobao/img/csgo.png" alt=""><span>扫一扫csgo</span></div><svg class="icon" aria-hidden="true"><use xlink:href="#icon-taobao"></use></svg></li>
-								 <li><div class="erweima"><img src="../taobao/img/csgo.png" alt=""><span>扫一扫csgo</span></div><svg class="icon" aria-hidden="true"><use xlink:href="#icon-tianmao"></use></svg></li>
-								 <li><div class="erweima"><img src="../taobao/img/csgo.png" alt=""><span>扫一扫csgo</span></div><svg class="icon" aria-hidden="true"><use xlink:href="#icon-umidd17"></use></svg></li>
-								 <li><div class="erweima"><img src="../taobao/img/csgo.png" alt=""><span>扫一扫csgo</span></div><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dingding"></use></svg></li>
-								 <li><div class="erweima"><img src="../taobao/img/csgo.png" alt=""><span>扫一扫csgo</span></div><svg class="icon" aria-hidden="true"><use xlink:href="#icon-taoxiaopu"></use></svg></li>
+								 <li><div class="erweima"><img src="../src/img/csgo.png" alt=""><span>扫一扫csgo</span></div><svg class="icon" aria-hidden="true"><use xlink:href="#icon-taobao"></use></svg></li>
+								 <li><div class="erweima"><img src="../src/img/csgo.png" alt=""><span>扫一扫csgo</span></div><svg class="icon" aria-hidden="true"><use xlink:href="#icon-tianmao"></use></svg></li>
+								 <li><div class="erweima"><img src="../src/img/csgo.png" alt=""><span>扫一扫csgo</span></div><svg class="icon" aria-hidden="true"><use xlink:href="#icon-umidd17"></use></svg></li>
+								 <li><div class="erweima"><img src="../src/img/csgo.png" alt=""><span>扫一扫csgo</span></div><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dingding"></use></svg></li>
+								 <li><div class="erweima"><img src="../src/img/csgo.png" alt=""><span>扫一扫csgo</span></div><svg class="icon" aria-hidden="true"><use xlink:href="#icon-taoxiaopu"></use></svg></li>
 							 </ul>
 						 </div>
 						</li>
@@ -636,7 +636,7 @@
                     
 					$(".goods_li").children().css("cursor","pointer").on("click",function(){
 		let goods_id = $(this).parents(".goods_li").val();
-		window.location.href =  url+"goods.html?"+goods_id;
+		window.location.href =  url+"taobao/goods.html?"+goods_id;
 		})
 
         $(".goods_li").hover(function(){
@@ -706,7 +706,7 @@
 				host_arr.push(item.goods_class);
                 str += `<li class="goods_li goods_host_li ${item.goods_class}"  value="${item.id}" style="display:none"><img src="${item.goods_img}" alt="">
 				<p>${item.goods_name}</p>
-			 	${ (item.goods_title=="包邮" ? "<img class='baoyou' src='../taobao/img/baoyou.png'/>"  : `<h6>${item.goods_title}</h6>`   )}
+			 	${ (item.goods_title=="包邮" ? "<img class='baoyou' src='../src/img/baoyou.png'/>"  : `<h6>${item.goods_title}</h6>`   )}
 		 	  <h4><span>￥</span>${item.goods_price}</h4>
 		 	  <h3><span>销量:</span>${item.goods_number}</h3>
 			  </li>`;
@@ -726,7 +726,7 @@
 	  creatgoods_li_click(){
 		$(".goods_li").children().css("cursor","pointer").on("click",function(){
 		let goods_id = $(this).parents(".goods_li").val();
-		window.location.href =  url+"goods.html?"+goods_id;
+		window.location.href =  url+"taobao/goods.html?"+goods_id;
 		})
 		}
 

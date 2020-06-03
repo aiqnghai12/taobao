@@ -135,7 +135,7 @@ window.userApassword = userApassword;
 let cookie = new Cookiefn();
 
 var obj = {
-   url:"http://10.31.162.16/taobao/php/userpassword/user_email.php",
+   url:"http://10.31.162.16/php/userpassword/user_email.php",
    success:function(password,email){
     cookie.addCookie("password",password);
     cookie.addCookie("email",email);

@@ -1,4 +1,4 @@
-const url = "http://10.31.162.16/taobao/";
+const url = "http://10.31.162.16/";
 	// 轮播图 大
 	const lun_max = $(".main_lun .lun_max");
 	const lun_max_imgs =new Array(); 

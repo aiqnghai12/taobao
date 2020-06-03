@@ -13,7 +13,7 @@
 
 
 //    http://10.31.162.16/taobao/ 
-const url = "http://10.31.162.16/taobao/";
+const url = "http://10.31.162.16/";
 const eMail = document.querySelector(".eMail");
 const yanzhneg = document.querySelector(".yanzhneg");
 const subeMail = document.querySelector(".subeMail");
@@ -25,7 +25,7 @@ let bool = true;
 var sp =  null;
  //  放入的滑动的父元素   父元素  图片路径数组
  let imgs =   new  $.$ImageA({$fat : $("#Image_authen"),
-  imgs : ['./img/fengjiahua1.jpg','./img/fengjiahua2.jpg','./img/fengjiahua3.jpg'],
+  imgs : ['../src/img/fengjiahua1.jpg','../src/img/fengjiahua2.jpg','../src/img/fengjiahua3.jpg'],
  //  color:"green",
  //  min_width:0.1,
  //  min_height:0.1,
@@ -61,7 +61,7 @@ eMail.onblur = e=>{
 
 !function(window){
        const email = document.querySelector(".email");
-       const url = "http://10.31.162.16/taobao/";
+       const url = "http://10.31.162.16/";
        const password = document.querySelectorAll(".password");
        const submit = document.querySelector("#account_information .submit");
        const passwordTwoSpan = document.querySelector(".passwordTwoSpan");

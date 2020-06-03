@@ -1,6 +1,6 @@
     const navliList =Array.from(document.querySelectorAll("nav li"));   // 不重要 
     const gouwuche= document.querySelector("#shopcar .num");
-    const url = "http://10.31.162.16/taobao/";
+    const url = "http://10.31.162.16/";
     let cookie2 = new Cookiefn();
 
 

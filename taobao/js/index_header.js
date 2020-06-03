@@ -3,7 +3,7 @@
 
 	const classheader = document.querySelector("#classification .classheader ul");
 	const classul = document.querySelector(".classbody .classul");
-	const url = "http://10.31.162.16/taobao/";
+	const url = "http://10.31.162.16/";
    init();
     function init(){
      $.ajax({
