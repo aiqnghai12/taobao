@@ -58,7 +58,7 @@ gulp.task('uglifyhtml', () => {
 
 //5.sass编译成css - 引入插件包
 gulp.task('compilesass', () => {
-    return gulp.src('src/sass/*.scss')
+    return gulp.src('taobao/sass/*.scss')
         .pipe(plugins.sourcemaps.init()) //初始化gulp-sourcemaps插件
         .pipe(plugins.sass({
             outputStyle: 'compressed' //压缩
@@ -80,7 +80,7 @@ gulp.task('uglifyjs', () => {
 
 //7.图片压缩 - jpg/gif/bmp/webp/ [png] - imagemin
 gulp.task('uglifyimg', () => {
-    return gulp.src('src/img/*.png')
+    return gulp.src('src/img/*.{png,jpg}')
         .pipe(imagemin())
         .pipe(gulp.dest('dist/src/img'))
 });
@@ -95,5 +95,5 @@ gulp.task('uglifyimg', () => {
 //     watch(['src/thirdplugins/*.js', 'src/*.html', 'src/sass/*.scss', 'src/script/*.js', 'src/img/*.{jpg,png,gif}'], gulp.parallel('copyfile', 'uglifyhtml', 'compilesass', 'uglifyjs', 'uglifyimg'));
 // });
 gulp.task('default', () => {
-    watch(['src/*.html', 'src/sass/*.scss', 'src/script/*.js'], gulp.parallel('uglifyhtml', 'compilesass', 'uglifyjs'));
+    watch(['taobao/*.html', 'taobao/sass/*.scss', 'taobao/js/*.js'], gulp.parallel('uglifyhtml', 'compilesass', 'uglifyjs'));
 });

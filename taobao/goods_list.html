@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/first.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+     <script src="./js/Cookie.js"></script>
+ <!-- http://img.alicdn.com/tps/i2/TB1Z4WGMpXXXXbyaXXX6sGuHVXX-458-458.png -->  
+</head>
+<body>
+    <div id="header"></div>
+    <div id="searchfirst"></div>
+        
+    <style>
+        body{background: #fff !important;}
+        #goods_class_main{height: 600px;}
+        .goods_list{height: 600px;width: 1070px;
+        float: left;}
+        .goods_host{background: green;height: 600px;width: 270px;
+        float: right;}
+        .class_one{border-bottom: 2px solid orangered;
+        overflow: hidden;}
+        .class_one li{float: left;font-size: 16px;line-height: 38px;
+        height: 38px;padding: 0 20px;transition: all .5s;cursor: pointer;}
+        .class_one li:nth-child(1){color: #fff;background: orangered}
+        .class_one li:hover{color: #fff;background: orangered}
+        .class_two_text{padding: 15px 5px;overflow: hidden;}
+        .class_two_text p{font-size: 12px;height: 24px;padding: 0 12px;line-height: 24px;}
+        .class_two_text .icon-btn-vbarrow{background: no-repeat url(http://img.alicdn.com/tps/i2/TB1Z4WGMpXXXXbyaXXX6sGuHVXX-458-458.png);
+            width: 5px;background-position: -111px -423px;height: 9px;display: inline-block;
+        }
+        .icon-btn-arrow-up-2{background: no-repeat url(http://img.alicdn.com/tps/i2/TB1Z4WGMpXXXXbyaXXX6sGuHVXX-458-458.png);
+            background-position: -412px -322px;display: inline-block;width: 7px; height: 7px;margin-left: 5px;
+        }
+        .class_two_text p:nth-child(1){float: left;}
+        .class_two_text p:nth-child(2){float: right;background: #f5f5f5;border: 1px solid #ccc;cursor: pointer;}
+        .class_two_text p:nth-child(2):hover{color: orangered}
+        .class_two_title{height: 222px;border: 1px solid #ccc}
+        .class_title{height: 36px;width: 1052px;margin: 0 auto;border-bottom: 1px dashed #ccc}
+        .class_title:nth-child(2){height: 73px}
+        .class_title:last-child{border: none;}
+        .class_two_recommended{height: 44px;border: 1px solid #ccc;margin-top: 20px;}
+        .goods_sort{height: 80px;border: 1px solid #ccc;margin-top: 20px;}
+        </style>
+    <div id="goods_class_main" class="main1">
+        <!-- 左边的 -->
+       <div class="goods_list">
+           
+           <div class="class_one">
+               <li>所有宝贝</li>
+               <li>天猫</li>
+               <li>二手</li>
+           </div>
+          <!-- 一堆分类类表 -->
+           <div class="class_two">
+            <div class="class_two_text">
+                <p>所有分类 <span class="icon-btn-vbarrow"></span> </p><p class="screening">收起筛选<span class="icon-btn-arrow-up-2"></span></p>
+            </div>
+                <div class="screening_class">
+                <div class="class_two_title">
+                        <div class="class_title title1"></div>
+                        <div class="class_title title2"></div>
+                        <div class="class_title title3"></div>
+                        <div class="class_title title4"></div>
+                        <div class="class_title title5"></div>
+                </div>
+                <div class="class_two_recommended">
+
+                </div>
+                </div>
+           </div>
+
+           <!-- 排序 类表 -->
+           <div class="goods_sort">
+            
+            </div>
+
+       </div> 
+       
+       
+       
+       <!-- 右边的 热门个 一列的goods -->
+       <div class="goods_host"></div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           <!-- 屁股导入 -->
+  <div id="footer"></div>
+
+        <!-- 搜索 login 页面  -->
+        <script type="text/javascript">
+            //在js中引入
+            $(document).ready(function () {
+                $('#header').load('hear_long.html');
+            });
+            //在js中引入
+            $(document).ready(function () {
+                $('#searchfirst').load('searchfirst.html');
+            });
+            $(document).ready(function () {
+        $('#footer').load('foot.html');
+    });
+    </script>
+
+</body>
+</html>
