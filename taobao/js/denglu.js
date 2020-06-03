@@ -91,7 +91,7 @@ BTN(){
         _this.sumbit.onclick = e =>{
       this.dataAjax(_this);
     }
-    }catch{
+    }catch(error){
     }
     window.addEventListener("keyup",e=>{
         if(e.keyCode==13)

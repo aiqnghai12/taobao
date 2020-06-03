@@ -168,7 +168,7 @@
         Object.assign(this,option);
         try{ // 购物车商品 id 数组
             this.arrsid =  this.cookie.selectCookie('arrsid').split(",");
-           }catch{
+           }catch(error){
              this.arrsid = null;
                 console.log("购物车没有数据")
             }
