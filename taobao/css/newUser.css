@@ -1,0 +1,38 @@
+.logindiv{margin-top: 20px;height: 100px;}
+.logindiv img{width: 120px;float: left;}
+.logindiv p{font-size: 25px;height: 40px;width: 100px;float: left;}
+ .registration_information{    height: 45px; 
+border-bottom: 2px solid #e6e6e6;text-align: center;display: flex;justify-content: center;align-items: center;
+position: relative;}
+ .registration_information li{color: #3e3e3e;display: inline;
+float: left;width: 170px;height: 46px; line-height: 46px; padding: 0 50px;
+font-size: 16px;font-weight: 700;border-bottom: 2px solid #ff4700;}
+
+.registration_information li span{width: 20px;height: 20px;border-radius: 50%;background: orange;color: #fff;
+font-size: 20px;text-align: center;line-height: 20px;display: inline-block}
+.message_input{width: 600px;height: 200px;margin: 50px auto;padding: 8px;padding-left: 300px;}
+.message_input label{font-size: 14px;font-weight:normal;position: relative;}
+.message_input input{width:275px;height: 30px;font-size: 16px;text-indent: .5em;display: inline-block;margin:5px 15px; }
+.message_input .subeMail{width: 350px;background: #ccc;box-shadow: none;border: none; margin:0;}
+#Image_authen{margin: 15px 0;height: 30px;display: inline-block}
+
+#account_information{height: 500px;margin:50px auto;display: none}
+#account_information 
+.main2{font-size: 20px;width: 600px;text-align: center;height: 500px;
+margin: 0 auto}
+#account_information  .email{color: orangered}
+#account_information .password_div{width: 500px;height: 50px;margin: 10px auto;
+padding-left: 100px;
+display: flex;justify-content: center;align-items: center}
+#account_information  .password_div label{
+height: 50px;line-height: 50px;}
+#account_information  .password_div .password{width: 180px;
+height:26px;
+margin: 0 7px;
+}
+#account_information .password_div span{width: 100px;font-size: 12px;}
+
+#usersuccess{display: none;margin: 50px auto;text-align: center;height: 100px;}
+
+#usersuccess a{color: #ccc;background: green;box-shadow:2px 2px 2px green;padding: 10px 20px;
+margin: 50px auto;}

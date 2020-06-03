@@ -1,0 +1,138 @@
+
+header .Login{width: 110px;}
+header .main1{height:88px;
+display: flex;justify-content: space-between; align-items: center
+}
+header .main1 .advice{
+float: right;font-size: 12px;
+}
+header .main1 .advice span{font-size: 20px;color: orangered}
+header .main1 .advice:hover{
+color: orangered;
+}
+.backImg{    position: absolute;
+z-index: 1;
+top: 0;
+left: 0;
+background: url('https://img.alicdn.com/tfs/TB1KURxGFP7gK0jSZFjXXc5aXXa-2500-600.png');
+background-size: cover;
+background-repeat: no-repeat;
+background-position: 50%;
+width: 100%;
+height: 600px;
+}
+.main{
+width: 100%;
+position: relative;
+margin-bottom: 50px;
+}
+
+.conterer{height: 600px;position: relative}
+
+.loginDialog{width: 350px;height: 350px;background: rgba(255, 255, 255, 0.8);position: absolute;z-index: 100;
+top: 200px;right: 0px;}
+.loginDialog .Switchicon{position: absolute;right: 3px;top: 0;font-size:50px; display: inline-block;color: orange;cursor: pointer;}
+
+.maindenglu{width: 300px;height:290px;position: absolute;left: 0;right: 0;bottom: 0;top: 0; 
+margin: auto;}
+.PasswordAccount li{
+    width: 100%;height: 45px;
+    border-radius: 3px;
+}
+
+.PasswordAccount li:nth-child(1) span{ height: 18px;
+line-height: 5px;cursor: pointer;
+font-size: 16px;
+color: #3c3c3c;
+margin: 9px 10px 0 0;
+font-weight: 700;}
+.spersion{width: 100%;background: #fff}
+.PasswordAccount .inputText{
+    display: flex;justify-content: space-between;align-items: center;
+}
+.PasswordAccount .inputText{
+    background: #fff;margin-bottom: 20px;
+}
+.PasswordAccount .inputText span{
+    font-size: 45px;color: #ccc;
+}
+.PasswordAccount .inputText input{
+    height: 30px;border: none;width:100%;outline:none;
+}
+.PasswordAccount .sumbit{
+    border-radius: 4px;margin-bottom: 20px;
+   height: 45px;width: 100%;background: #f40;cursor: pointer;line-height: 45px;text-align: center;color: #fff;
+}
+.PasswordAccount li:nth-child(7){
+  line-height: 45px;font-size: 12px;
+}
+.PasswordAccount a{
+ margin-right: 6px;
+}
+.PasswordAccount .otherA{
+    font-size: 12px;line-height: 45px;
+}
+.PasswordAccount .otherA a{float: right;}
+.otherB a{font-size: 12px;margin-left: 6px;position: absolute;bottom: 0;right: 0;}
+.otherB a:nth-child(2){right: 50px;}
+
+.native-phone-code-select{
+color: rgba(0,0,0,.0001);
+background: url(https://gw.alicdn.com/tfs/TB1.8ugw.T1gK0jSZFrXXcNCXXa-200-200.png);
+background-size: 24px;
+background-repeat: no-repeat;
+background-position: 48px 8px;
+width: 65px;
+border: none;
+outline: 0;
+padding-left: 3px;
+height: 40px;font: 100% Microsoft YaHei,tahoma,arial,Hiragino Sans GB,\\5B8B\4F53,sans-serif;
+line-height: 40px;
+cursor: pointer;    overflow: visible !important;
+border-bottom: 0;
+padding-right: 0px;    box-sizing: border-box;
+appearance: none;
+-moz-appearance: none;
+-webkit-appearance: none;
+-webkit-writing-mode: horizontal-tb !important;
+text-rendering: auto;
+color: black;
+letter-spacing: normal;
+word-spacing: normal;
+text-transform: none;
+text-shadow: none;
+display: inline-block;
+text-align: start;
+-webkit-appearance: menulist;
+box-sizing: border-box;
+align-items: center;
+white-space: pre;
+-webkit-rtl-ordering: logical;
+}
+option {
+font-weight: normal;
+display: block;
+white-space: pre;
+min-height: 1.2em;
+padding: 0px 2px 1px;
+width: 40px;
+}
+.scanTheCodeText{
+height: 18px;
+line-height: 5px;cursor: pointer;
+font-size: 16px;
+color: #3c3c3c;
+margin: 9px 10px 0 0;
+font-weight: 700;
+}
+
+.textSelect{position: relative;}
+#warning{position: absolute;color: red;font-size: 13px;}
+.ereimaceshi{
+position: absolute;top: 0;left: 0;right: 0;bottom: 0;margin: auto;width: 150px;height: 150px;
+box-shadow: 0 0 8px #c6c4ce;padding: 5px;box-sizing: border-box;
+}
+.ereimaceshi img{width: 140px;height: 140px;}
+.scanTheCodeA{width: 200px;position: absolute;left: 0;right: 0;margin: 205px auto;display: flex;font-size: 13px;justify-content: space-between;align-items: center}
+.scanTheCodeA span{float: left;font-size: 30px;display: inline-block;color: orange;margin-right: 6px;}
+/* .scanTheCodeA p{float: right;} */

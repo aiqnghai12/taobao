@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    *{margin: 0;padding: 0;}
+    body{padding: 20px}
+    .removeAll{cursor: pointer;}
+    </style>
+    <script src="./js/Cookie.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  </head>
+  <body>
+
+   <div class="container">
+       <a href="http://10.31.162.16/taobao/" style="color: red;border-bottom:2px solid red;width: 20px">返回首页</a>
+       <table class="table" style="background: #cca;border: 1px solid #000">
+           <tr>
+               <th class="col-md-1"><input type="checkbox"  id="all" class="checkboxall"><label>全选</label></th>
+               <th class="col-md-7">商品</th>
+               <th class="col-md-1">单价(元)</th>
+               <th class="col-md-1">数量</th>
+               <th class="col-md-1">小计(元)</th>
+               <th class="col-md-1">操作</th>
+           </tr>
+       </table>
+       <table class="table goodsShops">
+            <!-- <tr>
+                <th class="col-md-1"><input type="checkbox" checked="true" id="all"></th>
+                <th class="col-md-5"><img src="" alt=""></th>
+                <th class="col-md-2">title</th>
+                <th class="col-md-1"><label>166.00</label>元</th>
+                <th class="col-md-1"><button>左</button><input type="text" style="width:40px"><button>右</button></th>
+                <th class="col-md-1">小计(元)</th>
+                <th class="col-md-1"><button type="button" class="btn btn-primary" style="width:40px;height: 22px;font-size: 12px;line-height: 12px">购买</button>
+                    <button type="button" class="btn btn-danger" style="width: 40px;height: 22px;font-size: 12px;line-height: 12px">删除</button></th>
+            </tr> -->
+        </table>
+       <table class="table">
+            <tr>
+                <td class="col-md-5"><a class="removeAll">删除选中的商品</a></td>
+                <td class="col-md-2 allNumber">已选择<span style="color:red">126</span>件商品</td>
+                <td class="col-md-3 allPrice">总价(不含运费)<span style="color:red">7622.00</span>元<p>已节省:-￥0.00</p></td>
+            <td  class="col-md-1"><a style="cursor: pointer; background: red;border: 1px solid #000;color: #fff;
+                width: 100px;height: 40px;line-height: 40px;text-align: center;display: inline-block">提交订单</a></td>
+            </tr>
+        </table>
+   </div>
+
+
+   <script>
+   const url = "http://10.31.162.16/taobao/";
+    const goodsShops = document.querySelector(".goodsShops");
+    const allNumber = document.querySelector(".allNumber span");
+    const allPrice = document.querySelector(".allPrice span");
+
+
+let cookie = new Cookiefn();
+
+init();
+function init(){
+
+   cookieGoods();
+   checkboxremove();
+}
+
+function cookieGoods(){
+    goodsShops.innerHTML = "";
+    let num=0,priceAll=0;
+    // 购物车商品 id 数组
+  let arrsid =  cookie.selectCookie('arrsid').split(",");
+  // 购物车数量 数组
+  let arrnum =  cookie.selectCookie('arrnum').split(",");
+
+  arrsid.forEach((item,index)=>{
+  num+= parseInt(arrnum[index]);
+    $.ajax({
+      type:"post",
+      url:url+"php/data/goods_select_id.php",
+      dataType:"json",
+      data:{
+          sid:item
+      },success:data=>{
+          if(data){
+          priceAll += Number(parseInt(arrnum[index])*data.goods_price);
+          allPrice.innerHTML = priceAll.toFixed(2);
+        goods(data,arrnum[index]);
+
+        if(index == arrsid.length-1){
+            leftArightClick();
+          
+        checkallClick();
+        btnDaget();}
+    }
+      }
+     
+  })
+  allNumber.innerHTML = num;
+  })
+
+// arrsid.forEach(item=>{
+// })
+}
+
+function goods(item,num){
+       goodsShops.innerHTML+=`<tr trvalue=${item.id}>
+                <th class="col-md-1"><input type="checkbox" class="goodscheckbox"  id="all"></th>
+                <th class="col-md-5"><img style="width:120px;height:120px;" src="${item.goods_img}" alt=""></th>
+                <th class="col-md-2">${item.goods_name}</th>
+                <th class="col-md-1"><label>${item.goods_price}</label>元</th>
+                <th class="col-md-1" value=${item.id}><button class="left" style="width:20px">-</button><input sp="${item.goods_price},${item.id}" class="inputnum" type="text" value="${num}" style="width:30px"><button class="right" style="width:20px">+</button></th>
+                <th class="col-md-1"><span class="spannumprice" spannumprice=${item.id}>${(num*item.goods_price).toFixed(2)}</span>(元)</th>
+                <th class="col-md-1"><button type="button" class="btn btn-primary"  value=${item.id} style="width:40px;height: 22px;font-size: 12px;line-height: 12px">购买</button>
+                    <button type="button" class="btn btn-danger" value=${item.id} style="width: 40px;height: 22px;font-size: 12px;line-height: 12px">删除</button></th>
+            </tr>`;
+    }
+   
+function checkboxremove(){
+$(".removeAll")[0].addEventListener("click",e=>{
+
+  let arrsid =  cookie.selectCookie('arrsid').split(",");
+  let arrnum =  cookie.selectCookie('arrnum').split(",");
+    var i=0;
+$(".goodscheckbox").each((index,elem)=>{
+    if(elem.checked){
+        console.log(index-i); 
+        arrsid.splice(index-i,1);
+        console.log(arrsid);
+        arrnum.splice(index-i,1);
+        i++;
+    }
+    })
+    if(i!==0){
+    cookie.addCookie('arrsid',arrsid,100);
+    cookie.addCookie('arrnum',arrnum,100);
+ cookieGoods();}
+})
+}
+
+function checkallClick(){
+    // $("[type|=checkbox]")[1].checked = true;
+    $("[type|=checkbox]").each((index,elem)=>{
+         elem.addEventListener("click",e=>{
+               if(index!==0){
+                   let i=1;
+                $("[type|=checkbox]").each((index,elem)=>{
+                    if(index!=0)
+                     elem.checked == true ? "": i=0;
+                })
+                 if(!i)
+                 $("[type|=checkbox]")[0].checked = false;
+                 else{
+                    $("[type|=checkbox]")[0].checked = true;
+                 }
+               }else{
+                $("[type|=checkbox]").each((index,elem)=>{
+                  index != 0 ? elem.checked = e.target.checked :"";
+                }) 
+                // console.log($("[type|=checkbox]"));
+               }
+         })
+     
+    })
+
+
+
+
+}
+
+function btnDaget(){
+    let arrsid =  cookie.selectCookie('arrsid').split(",");
+  let arrnum =  cookie.selectCookie('arrnum').split(",");
+    $(".btn-danger").on("click",e=>{
+     $(`[trvalue|=${e.target.value}]`).remove();
+     arrsid.splice(arrsid.indexOf(e.target.value),1);
+     arrnum.splice(arrnum.indexOf(e.target.value),1);
+     cookie.addCookie('arrsid',arrsid,100);
+    cookie.addCookie('arrnum',arrnum,100);
+    all();
+    }) 
+        
+    
+}
+   
+function leftArightClick(){
+$(".left").each((index,item)=>{
+    // console.log(item.nextSibling)
+    leftAright(item.nextSibling,item,$(".right")[index])
+})
+}
+
+function leftAright(goodsnumber,left,right){
+    
+goodsnumber.oninput = e=>{
+    e.target.value = e.target.value.replace(/[^0-9]/g,"");
+    if(parseInt(e.target.value)<=0){
+       e.target.value = 1;
+    }else if(parseInt(e.target.value)>=99){
+       e.target.value = 99;
+    }
+    //  變換
+    changnumber(goodsnumber.getAttribute("sp").split(",")[1],goodsnumber.value,goodsnumber.getAttribute("sp").split(",")[0]);
+
+
+}
+left.onclick = right.onclick = e=>{
+if($(e.target).hasClass("left")){
+   goodsnumber.value = parseInt(goodsnumber.value)-1;
+}else{
+   goodsnumber.value = parseInt(goodsnumber.value)+1;
+}
+if(parseInt(goodsnumber.value)<=0){
+   goodsnumber.value = 1;
+    }else if(parseInt(goodsnumber.value)>=99){
+       goodsnumber.value = 99;
+    }
+    changnumber(goodsnumber.getAttribute("sp").split(",")[1],goodsnumber.value,goodsnumber.getAttribute("sp").split(",")[0]);
+}
+//   變換  
+
+
+
+}
+
+//  變換 在不重新加載的情況下 需要 sid 以及 num  和 價格。
+function changnumber(sid,num,price){
+    let arrsid =  cookie.selectCookie('arrsid').split(",");
+  let arrnum =  cookie.selectCookie('arrnum').split(",");
+  arrnum[arrsid.indexOf(sid)] = num;
+  cookie.addCookie('arrnum',arrnum,100);
+//  要改变3个东西    总数 总价   商品总价   需要得到三个东西 
+//  sid  获取 商品总价
+$(`[spannumprice|=${sid}]`)[0].innerHTML = (num*price).toFixed(2);
+
+all();
+}
+
+function all(){
+    //  改变总价.
+let numpricAll = 0;
+$(".spannumprice").each((index,item)=>{
+    numpricAll+= parseInt( item.innerHTML*1000);
+
+})
+
+allPrice.innerHTML = (numpricAll/1000).toFixed(2);
+// 改变 总数.
+// allNumber
+    let numAll = 0;
+$(".inputnum").each((index,item)=>{
+    numAll+= parseInt(item.value);
+})
+allNumber.innerHTML = numAll;
+}
+  
+  </script>
+  </body>
+</html>

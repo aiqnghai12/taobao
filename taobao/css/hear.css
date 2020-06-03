@@ -1,0 +1,52 @@
+*{margin: 0;padding: 0;list-style: none;}
+a{text-decoration: none;color: #000}
+.main1{width: 1200px;margin: auto;}
+
+
+#head{background:  #f4f4f4;z-index: 1000;}
+#head nav{
+  background:  #f4f4f4;
+  height: 34px;
+  margin: auto;
+}
+#head nav>li{
+  position: relative;
+  height: 34px;z-index: 500;
+  padding: 0 6px;
+  
+}
+nav>li:nth-child(1):hover,
+nav>li:nth-child(5):hover,
+nav>li:nth-child(6):hover,
+nav>li:nth-child(7):hover,
+nav>li:nth-child(10):hover,
+nav>li:nth-child(11):hover,
+nav>li:nth-child(12):hover {
+  padding: 0 5px;
+  background-color: #fff;
+}
+nav>li a{
+  cursor: pointer;
+  color: #6c6c6c;
+  height: 35px;
+  line-height: 35px;
+  font-size: 12px;
+  display: inline-block;
+}
+nav>li .spanshu{
+  font-size: 12px;
+  padding: 0 5px;
+  display: inline-block;
+  color: #ddd;
+}
+nav>li a:hover {
+  color: red;
+}
+nav>li .iconfont {
+  font-size: 12px;
+  margin-left: 8px;
+  color: #4b2a2a;
+}
+
+#shopcar span{position: absolute;top: 0;right: 20px;color: blueviolet;background: red;border-radius: 50%;
+height: 12px;width: 12px;line-height: 12px;font-size: 12px;text-align: center}

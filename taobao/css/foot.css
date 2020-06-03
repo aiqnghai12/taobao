@@ -1,0 +1,15 @@
+
+body{background: #f5f5f5}
+
+
+
+#J_SiteFooter{background: #fff}
+.tb-footer{height: 70px;border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;}
+#J_SiteFooter .tb-footer{font-size: 12px;}
+#J_SiteFooter .tb-footer span{display: inline-block;height:35px;line-height:35px;}
+#J_SiteFooter .tb-footer a,#J_SiteFooter .tb-footer b{margin:0 3px;color: #888;height: 35px;line-height: 35px;}
+#J_SiteFooter .tb-footer a:hover{color: red;}
+
+.TaoBaobanquan{font-size: 12px;color: #ccc}
+.TaoBaobanquan a{color: #888;margin: 5px 10px;margin-left: 0; display: inline-block;height: 30px;line-height: 30px;}
+.TaoBaobanquan span{display: inline-block;height: 30px;}

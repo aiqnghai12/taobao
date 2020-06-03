@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户注册页面</title>
+      <!-- 页头导航栏    -->
+    <link rel="stylesheet" type="text/css" href="../taobao/css/first.css" />
+    <link rel="stylesheet" href="../taobao/css/font_t20i9ofs3lt/iconfont.css">
+	<link rel="stylesheet" href="../taobao/css/font_nzpr7n9pvu/iconfont.css">
+    <script src="../taobao/css/font_d72pqdvv4sg/iconfont.js"></script>
+    <!-- 页头导航栏    -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../taobao/js/Cookie.js"></script>
+    <script src="../taobao/js/sha1.js"></script>
+</head>
+<body style="background: #fff">
+    <!-- 页头导航栏    -->
+    <div id="hearhtml"></div>
+	 
+    <script type="text/javascript">
+   //在js中引入
+   $(document).ready(function () {
+       $('#hearhtml').load('hear.html');
+   });
+</script>
+   <!-- 页头导航栏    -->
+   <link rel="stylesheet" href="./css/newUser.css">
+<div class="main1 logindiv"><img src="./img/Login.png" alt=""><p>邮箱注册</p></div>
+<div class="main1 main">
+
+<ul class="registration_information">
+    <li><span>1</span>&emsp;设置用户名</li>
+    <li><span>2</span>&emsp;填写密码账号信息</li>
+    <li><span>√</span>&emsp;注册成功</li>
+</ul>
+
+<div class="message_input">
+<label for="">电子邮箱</label><input type="text" class="eMail" placeholder="请输入邮箱"><label class="yanzhneg"></label><br>
+<span id="Image_authen"><input class="subeMail" disabled="true" value= " "  type="button"></span><br>
+</div>
+</div>
+
+<div class="main1" id="account_information">
+    <div class="main2">
+    <p>您以激活邮箱 <span class="email"></span> 请在两分钟内进行密码填写</p>
+    <div class="password_div"> <label for="">密&emsp;&emsp;码</label><input type="text"  class="password passwordOne"> <span class="passwordOneSpan"></span> </div>
+    <div class="password_div"> <label for="">重复密码</label> <input type="password" class="password passwordTwo"> <span class="passwordTwoSpan"></span></div>
+    <button class="submit">提交</button><br>
+    </div>
+</div>
+
+
+<div class="main1" id="usersuccess">
+     <p style="font-size: 40px;color: greenyellow;text-align:center;margin-bottom: 50px">邮箱注册成功</p>
+     <div><a href="http://10.31.162.16/taobao/denglu.html">点击跳转 <span class="timersetout">10.0</span> </a></div>
+</div>
+
+ <!-- 引入 脚页面 -->
+ <footer id="footer">
+
+</footer>
+<script type="text/javascript">
+    //在js中引入
+    $(document).ready(function () {
+        $('#footer').load('foot.html');
+    });
+</script>
+
+<!--  图片验证   -->
+<script src="./js/Image_authentication.js"></script>
+<!-- 发送信息 -->
+<script src="./js/newUser.js"></script>
+<!-- 密码信息存储和验证1 -->
+</body>
+</html>

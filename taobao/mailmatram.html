@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>邮箱跳转ip</title>
+    
+    <style>
+        *{margin: 0;padding: 0;}
+        .div0{width: 240px;height:50px; font-size: 40px;color: greenyellow;font-weight: 600;margin: 300px auto;}
+    </style>
+ <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+    
+    <div class="div0">邮箱验证成功</div>
+
+<script>   
+const url = "http://10.31.162.16/taobao/";
+//    邮箱链接中带有 验证码 和 ip地址 和邮箱账号
+var str= window.location.search.substring(1);
+const div0 = document.querySelector(".div0");
+str = str.split("&");
+    $.ajax({
+    type:"post",
+    url:url+"php/mailmatram.php",
+    data:{
+        //    ip
+    ip:str[0].split("=")[1],
+    // 验证码
+    matram : str[1].split("=")[1],
+    //邮箱账号
+    email : str[2].split("=")[1],
+    },success:function(data){
+        div0.innerHTML = "邮箱验证成功";
+    },error:function(){
+        div0.innerHTML = "邮箱验证失败";
+    }
+    })
+</script>
+</body>
+</html>

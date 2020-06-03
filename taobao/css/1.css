@@ -1,0 +1,128 @@
+body {
+  background-color: #f4f4f4;
+}
+
+.headerImag {
+  display: block;
+}
+
+.login {
+  margin: 0 22px;
+  margin-top: 5px;
+  float: left;
+}
+.search {
+  width: 630px;
+  height: 88px;
+  position: relative;
+  margin-left: 60px;
+  float: left;
+}
+.csgoTWO {
+  width: 76px;
+  height: 90px;
+  border: 1px solid #ccc;
+  position: relative;
+  float: left;left: 150px;
+}
+.csgoTWO span{width: 12px;height: 12px;position: absolute;left: -14px;
+  top: -1px;
+text-align: center;line-height: 12px;border:  1px solid #ccc;
+display: block;font-size: 12px;cursor: pointer;color: #ccc;}
+
+.shopClass li {
+  text-align: center;
+  float: left;
+  width: 36px;
+  height: 22px;
+  font-size: 12px;
+  color: #f40;
+  line-height: 22px;
+  margin-right: 4px;
+  cursor: pointer;
+}
+.shopClass li:hover {
+  background-color: pink;
+}
+.shopClass li:nth-child(1) {
+  margin-left: 20px;
+  color: #fff;
+  font-weight: 700;
+  background-image: -webkit-linear-gradient(left, #ff9000 0, #ff5000 100%);
+  background-image: -o-linear-gradient(left, #ff9000 0, #ff5000 100%);
+  background-image: linear-gradient(to right, #ff9000 0, #ff5000 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff9000', endColorstr='#ffff5000', GradientType=1);
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+.searchinput {
+  border: 2px solid #ff5000;
+  border-top-left-radius: 20px;
+  width: 600px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-right: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 36px;
+}
+.searchzhaoxiang {
+  position: absolute;
+  cursor: pointer;
+  right: 80px;
+  font-size: 26px !important;
+}
+.searchSpan {
+  width: 70px;
+  height: 40px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  font-size: 18px;
+  line-height: 40px;
+  text-align: center;
+  position: absolute;
+  z-index: 100;
+  right: 0;
+  font-weight: 700;
+  color: #fff;
+  background-image: linear-gradient(to right, #ff9000 0, #ff5000 100%);
+  background-repeat: repeat-x;
+  cursor: pointer;
+}
+.inputSearch {
+  margin-left: 15px;
+  background: none;
+  font-size: 14px;
+  outline: none;
+  width: 450px;
+  border: none;
+}
+
+.search ul:nth-child(4) li:hover{
+background-color: #ccc;
+}
+
+.searchfadaj {
+  font-size: 20px !important;
+  position: absolute;
+  color: #ccc;
+  left: 25px;
+  z-index: 1000;
+}
+.headerText li {
+  float: left;
+  margin: 0 2px;
+}
+.headerText li a {
+  font-size: 12px;
+  display: inline-block;
+  line-height: 18px;
+  height: 18px;
+}
+.headerText li a:hover {
+  color: #ff5000;
+}

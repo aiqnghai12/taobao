@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>淘宝</title>
+	<link rel="stylesheet" type="text/css" href="../taobao/css/first.css" />
+	<link rel="stylesheet" type="text/css" href="../taobao/css/1.css" />
+	<link rel="stylesheet" href="../taobao/css/font_t20i9ofs3lt/iconfont.css">
+	<link rel="stylesheet" href="../taobao/css/font_nzpr7n9pvu/iconfont.css">
+	<link rel="stylesheet" href="../taobao/css/hear.css">
+	<script src="../taobao/js/Cookie.js"></script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="../taobao/css/font_d72pqdvv4sg/iconfont.js"></script>
+	<style>
+	/* main css */
+	#classification:after{/*伪元素是行内元素 正常浏览器清除浮动方法*/
+        content: "";
+        display: block;
+        height: 0;
+        clear:both;
+        visibility: hidden;}
+
+	  .classheader{height: 30px;font-weight: 600;color: #fff;text-align: center;line-height: 30px;position: relative;}
+	  .classheader .title{width:190px;box-sizing:border-box;height: 30px;position: absolute;left: 0;top: 0;
+	 background: orangered;}
+	  .classheader ul{background-image: -webkit-linear-gradient(left,#ff9000 0,#ff5000 100%);
+	 position: absolute;width: 1010px;top: 0;right: 0;}
+	 .classheader ul li{float: left;cursor: pointer;padding: 0 5px;margin: 0 6px;}
+	  .classheader ul li a{color:#fff;}
+
+	 .classbody .classul{padding: 3px 0;position: relative;background: #fff;float: left;}
+	  .classbody .title{width:190px;box-sizing:border-box;border: 1px solid orangered;height: 522px;}
+	  .classbody .classul li{height: 32px;font-size: 14px;line-height: 32px;text-indent: 1em;transition: all .5s;}
+	 .classul li a{color:#666;margin: 0 4px;transition: all .5s;}
+	  .classbody .classul li .inc_{float: right;margin-right:2px;}
+     .classbody .df_message{width:714px;height: 522px;display: none;transition: all.5s;
+	 position: absolute;left: 188px;top:-4px;  border: 2px solid red;padding-left: 18px;z-index: 220;background: #fff;}
+	 .df_message_left{width: 437px;height: 500px;float: left;}
+	 .df_message_left div a{cursor: pointer;font-size: 13px;float: left;}
+	 .df_message_left div a:hover{color: orangered}
+	 .df_message_left div{width:100%;height: 160px;padding: 5px;overflow: hidden; }
+	 .df_message_right{width: 254px;height: 518px;float: right;background: gray;}
+
+	 /* 轮播图-- */
+	 #classification .main_lun{float: right;width: 1010px;padding-top: 10px;
+	 display: flex;justify-content: space-between;align-items: center}
+	 .main_lun > li{margin-left: 10px;}
+	.main_lun > li:nth-child(1){width: 520px;height: 510px;}
+	.main_lun > li:nth-child(2){width: 160px;height: 510px;background: #fff}
+	.main_lun > li:nth-child(3){width: 290px;background: #fff;height: 510px;}
+	.main_lun .lun_max{width: 100%;height: 280px;margin-bottom: 23px;position: relative;}
+	.main_lun .lun_min{width: 100%;height: 215px;position: relative;}
+	.main_lun .lun_max .left,.main_lun .lun_max .right{width: 35px;position: absolute;
+	height: 35px;color: #fff;background: rgba(200, 200, 200, 0.7);font-size: 40px;line-height: 26px;text-align: center}
+	.main_lun  .left{border-top-right-radius: 50%;border-bottom-right-radius: 50%;}
+	.main_lun  .right{border-top-left-radius: 50%;border-bottom-left-radius: 50%;}
+	.main_lun .lun_min .left,.main_lun .lun_min .right{width: 28px;position: absolute;
+	height: 28px;color: #fff;background: rgba(200, 200, 200, 0.7);font-size: 30px;line-height: 20px;text-align: center}
+	
+	/* 个人信息  以及分类 */
+	.our_message .our_img{width: 100%;padding: 3px 0 10px 0;background: no-repeat url('../taobao/img/hear.jpg');background-size: cover;
+    height: 132px;    font: 12px/1.5 tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;
+    padding-right: inherit;
+    text-align: center;}
+	.our_img>img{border-radius: 50%;margin-top: 3px;}
+	.our_img .our_a a{height: 14px;border-radius: 9px;background: #ffe4db;margin: 5px 4px;
+	color:red;padding-right: 9px;
+	}
+	.our_btns{margin-top: 10px;}
+	.our_btns a{font-weight: 600;font-size: 15px;color: #fff;background: orangered;padding: 2px 18px;
+	margin: 6px;border-radius: 3px;height: 25px;line-height: 25px;
+	}
+	.our_message .our_btns a:nth-child(1){padding: 2px 25px;}
+    /* 舉報 */
+	.our_message  .jubao{width: 100%;height: 26px;line-height: 26px;position: relative; background: pink;color: orangered;text-align: center;display: block;font-size: 13px;}
+	.our_message  .jubao span{font-size: 12px;position: absolute;right: 30px;line-height: 30px}
+	/* tables */
+	.our_message .table{width: 100%;font-size: 12px;}
+	.our_message .table li{cursor: pointer;height: 29px;box-sizing: border-box}
+	.our_message .table1{padding-top: 10px;display: flex;justify-content:space-around;align-items: center}
+	.our_message .table li:last-child{margin-right: 20px}
+	.our_message .table2 ul{ margin: 0 12px;
+    height: 50px;overflow: hidden;padding-top: 9px;   padding-bottom: 6px;}
+	.our_message .table2 ul li{ width: 260px;    float: left;
+	display: inline;line-height: 25px;height: 25px;width: 130px;display: list-item;overflow: hidden;}
+	
+	.class-icons{width: 100%;height: 155px;
+	    min-height: 0;
+    background-color: #FFF;
+	}
+	.class-icons li{width: 70px;overflow: visible;float: left;height: 75px;list-style: none;text-align: center;
+		font-size: 12px;box-sizing: border-box;padding: 6px;
+    border: 1px solid #f4f4f4;}
+    .class-icons li svg{font-size: 35px;margin-bottom: 8px;}
+	.taobao-icons{width: 100%;height: 76px; background: #fff;position: relative;}
+
+	.taobao-icons span:nth-child(1){    font-size: 14px;
+    padding-left: 14px;
+    height: 30px;
+    line-height: 30px;
+    position: relative;font-weight: 600;
+	z-index: 2;}
+	.taobao-icons span:nth-child(2){position: absolute;
+    right: 10px;
+    font-size: 12px;
+	font-weight: 400;}
+	.taobao-icons span a:hover{color: red}
+	.taobao-icons ul{    padding-left: 23px;
+    position: relative;
+	height: 44px;}
+	.taobao-icons ul li{    transition: all 0s;
+    position: relative;text-align: center;
+    float: left;
+    width: 32px;
+    height: 32px;
+    margin-right: 21px;
+	margin-bottom: 8px;}
+	.taobao-icons  li .erweima{width: 100px;height: 120px;justify-content: center;align-items: center;
+	background: #fff;border: 1px solid #ccc;position: absolute;top: -130px;left: -34px;display: none;z-index: 200}
+	.taobao-icons  li .erweima img {width: 76%;}
+	.taobao-icons  li .erweima span{position: absolute;bottom: 10px;}
+	.taobao-icons  li svg{font-size: 29px;cursor: pointer;}
+	.taobao-icons  li:hover .erweima{display: flex}
+
+	#suspension{position: fixed;background: #fff;width: 100%;z-index: 300;height: 50px;z-index: 500;
+	 top:-60px;}
+	#suspension .main1{height: 50px;display: flex;justify-content: center;align-items: center}
+	#suspension .main1 img{width: 60px;}
+	/* #suspension .searchinput  */
+
+
+	</style>
+</head>
+
+<body>
+	    <!-- 头文件 -->
+		<!-- <header>
+        <div class="head" id="head">
+                <nav class="main1">
+                    <li class="SelectArea"><a href="function:;" target="_top">中国大陆</a><span class="iconfont">&#xe541;</span></li>
+                    <li><a  target="_top" style="color: red;" id="Pleaselogin" >请登陆</a></li>
+                    <li><a href="http://10.31.162.16/taobao/newUser.html" target="_top">免费注册</a></li>
+                    <li><a href="function:;" target="_top">手机逛淘宝</a></li>
+                    <li id="Webnavigation"><a href="function:;" target="_top"><span class="iconfont">&#xe50c;</span>网站导航</a><span class="iconfont">&#xe541;</span></li>
+                    <li class="CustomerService"><a href="function:;" target="_top">联系客服</a><span class="iconfont">&#xe541;</span></li>
+                    <li class="maijiaconter"><a href="function:;" target="_top">XXX买家中心</a><span class="iconfont">&#xe541;</span></li>
+                    <li><span class="spanshu">|</span></li>
+                    <li><a href="function:;" target="_top">商品分类</a></li>
+                    <li class="collection"><a target="_top" id="favorites" class="iconfont">&#xe574;&emsp;收藏夹</a><span class="iconfont">&#xe541;</span></li>
+                    <li ><a target="_top"  id="shopcar"  class="iconfont">&#xe504;&emsp;购物车<span class="num" style="display: none"></span></a><span class="iconfont">&#xe541;</span></li>
+                    <li class="our_taobao"><a id="mytaobao"   target="_top">我的淘宝</a><span class="iconfont">&#xe541;</span></li>
+                </nav>
+            </div>
+				</header>
+				<script src="./js/hear.js"></script> -->
+
+	 <div id="hearhtml"></div>
+	 
+	 <script type="text/javascript">
+    //在js中引入
+    $(document).ready(function () {
+        $('#hearhtml').load('hear.html');
+    });
+</script>
+
+		<link rel="stylesheet" href="../taobao/css/font_d72pqdvv4sg/iconfont.css">
+		
+		<div style="background-color: #f40d4d;height:71px;">
+				<!-- 头广告 图片-->
+		<img src="../taobao/img/header.jpg" class="headerImag main1"></div>
+
+			
+		<div style="background-color: #fff;">
+			<div class="main1" style="height: 121px;background-color: #fff;padding-top:24px;box-sizing: border-box;">
+				<!-- 主页面-->
+				<img src="../taobao/img/login.png" class="login" alt="">
+				<div class="search">
+					<ul class="shopClass">
+						<li>宝贝</li>
+						<li>天猫</li>
+						<li>店铺</li>
+					</ul>
+					<div class="searchinput" style="position: relative;">
+						<input type="text" placeholder="        请输入" class="inputSearch">
+						<span class="iconfont searchfadaj">&#xe607;</span> 
+						<span class="iconfont searchzhaoxiang">&#xe957;</span>
+						<span class="searchSpan">搜索</span>
+					</div>
+					<ul class="headerText">            
+						<li><a href="">新款连衣裙</a></li>
+						<li><a href="">四件套</a></li>
+						<li><a href="" style="color:#ff5000">潮流T恤</a></li>
+						<li><a href="">时尚女鞋</a></li>
+						<li><a href="">短裤</a></li>
+						<li><a href="">半身裙</a></li>
+						<li><a href="">男士外套</a></li>
+						<li><a href="">墙纸</a></li>
+						<li><a href="">行车记录仪</a></li>
+						<li><a href="">新款男鞋</a></li>
+						<li><a href="">耳机</a></li>
+						<li><a href="">时尚女包</a></li>
+						<li><a href="">沙发</a></li>
+					</ul>
+					
+				</div>
+				
+			    <div class="csgoTWO" >
+					<span>×</span>
+					<!-- 二维码 扫码 -->
+					<a href="https://skinsdog.cc/?lang=zh&source=bdpc1610" style="display: block;text-align: center;">
+                    <p>手机淘宝</p>
+					<img src="../taobao/img/csgo.png" alt="" style="width: 66px;height: 66px;">
+				    </a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+
+
+	<!-- 隐藏的搜索框     通过页面滚动显示。 -->
+	<div id="suspension">
+		<div class="main1 " >
+			<img src="../taobao/img/login.png" class="login" alt="">
+			<div class="searchinput " style="position: relative;">
+					<input type="text" placeholder="        请输入" class="inputSearch">
+					<span class="iconfont searchfadaj">&#xe607;</span> 
+					<span class="iconfont searchzhaoxiang">&#xe957;</span>
+					<span class="searchSpan">搜索</span>
+				</div>
+			</div>
+			</div>
+	
+			<style>
+			.fixedtool{border-radius: 7px;overflow: hidden;transition: all .5s }
+			.fixedtool li{width: 50px;height: 50px;background: #fff;font-size: 13px;cursor: pointer;
+				display: flex;justify-content: center;align-items: center;transition: all .1s;overflow: hidden;
+			} 
+			.fixedtool li:nth-child(1) a{color:orangered}
+			.fixedtool li:nth-child(3) a{color:pink}
+			.fixedtool li:nth-child(5) a{color:blue}
+			.fixedtool li:nth-child(7) a{color:darkkhaki}
+			.fixedtool li:nth-child(9) a{color:fuchsia}
+			.fixedtool li:hover{background: orangered;}
+			.fixedtool li:hover a{color: #fff}
+			.fixedtool  p{width: 40px;background: #ccc;height: 1px;margin: 0 auto}
+			</style>
+
+	<!-- 楼梯    返回上面   跳转指定位置. -->
+	<div class="fixedtool" style="position: absolute;z-index: 500; top: 375px; display: block;right:40px;background: #fff;">
+  <li value="orangered" ><a>爱逛<br>好货</a></li><p></p>
+	<li value="pink"><a>好店<br>直播</a></li><p></p>
+	<li value="blue"><a>品质<br>特色</a></li><p></p>
+	<li value="darkkhaki"><a>热卖<br>单品</a></li><p></p>
+	<li value="fuchsia"><a>淘宝<br>推荐</a></li><p></p>
+	<li style="height:0"><a style="text-align:center">^<br>顶部</a></li><p></p>
+	<li><a href="http://survey.taobao.com/survey/kgsa2JZE2" class="a-all fixedtool-8 ">反馈</a></li><p></p>
+	<li><a href="https://www.12377.cn/">暴恐<br>举报</a></li>
+	</div>
+
+	<div class="main1">
+          <div id="classification">
+              <div class="classheader">
+				 <div class="title">
+					 主题市场
+				 </div>
+				 <ul>
+				</ul>
+			  </div>
+			  <div class="classbody">
+				  <ul class="title classul">
+				  </ul>
+				  <div class="main_lun">
+					  <li class="lun_">
+						  <div class="lun_max">
+							  <div class="left"><</div>
+							  <div class="right">></div>
+							</div>
+						  <div class="lun_min">
+							<div class="left"><</div>
+							<div class="right">></div>
+						  </div>
+					  </li>
+					  <li class="today_hot">
+						  <a href="https://pages.tmall.com/wow/a/act/tmall/tmc/26567/wupr?spm=a21bo.2017.201860.1.5af911d9Cns3ZG&scm=20140637.1.63277.281735&wh_pid=industry-195498&v=df336b54bad92ab05390ea3d4dba5227&wh_random_str=1"><img src="//img.alicdn.com/tfs/TB1un43HFT7gK0jSZFpXXaTkpXa-160-280.png_290x290q90.jpg_.webp" alt="">
+						  </a>
+							<span style="font-size: 13px;color: #ccc">今日热卖</span>
+							<a href="https://detail.tmall.com/item.htm?id=569351931533&sku_properties=5919063:6536025&ali_trackid=30_b26b4142ee7edf35343fd3f2bddcf357&spm=a21bo.2017.201861.1"><img src="https://img.alicdn.com/simba/img/TB1dVlhhgHqK1RjSZJnSuvNLpXa.jpg" alt="">
+							</a>
+						</li>
+					  <li class="our_message">
+                          <div class="our_img">
+							  <img src="//wwc.alicdn.com/avatar/getAvatar.do?userNick=&width=50&height=50&type=sns&_input_charset=UTF-8" alt="">
+						  <p>Hi! 你好</p>
+							<div class="our_a"><a href="">
+			<svg class="icon" aria-hidden="true"><use xlink:href="#icon-jinbi"></use></svg>
+			             领淘金币抵钱</a>
+								<a href="">
+	<svg class="icon" aria-hidden="true"><use xlink:href="#icon-huiyuan"></use></svg>
+	会员俱乐部</a></div>
+							<div class="our_btns"><a href="http://10.31.162.16/taobao/denglu.html">登录</a><a href="http://10.31.162.16/taobao/newUser.html">注册</a><a href="">开店</a></div>
+					 
+							</div>
+							<a href="" class="jubao">网上有害信息举报专区<span class="iconfont">&#xe675;</span></a>
+
+						 <ul  class="table table1">
+							 <li>公告</li>
+							 <li>规则</li>
+							 <li>论坛</li>
+							 <li>安全</li>
+							 <li>公益</li>
+							</ul>
+							<div class="table table2 notice-bd">
+									<ul class="mod first" id="ntc-panel-0" data-spm-ab="0" role="tabpanel" aria-labelledby="ntc-tab-0" style="display: block;">
+									<li>
+									<a href="https://press.taobao.com/detail.html?spm=0.7696189.0.0.3550a520phwVru&amp;postId=9296403" class="h">95公益周阿里、腾讯等六家公司同台联合做公益</a>
+									</li>
+									<li>
+									<a href="https://press.taobao.com/detail.html?spm=0.7696189.0.0.3550a520phwVru&amp;postId=9296246">淘宝造物节之城市秘密</a>
+									</li>
+									<li>
+									<a href="https://press.taobao.com/detail.html?spm=0.7696189.0.0.3550a5206u3ifs&amp;postId=9296772">聚划算88红包省钱卡</a>
+									</li>
+									</ul>
+									<ul class="mod hide" role="tabpanel" style="display: none;"><li><a href="https://rule.taobao.com/detail-11000197.htm?spm=a2177.7231193.0.0.5d6717eaBc451V&amp;tag=self" class="">新增《淘宝网汽配行业管理规范》公示通知</a></li><li><a href="https://rule.taobao.com/detail-11000195.htm?spm=a2177.7231193.0.0.5d6717eaBc451V&amp;tag=self" class="">《淘宝网区域零售服务说明》变更公示通知</a></li><li><a href="https://rule.taobao.com/search.htm?spm=a2177.7231205.0.0.603917eaFdKiNP&amp;cId=81&amp;st=1" class="">《淘宝网票务行业管理规范》变更公示通知</a></li><li><a href="https://rule.taobao.com/detail-11000180.htm?spm=a2177.7231193.0.0.5d6717eaBc451V&amp;tag=self" class="">《淘宝网数字娱乐市场须提供官方授权的商品目录》变更公示通知</a></li></ul>
+									<ul class="mod hide" role="tabpanel" style="display: none;"><li><a href="https://market.m.taobao.com/app/qn/toutiao-new/index-pc.html#/detail/10633210?_k=2tdfm8" class="h">淘宝618大促报名</a></li><li><a href="https://www.yuque.com/docs/share/08d5364a-3909-41bd-9d35-fba4c2be8631?#" class="">金牌卖家志愿者招募</a></li><li><a href="https://market.m.taobao.com/app/qn/toutiao-new/index-pc.html#/detail/10635040?_k=ar2xw5" class="h">618大促报名激励</a></li><li><a href="https://www.taobao.com/markets/cs-online/618" class="">运营神器年中大促</a></li></ul>
+									<ul class="mod hide" role="tabpanel" style="display: none;"><li><a href="https://h5.m.taobao.com/qn/pc/niuba-feeds.html#/detail/10463920?_k=d4j90u" class="">魔豆妈妈公益项目</a></li><li><a href="https://h5.m.taobao.com/qn/pc/niuba-feeds.html#/detail/10463920?_k=d4j90u" class="">让母爱永不打烊！</a></li><li><a href="https://h5.m.taobao.com/qn/pc/niuba-feeds.html#/detail/10389738?_k=d4j90u" class="">卖家注意：风险通报！</a></li><li><a href="https://h5.m.taobao.com/qn/pc/niuba-feeds.html#/detail/10376612?_k=d4j90u" class="">售假获刑又起诉！</a></li></ul>
+									<ul class="mod hide" role="tabpanel" style="display: none;"><li><a href="https://gongyi.bbs.taobao.com/detail.html?postId=9028922" class="h">淘宝公益平台正式更名</a></li><li><a href="https://gy.taobao.com/charity_agreement.htm" class="h">益起来商家招募即将截止</a></li><li><a href="https://helpcenter.taobao.com/learn/knowledge?version=old&amp;id=1117986&amp;referer=null" class="">卖家如何设置公益宝贝</a></li><li><a href="https://gongyi.bbs.taobao.com/detail.html?spm=a210m.7763730.0.0.1e1134504fJd7b&amp;postId=816501" class="">公益机构开店全攻略</a></li></ul>
+									</div>
+						 <div class="class-icons">
+								<ul class="conve-list">
+										<li class="conve-item-1">
+										  <a href="//wt.taobao.com/?ks-menu=cz" >
+											<svg class="icon" aria-hidden="true"><use xlink:href="#icon-huafei"></use></svg>
+											<p>充话费</p>
+										  </a>
+										</li>
+										<li class="conve-item-2">
+										  <a href="https://www.fliggy.com/" >
+											<svg class="icon" aria-hidden="true"><use xlink:href="#icon-lvxing"></use></svg>
+											<p>旅行</p>
+										  </a>
+										</li>
+										<li class="conve-item-3">
+										  <a href="//baoxian.taobao.com/" >
+											<svg class="icon" aria-hidden="true"><use xlink:href="#icon-chexian"></use></svg>
+											<p>车险</p>
+										  </a>
+										</li>
+										<li class="conve-item-4">
+										  <a href="//game.taobao.com" >
+											<svg class="icon" aria-hidden="true"><use xlink:href="#icon-youxi"></use></svg>
+											<p>游戏</p>
+										  </a>
+										</li>
+										<li class="conve-item-5">
+										  <a href="//caipiao.taobao.com/?t=1&amp;ad_id=&amp;am_id=13010663204b41fb5276&amp;cm_id=&amp;pm_id=" >
+											<svg class="icon" aria-hidden="true"><use xlink:href="#icon-caipiao"></use></svg>
+											<p>彩票</p>
+										  </a>
+										</li>
+										<li class="conve-item-6">
+										  <a href="//dianying.taobao.com" >
+											<svg class="icon" aria-hidden="true"><use xlink:href="#icon-dianying"></use></svg>
+											<p>电影</p>
+										  </a>
+										</li>
+										<li class="conve-item-7">
+										  <a href="https://www.alitrip.com/jiudian" >
+											<svg class="icon" aria-hidden="true"><use xlink:href="#icon-jiudian"></use></svg>
+											<p>酒店</p>
+										  </a>
+										</li>
+										<li class="conve-item-8">
+										  <a href="https://yebprod.alipay.com/yeb/index.htm">
+											<svg class="icon" aria-hidden="true"><use xlink:href="#icon-licai"></use></svg>
+											<p>理财</p>
+										  </a>
+										</li>
+									  
+									  </ul>
+						 </div>
+						 <div class="taobao-icons">
+							 <span>阿里APP</span><span><a href="" >更多>></a></span>
+							 <ul>
+								 <li><div class="erweima"><img src="../taobao/img/csgo.png" alt=""><span>扫一扫csgo</span></div><svg class="icon" aria-hidden="true"><use xlink:href="#icon-taobao"></use></svg></li>
+								 <li><div class="erweima"><img src="../taobao/img/csgo.png" alt=""><span>扫一扫csgo</span></div><svg class="icon" aria-hidden="true"><use xlink:href="#icon-tianmao"></use></svg></li>
+								 <li><div class="erweima"><img src="../taobao/img/csgo.png" alt=""><span>扫一扫csgo</span></div><svg class="icon" aria-hidden="true"><use xlink:href="#icon-umidd17"></use></svg></li>
+								 <li><div class="erweima"><img src="../taobao/img/csgo.png" alt=""><span>扫一扫csgo</span></div><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dingding"></use></svg></li>
+								 <li><div class="erweima"><img src="../taobao/img/csgo.png" alt=""><span>扫一扫csgo</span></div><svg class="icon" aria-hidden="true"><use xlink:href="#icon-taoxiaopu"></use></svg></li>
+							 </ul>
+						 </div>
+						</li>
+				  </div>
+			  </div>
+		  </div>
+	</div>
+
+	<style>
+			.goods_ul{width: 100%;background: #fff;margin: 0 auto;border: 1px solid #f5f5f5;overflow: hidden;border-top: none;
+			}
+			.goods_ul li{width: 240px;height: 380px;overflow: hidden;box-sizing: border-box;transition: all .5s;
+			padding: 10px;border: 1px solid #f5f5f5; position: relative;float: left;}
+			.goods_ul li:hover{border:1px solid orangered}
+			.goods_ul li img{width: 220px;margin: auto;height: 220px;}
+			.goods_ul li p{font-size: 14px;margin-top: 8px;}
+			.goods_ul li h4{color: #ff5000;font-size: 22px;position: absolute;left: 10px;bottom: 5px;}
+			.goods_ul li h4 span{font-size: 12px;}
+			.goods_ul li h3{position: absolute;right:10px;bottom: 5px;font-size: 12px;}
+			.taobao_tuijian{background: #fff;margin-top:20px;/* font-size: 23px;color: #ff9000;height: 50px; */padding: 10px;}
+			.taobao_tuijian span{border-left: 5px solid maroon;font-size: 20px;color: #ff9000;}
+			/* .taobao_tuijian span{} */
+             .goods_ul_tuijian li{height: 350px;}
+			 .goods_ul_tuijian .Similarbaby{width:240px;position: absolute;height: 80px;background: orangered;left: 0;
+			 color: #fff;font-size: 14px;display: flex;justify-content: center;align-items: center;bottom: -80px;transition: all .5s;
+			}
+			.goods_ul_tuijian .Similarbaby p{text-align: center;}
+			.goods_ul_tuijian .Similarbaby a{color: #fff;font-size: 12px;border-top: 1px solid #fff;}
+			 
+
+		  .goods_host  .goods_class span{font-size: 13px;margin:0 10px;color: #555;cursor: pointer;height: 50px;line-height: 50px}
+		  .goods_host  .goods_class span:hover{color: orangered}
+		  .goods_host .goods_ul_host  h6{color:blue;font-size: 12px;height: 33px;overflow: hidden;}
+		  .goods_host .goods_ul_host  .baoyou{width: 40px;height: 20px}
+
+          
+
+		</style>
+
+
+     <div class="main1 goods_host" style="background: #fff;">
+			<p class="taobao_tuijian"><span style="border-color:pink ">&emsp;热卖单品</span></p>
+			<p class="goods_class"></p>
+			<ul class="goods_ul_host goods_ul">
+				<!-- <li>
+				<img src="https://gd4.alicdn.com/imgextra/i2/2459354798/O1CN012DOP181lJWsGPCH7h_!!2459354798.jpg_400x400.jpg" alt="">
+			   <p>迈锐博304不锈钢转角水槽双槽套餐厨房洗菜盆圆槽水池淘菜盆M2008</p>
+			  <h4><span>￥</span>799.00</h4>
+			  <h3><span>销量:</span>99</h3>
+		     </li> -->
+
+			</ul>
+	 </div>
+
+	<div class="main1" id="taobao_tuijian">
+		<p class="taobao_tuijian"><span>&emsp;淘宝推荐</span></p>
+	
+		<ul class="goods_ul goods_ul_tuijian">
+			
+			<!-- <li>
+			<img src="https://gd4.alicdn.com/imgextra/i2/2459354798/O1CN012DOP181lJWsGPCH7h_!!2459354798.jpg_400x400.jpg" alt="">
+			   <p>迈锐博304不锈钢转角水槽双槽套餐厨房洗菜盆圆槽水池淘菜盆M2008</p>
+			  <h4><span>￥</span>799.00</h4>
+			  <h3><span>销量:</span>99</h3>
+		</li> -->
+		</ul>
+	</div>
+
+
+	<style>
+	
+	
+.hotsale-ft .hotsale-end{height: 60px;display: flex;font-size: 18px;
+       justify-content: center;align-items: center;color:#ccc}
+       .hotsale-ft .hotsale-end span{background:#ccc;width: 70px;height: 2px;display: inline-block;
+       margin: 0 10px;}
+       .layer{display: flex;padding: 40px 0;}
+       .layer .mod{width: 25%;box-sizing: border-box;padding: 0 1em;
+    }
+       .layer .mod li{float: left;}
+       .mod h4{color: #000;height: 50px;}
+       .mod h4  > span{display: flex;justify-content: center;align-items: center;width: 130px;}
+       .mod h4  > span .iconfont{color: #bbb;font-size: 40px;margin-right: 10px;}
+       .mod li a{color:#bbb;font-size: 13px;margin: 5px;}
+
+</style>
+
+<link rel="stylesheet" href="./css/font_b724iz6cwcc/iconfont.css">
+
+	<div class="hotsale-ft main1 " style="background: #f5f5f5;text-align: center">
+		<p class="hotsale-end" ><span></span>END<span></span></p>
+</div>
+
+<div class="layer main1" style="background: #f5f5f5">
+	<div class="mod">
+	 <div class="mod-wrap">
+	   <h4>
+		 <span><span class="iconfont">&#xe645;</span>消费者保障</span>
+	   </h4>
+	   <ul>
+		 <li><a href="https://rule.taobao.com/detail-1690.htm?spm=a2177.7231193.0.0.623f17eayw1xeN&amp;tag=self">保障范围</a></li> 
+		 <li><a href="http://service.taobao.com/support/knowledge-1119776.htm">退货退款流程</a></li>
+		 <li><a href="http://service.taobao.com/support/main/service_center.htm">服务中心</a></li>
+		 <li><a href="http://www.taobao.com/go/act/315/xb_20100707.php">更多特色服务</a></li>
+	   </ul>
+	 </div>
+   </div>
+   
+   <div class="mod">
+	 <div class="mod-wrap">
+	   <h4>
+		 <!-- <i class="tb-ifont"></i> -->
+		 <span><span class="iconfont">&#xe501;</span>新手上路</span>
+	   </h4>
+	   <ul>
+		 <li><a href="http://vip.taobao.com/new.htm">新手专区</a></li>
+		 <li><a href="http://315.taobao.com/">消费警示</a></li>
+		 <li><a href="http://bbs.taobao.com/catalog/424023-49511-1.htm">交易安全</a></li>
+		 <li><a href="http://service.taobao.com/support/minerva/beta_robot_main.htm">24小时在线帮助</a></li>
+		 <li><a href="http://mai.taobao.com/seller_admin.htm">免费开店</a></li>
+	   </ul>
+	 </div>
+   </div>
+   
+   <div class="mod">
+	 <div class="mod-wrap">
+	   <h4>
+		 <!-- <i class="tb-ifont"></i> -->
+		 <span><span class="iconfont">&#xe644;</span>付款方式</span>
+	   </h4>
+	   <ul>
+		 <li><a href="https://payservice.alipay.com/intro/index.htm?c=kjzf">快捷支付</a></li>
+		 <li><a href="https://payservice.alipay.com/intro/index.htm?c=xyk">信用卡</a></li>
+		 <li><a href="https://payservice.alipay.com/intro/index.htm?c=yeb">余额宝</a></li>
+		 <li><a href="https://payservice.alipay.com/intro/index.htm?c=hb">蚂蚁花呗</a></li>
+		 <li><a href="http://www.taobao.com/go/chn/tb-fp/2014/tbcod.php">货到付款</a></li>
+	   </ul>
+	 </div>
+   </div>
+   
+   <div class="mod">
+	 <div class="mod-wrap">
+	   <h4>
+		 <!-- <i class="tb-ifont"></i> -->
+		 <span><span class="iconfont">&#xf0033;</span>淘宝特色</span>
+	   </h4>
+	   <ul>
+		 <li><a href="https://market.m.taobao.com/app/fdilab/download-page/main/index.html">手机淘宝</a></li>
+		 <li><a href="https://alimarket.taobao.com/markets/qnww/portal-group/ww/index">旺旺/旺信</a></li>
+		 <li><a href="http://pan.taobao.com/">大众评审</a></li>
+	   </ul>
+	 </div>
+   </div>
+ </div>
+
+
+ <!-- 引入 脚页面 -->
+<footer id="footer">
+
+	</footer>
+	<script type="text/javascript">
+		//在js中引入
+		$(document).ready(function () {
+			$('#footer').load('foot.html');
+		});
+	</script>
+
+
+
+	<script>
+	 	$("html,body").stop(true).animate({
+              scrollTop:0
+        },300)
+	</script>
+	<script src="../taobao/js/index.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../taobao/js/index_header.js"></script>
+	<script src="../taobao/js/lun_.js"></script>
+<script src="../taobao/js/our_message.js"></script>
+<script>
+	// const url = "http://10.31.162.16/taobao/";
+	//   右边的导航 
+
+!function($){
+    // 商品类表加载类
+	class creatgoodslist {
+		// 传入 php地址 传入父元素 传入需要分类的参数
+		constructor(url, parent,Spanadd) {
+			this.spanadd = Spanadd;
+			this.$fat = parent;  // 父元素
+			this.liList = null;
+			this.first = 0;      // 商品开始的位置
+			this.url = url;      
+			this.bool = true;    // 延迟加载的标识
+			this.init();         // 初始化 + 创建 + 添加
+			if(!this.spanadd)    //  如果没有有分类的参数  则需要懒加载
+			this.winScroll();
+		}
+
+		//  初始化
+		init() {
+		if(this.spanadd)
+			this.num = 200
+		else
+			this.num = 10
+
+			// 数据获取
+			$.ajax({
+				type: "get",
+				url: this.url,
+				dataType: "json",
+				data:{
+        // bool:this.bool,     //  通过传输bool   来实现 获取的值是哪个部分的。  获取多少  如果是1  则是hots的  获取多个
+				num:this.num ,   // 获取的数量
+				first:this.first
+				},
+				success:data=>{
+          this.bool = true;
+					this.first += this.num;
+          this.data = data;
+					if(this.$fat.hasClass("goods_ul_host")){
+						this.creatLiList_host();
+					}else{
+						this.creatLiList();
+					}
+					this.creatgoods_li_click();
+				}
+			})
+		}
+	
+		
+		//  懒加载   
+           creatLiList(){
+						 var str = "";
+			$.each(this.data,(index,item)=>{
+				str += `<li class="goods_li" value="${item.id}"><img src="${item.goods_img}" alt="">
+			   <p>${item.goods_name}</p>
+			  <h4><span>￥</span>${item.goods_price}</h4>
+			  <h3><span>销量:</span>${item.goods_number}</h3>
+			  <div class="Similarbaby"><p><span class="iconfont">&#xe973;</span><span>找相似</span><br>
+				<a>发现更多相似的宝贝</a>
+				</div>
+		     </li>`;
+			})
+			this.$fat.html(this.$fat.html()+str);
+           
+                    
+					$(".goods_li").children().css("cursor","pointer").on("click",function(){
+		let goods_id = $(this).parents(".goods_li").val();
+		window.location.href =  url+"goods.html?"+goods_id;
+		})
+
+        $(".goods_li").hover(function(){
+			$(this).children(".Similarbaby").css("bottom","0");
+		},function(){
+			$(this).children(".Similarbaby").css("bottom","-80px");
+		})
+
+
+			if(this.first>=35){
+			$(window).off("scroll",this.windowlayout);
+		}
+			 }
+			 
+     winScroll(){
+			$(window).on("scroll",this,this.windowlayout).attr({
+				bool:true
+			})
+		 }
+		 windowlayout(e){
+			 let _this = e.data;
+			if(this.bool){
+				this.bool = false;
+     setTimeout(()=>{
+			let scroll = $(window).scrollTop();
+			let top = document.body.clientHeight-document.documentElement.clientHeight;
+            if(scroll+600>=top ){
+							_this.init();
+						}
+						this.bool = true;
+		 },400)
+						// _this.bool = true;
+			}
+
+
+}
+
+
+	  
+		   creatLiList_host(){
+			// let str = {};
+			// let host_arr = [];
+			// $.each(data,(index,item)=>{
+            //     if(!str[`${item.goods_class}`])
+			// 	str[`${item.goods_class}`] = "";
+			// 	if(host_arr.indexOf(item.goods_class)==-1)
+			// 	host_arr.push(item.goods_class);
+            //     str[`${item.goods_class}`] += `<li class="goods_li ${item.goods_class}" style="display:'none'"><img src="${item.goods_img}" alt="">
+		 	//    <p>${item.goods_name}</p>
+		 	//   <h4><span>￥</span>${item.goods_price}</h4>
+		 	//   <h3><span>销量:</span>${item.goods_number}</h3>
+			//   </li>`;
+			// })
+            // let host_class ="<span>"+host_arr.join("</span><span>")+"</span>";
+             
+			// _this.spanadd.html(host_class);
+			// _this.$fat.html(str[`${host_arr}`])
+			
+            // _this.spanadd.on("click","span",function(){
+			// 	_this.$fat.html(str[`${ $(this).html()}`]);
+			// }) 
+
+			let str = "";
+			let host_arr = [];
+			$.each(this.data,(index,item)=>{
+				if(host_arr.indexOf(item.goods_class)==-1)
+				host_arr.push(item.goods_class);
+                str += `<li class="goods_li goods_host_li ${item.goods_class}"  value="${item.id}" style="display:none"><img src="${item.goods_img}" alt="">
+				<p>${item.goods_name}</p>
+			 	${ (item.goods_title=="包邮" ? "<img class='baoyou' src='../taobao/img/baoyou.png'/>"  : `<h6>${item.goods_title}</h6>`   )}
+		 	  <h4><span>￥</span>${item.goods_price}</h4>
+		 	  <h3><span>销量:</span>${item.goods_number}</h3>
+			  </li>`;
+			})
+            let host_class ="<span>"+host_arr.join("</span><span>")+"</span>";
+             
+						this.spanadd.html(host_class);
+						this.$fat.html(str);
+			$(`.${ host_arr[0] }`).slice(0,10).css("display","block");
+			this.spanadd.on("click","span",function(){
+				$(`.goods_host_li`).css("display","none");
+				$(`.${$(this).html()}`).slice(0,10).css("display","block");
+			})
+}
+
+
+	  creatgoods_li_click(){
+		$(".goods_li").children().css("cursor","pointer").on("click",function(){
+		let goods_id = $(this).parents(".goods_li").val();
+		window.location.href =  url+"goods.html?"+goods_id;
+		})
+		}
+
+	}
+
+		$.creatgoodslist_$ = creatgoodslist;
+	}(jQuery)
+ 						//  并给所有的li中除li以外的元素添加手型以及 点击详情页.
+
+
+	///  数据创建 商品页面   
+	creatgoods_li_on();
+	function creatgoods_li_on(){
+		new $.creatgoodslist_$(url + "php/data/goods_all.php",$(".goods_ul_host"),$(".goods_class"));
+		new $.creatgoodslist_$(url + "php/data/goods_all.php",$(".goods_ul_tuijian"));
+}
+
+
+
+//  右边的悬浮条子 
+!function($){
+const $fixedtool = $(".fixedtool");
+// 悬浮的说有个例   
+const $liList = $(".fixedtool li");
+	let top_ = $fixedtool.offset().top;
+	let prv = $liList.eq(0).css("background","orangered").children("a").css("color","#fff").parent()
+	onclickascroll();
+	hoverli();
+function onclickascroll(){
+	$(window).on("scroll",function(){
+		scrollwin();
+	})
+	 $liList.on("click",function(){
+		 // 关闭滚动事件    
+		$(window).off("scroll",scrollwin);
+			
+		//  点击返回顶上的
+			if($(this).index(".fixedtool li")==5){
+				scroolli($liList.eq(0),0);
+			}
+			// 淘宝推荐
+			if($(this).index(".fixedtool li")==4){
+				let litop = $("#taobao_tuijian").offset().top;
+				scroolli(this,litop-50);
+			}
+
+			// 热卖单品
+						if($(this).index(".fixedtool li")==3){
+				 let litop =  $(".goods_host").offset().top;
+				 scroolli(this,litop);
+			}
+
+
+
+			// 动画结束后 开启滚动事件
+		setTimeout(() => {
+        $(window).on("scroll",scrollwin);
+     }, 300); 
+	 })
+	}
+function scroolli(_this,top){
+	$("html,body").stop(true).animate({scrollTop:top-50},300);
+	prv.css("background","#fff").children("a").css("color",prv.attr("value"));
+	console.log(1);
+	prv = $(_this).css("background","orangered").children("a").css("color","#fff").parent();
+}
+
+function hoverli(){
+    $liList.slice(0,5).hover(
+			function(){
+      $(this).css("background","orangered").children("a").css("color","#fff");
+		},function(){
+			if($(this).attr("value")!==prv.attr("value"))
+			$(this).css("background","#fff").children("a").css("color",$(this).attr("value"));
+		})
+
+}
+
+
+// 滚动事件开启
+function scrollwin(){
+ let scroll = $(window).scrollTop();
+	 if(scroll>=top_ ){
+		 $fixedtool.css({
+			 position:"absolute",
+			 top:scroll+50+"px"
+		 })
+     $(".fixedtool li").eq(5).css({
+			 height:"50px"
+		 })
+	 }else{
+		$fixedtool.css({
+			 position:"absolute",
+			 top:top_+"px"
+		 })
+     $(".fixedtool li").eq(5).css({
+			 height:0
+		 })
+	 }
+}
+
+}(jQuery)
+
+
+
+
+</script>
+
+</body>
+</html>
