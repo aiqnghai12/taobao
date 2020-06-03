@@ -17,7 +17,7 @@
     
     // 下拉框需要父元素 添加的title数组  数组对应的跳转数组  ul 的宽度  ul 相对于父元素的位置 左上角 或 右上角
     constructor(option){
-        this.success = function(){}
+        this.success = function(data){}
     Object.assign(this,option)
     this.width = !this.width ? this.$fat.innerWidth() : this.width;
     this.liList = new Array();
@@ -200,7 +200,6 @@
                             cookie2.clearCookie("email");
                             cookie2.clearCookie("password");
                         })
-                
                     }
                 });
             
