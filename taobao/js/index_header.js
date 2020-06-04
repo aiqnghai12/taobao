@@ -36,7 +36,7 @@
 		let  str_2 = "<a>"+ item.title[1].data_message.split(" ").join("</a><a>") + "</a>";
 		let  str_3 = "<a>"+ item.title[2].data_message.split(" ").join("</a><a>") + "</a>";
     
-	classul.innerHTML += `<li><a href="">${item.title[0].name}</a><span>/</span><a href="">${item.title[1].name}</a><span>/</span><a href="">${item.title[2].name}</a><span class="inc_">></span><div class="df_message">
+	classul.innerHTML += `<li><a href="./goods_list.html">${item.title[0].name}</a><span>/</span><a href="./goods_list.html">${item.title[1].name}</a><span>/</span><a href="./goods_list.html">${item.title[2].name}</a><span class="inc_">></span><div class="df_message">
 	<div class="df_message_left">
 	<div><h3>${item.title[0].name}</h3>
 	${str_1}

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="./css/first.css">
+    <link rel="stylesheet" href="./css/goods_list.css">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
      <script src="./js/Cookie.js"></script>
  <!-- http://img.alicdn.com/tps/i2/TB1Z4WGMpXXXXbyaXXX6sGuHVXX-458-458.png -->  
@@ -13,42 +14,9 @@
 <body>
     <div id="header"></div>
     <div id="searchfirst"></div>
-        
-    <style>
-        body{background: #fff !important;}
-        #goods_class_main{height: 600px;}
-        .goods_list{height: 600px;width: 1070px;
-        float: left;}
-        .goods_host{background: green;height: 600px;width: 270px;
-        float: right;}
-        .class_one{border-bottom: 2px solid orangered;
-        overflow: hidden;}
-        .class_one li{float: left;font-size: 16px;line-height: 38px;
-        height: 38px;padding: 0 20px;transition: all .5s;cursor: pointer;}
-        .class_one li:nth-child(1){color: #fff;background: orangered}
-        .class_one li:hover{color: #fff;background: orangered}
-        .class_two_text{padding: 15px 5px;overflow: hidden;}
-        .class_two_text p{font-size: 12px;height: 24px;padding: 0 12px;line-height: 24px;}
-        .class_two_text .icon-btn-vbarrow{background: no-repeat url(http://img.alicdn.com/tps/i2/TB1Z4WGMpXXXXbyaXXX6sGuHVXX-458-458.png);
-            width: 5px;background-position: -111px -423px;height: 9px;display: inline-block;
-        }
-        .icon-btn-arrow-up-2{background: no-repeat url(http://img.alicdn.com/tps/i2/TB1Z4WGMpXXXXbyaXXX6sGuHVXX-458-458.png);
-            background-position: -412px -322px;display: inline-block;width: 7px; height: 7px;margin-left: 5px;
-        }
-        .class_two_text p:nth-child(1){float: left;}
-        .class_two_text p:nth-child(2){float: right;background: #f5f5f5;border: 1px solid #ccc;cursor: pointer;}
-        .class_two_text p:nth-child(2):hover{color: orangered}
-        .class_two_title{height: 222px;border: 1px solid #ccc}
-        .class_title{height: 36px;width: 1052px;margin: 0 auto;border-bottom: 1px dashed #ccc}
-        .class_title:nth-child(2){height: 73px}
-        .class_title:last-child{border: none;}
-        .class_two_recommended{height: 44px;border: 1px solid #ccc;margin-top: 20px;}
-        .goods_sort{height: 80px;border: 1px solid #ccc;margin-top: 20px;}
-        </style>
     <div id="goods_class_main" class="main1">
         <!-- 左边的 -->
        <div class="goods_list">
-           
            <div class="class_one">
                <li>所有宝贝</li>
                <li>天猫</li>
@@ -61,29 +29,116 @@
             </div>
                 <div class="screening_class">
                 <div class="class_two_title">
-                        <div class="class_title title1"></div>
-                        <div class="class_title title2"></div>
-                        <div class="class_title title3"></div>
-                        <div class="class_title title4"></div>
-                        <div class="class_title title5"></div>
+                        <div class="class_title title1"><p>女衣/男衣/男女</p><span>:</span>
+                        <div class="title_two title_two1">
+                            <li>卫衣</li><li>衬衫</li><li>棉衣</li><li>皮衣</li><li>Polo衫</li><li>西服套装</li><li>工装</li><li>制服</li>
+                        </div>
+                        </div>
+                        <div class="class_title title2"><p>品牌<span>:</span></p>
+                            <div class="title_two title_two2">
+                                <li>南极人</li><li>花花公子</li><li>Rampo</li><li>乱步语克MontVoo</li><li>迈特优翰代维恒源祥</li>
+                                <li>Gap</li><li>大嘴猴</li><li>太平鸟美特斯邦威</li><li>唐狮森马JEENSYIU</li><li>洁思羽梦境花园MASEBOR</li><li>玛斯柏七匹狼Vero ModaV37</li>
+                            </div>
+                        <div class="more more1"><li>多选</li><li>更多<span class="iconfont_down"></span></li></div>
+                        </div>
+                        <div class="class_title title3"><p>女装<span>:</span></p>
+                            <div class="title_two title_two3">
+                                <li>连衣裙</li><li>卫衣</li><li>绒衫</li>
+                            </div></div>
+                        <div class="class_title title4"><p>尺码<span>:</span></p>
+                            <div class="title_two title_two4">
+                                <li>X</li><li>XS</li><li>XSS</li><li>M均码</li><li>L</li><li>XL</li><li>2XL</li><li>XXXL</li><li>XXXXL</li><li>XXXXXL</li>
+                            </div>
+                            <div class="more more2"><li>多选</li></div>
+                        </div>
+                        <div class="class_title title5"><p>筛选条件<span>:</span></p>
+                            <div class="title_two title_two5">
+                                <li>袖长<span class="iconfont_down"></span></li><li>适用季节<span  class="iconfont_down"></span></li><li>适用对象<span class="iconfont_down"></span></li><li>领型<span class="iconfont_down"></span></li><li>相关分类<span class="iconfont_down"></span></li><li>西服套装<span class="iconfont_down"></span></li><li>工装<span></span></li><li>制服<span class="iconfont_down"></span></li>
+                            </div></div>
                 </div>
                 <div class="class_two_recommended">
-
+                    <div class="class_title title3 recommended"><p>您是不是想找<span>:</span></p>
+                        <div class="title_two">
+                            <li>衣服女</li><li>情侣装</li><li>衣服男</li><li>裙子</li><li>连衣裙</li><li>上衣</li><li>外套</li><li>优衣库</li>
+                            <li>夏装</li><li>清凉装</li><li>短袖</li>
+                        </div>
+                    </div>
                 </div>
                 </div>
            </div>
 
            <!-- 排序 类表 -->
-           <div class="goods_sort">
-            
+        <div class="goods_sort">
+            <div class="goods_sort_one">
+                <div class="goods_sort_left">
+                  <li>综合排序</li><li>销量</li><li>信用</li><li>价格<span class="iconfont_down iconfont_down3"></span></li><li class="goods_sort_img1"></li><li class="goods_sort_img2"></li>
+                </div>
+                <div class="goods_sort_right">
+                   <li>发货地<span class="iconfont_down iconfont_down3"></span></li>
+                   <li class="sort_right_img1"></li>
+                   <li class="sort_right_img2"></li>
+                   <li class="sort_right_main"></li>
+                </div>
             </div>
+            <div class="goods_sort_paging">
+                <div class="radius_li">
+                    <li><input type="checkbox"><p>双11</p></li>
+                    <li><input type="checkbox"><p>天猫直送</p></li>
+                    <li><input type="checkbox"><p>包邮</p></li>
+                    <li><input type="checkbox"><p>赠送退货运费险</p></li>
+                    <li><input type="checkbox"><p>货到付款</p></li>
+                    <li><input type="checkbox"><p>新品</p></li>
+                    <li><input type="checkbox"><p>公益宝贝</p></li>
+                    <li><input type="checkbox"><p>二手</p></li>
+                    <li>更多<span class="iconfont_down"></span></li>
+                </div>
+
+                <div>合并同款宝贝</div>
+            </div>
+        </div>
+
+        <div class="goods_main_list">
+          <div class="li_goods">
+            <li>
+                <img src="http://g-search1.alicdn.com/img/bao/uploaded/i4/imgextra/i2/809450068/O1CN01jmOz5b1CNBWnFIjz0_!!0-saturn_solar.jpg_580x580Q90.jpg" alt="">
+                <div class="title">
+                 <div class="same_style">
+                     <p>找相似</p><p>找同款</p>
+                 </div>
+                 <div class="title_back"></div>
+                 <div class="title_num">
+                     <p><span>￥</span>58.00<span>包邮</span></p><p><span>186</span>人付款</p>
+                 </div>
+                 <div class="title_text">潮牌ins嘻哈潮流印花纯棉短袖男士t恤情侣装宽松胖子大码半袖衣服</div>
+                 <div class="title_prace"><div><span><h6></h6><h6></h6><h6></h6></span><a href="">淋雨旗舰店</a></div><p>浙江 杭州</p></div>
+                 <div class="title_host"><span class="iconfont_2 iconfont_2_3"></span><span class="iconfont_2 iconfont_2_1"></span><span class="iconfont_2 iconfont_2_2"></span><span class="iconfont_down iconfont_down_2"></span></div>
+                </div>
+            </li>
+          </div>
+        </div>
+
 
        </div> 
        
-       
-       
        <!-- 右边的 热门个 一列的goods -->
-       <div class="goods_host"></div>
+       <div class="goods_host">
+           <div class="title">
+                <p style="cursor: pointer">掌柜热卖</p> <span class="guanggao"></span>
+           </div>
+           <div class="goods_host_list">
+               <li>
+                   <img src="https://img.alicdn.com/imgextra/i3/926790012/O1CN01koakKI1BxXLGhx7YO_!!2-saturn_solar.png_270x270.jpg" alt="">
+                   <div class="title_num">
+                       <div class="message">
+                            <div><p>喜欢</p><p>不喜欢</p></div>
+                            <div><p>顺黎特大号咸蛋黄烘焙材料蛋黄酥粽子馅料生鲜咸鸭蛋黄真空包装</p></div>
+                       </div>
+                    <p><span class="iconfont_host"></span>￥<span class="number" >17.80</span></p><p style="color: #ccc;font-size: 12px;">销量<span>18</span></p></div>
+                </li>
+               <li>
+                </li>
+           </div>
+       </div>
 
     </div>
 
@@ -119,4 +174,133 @@
     </script>
 
 </body>
+<script>
+ const url = "http://10.31.162.16/";
+!function($){
+//     var str = `<li value="?id?">
+//   <img src="?goods_img?" alt="">
+//     <div class="title">
+//     <div class="same_style">
+//        <p>找相似</p><p>找同款</p>
+//      </div>
+//      <div class="title_back"></div>
+//     <div class="title_num">
+//        <p><span>￥</span>?goods_price?<span>包邮</span></p><p><span>?goods_number?</span>人付款</p>
+//      </div>
+//        <div class="title_text">?goods_name?</div>
+//       <div class="title_prace"><div><span><h6></h6><h6></h6><h6></h6></span><a href="">?goods_store?</a></div><p>?goods_place?</p></div>
+//       <div class="title_host"><span class="iconfont_2 iconfont_2_3"></span><span class="iconfont_2 iconfont_2_1"></span><span class="iconfont_2 iconfont_2_2"></span><span class="iconfont_down iconfont_down_2"></span></div>
+//      </div>
+// </li>`
+        //   new $.creatgoodslist_$({
+        //        url: url + "php/data/goods_all.php", 
+        //        $fat: $(".li_goods"), 
+        //        li: str, 
+        //        arr: goods_list_arr ,
+        //        href:url+"taobao/goods.html?",
+        //        first:500
+        //     });     演示
+
+    // 商品类表加载类 
+    class creatgoodslist {
+		// 传入 php地址 传入父元素 传入需要分类的参数
+		constructor(option) {
+            this.first = 0; // 初始位置
+            this.num = 10;  // 每次的数量
+            this.liList = "";
+            this.LazyLoading = false;  // 是否懒加载
+            this.LazyStyle = 1;  // 懒加载类型
+            this.success = function(data){}
+            this.href = "https://taobao.com" ;  // 商品点击跳转 页面
+			Object.assign(this,option);
+			this.init();         // 初始化 + 创建 + 添加
+        }
+		//  初始化
+		init() {
+			// 数据获取
+			$.ajax({
+				type: "get",
+				url: this.url, 
+				dataType: "json",
+				data:{
+				num:this.num ,   // 获取的数量
+				first:this.first // 初始地址传递
+				},
+				success:data=>{
+                    this.data = data;
+					this.creatLiList();
+					// this.creatgoods_li_click();
+				}
+			})
+		}
+	
+		
+		//  懒加载   
+           creatLiList(){
+            console.log(this.data);
+               //  遍历  添加 商品  
+			$.each(this.data,(index,item)=>{
+   
+            let liString =  this.arr.reduce((value,item2,index)=>{
+                return  value.replace(`?${item2}?`,item[`${item2}`]); 
+                },this.li)
+             this.liList += liString;
+            })
+           
+			this.$fat.html(this.liList);
+           this.creatgoods_li_click();
+
+			 }
+			 
+
+	  creatgoods_li_click(){
+          let _this = this;
+          //  带有 goods_li 类的子元素 就是商品元素 value中 含有 id 跳转用
+		this.$fat.children(".goods_li").on("click",function(){
+		let goods_id = $(this).val();
+            window.location.href = _this.href +"?"+ goods_id;
+		})
+		}
+    
+    }
+    
+
+		$.creatgoodslist_$ = creatgoodslist;
+	}(jQuery)
+
+
+
+
+ var str = `<li class="goods_li" value="?id?">
+  <img src="?goods_img?" alt="">
+    <div class="title">
+    <div class="same_style">
+       <p>找相似</p><p>找同款</p>
+     </div>
+     <div class="title_back"></div>
+    <div class="title_num">
+       <p><span>￥</span>?goods_price?<span>包邮</span></p><p><span>?goods_number?</span>人付款</p>
+     </div>
+       <div class="title_text">?goods_name?</div>
+      <div class="title_prace"><div><span><h6></h6><h6></h6><h6></h6></span><a href="">?goods_store?</a></div><p>?goods_place?</p></div>
+      <div class="title_host"><span class="iconfont_2 iconfont_2_3"></span><span class="iconfont_2 iconfont_2_1"></span><span class="iconfont_2 iconfont_2_2"></span><span class="iconfont_down iconfont_down_2"></span></div>
+     </div>
+</li>`
+
+
+ let goods_list_arr = ['id','goods_img','goods_price','goods_name','goods_number'];
+   
+          new $.creatgoodslist_$({
+               url: url + "php/data/goods_all.php", 
+               $fat: $(".li_goods"), 
+               li:str, 
+               arr: goods_list_arr ,
+               href:"./goods.html",
+               first:556,
+               num:20,
+               success:function(){
+               }
+            });
+        
+</script>
 </html>
