@@ -266,13 +266,13 @@
            
 
 
-
+            let height = this.liList.length < 4 ?  this.liList.length*82 : 320;
 
             new $.oneMenu({
                customLi:this.liList,     // 自定义li 数组
-               sroll: 1,
+               sroll: height < 310 ? 0 : 1,
                width:400,
-               height:300,
+               height,
                $fat: $("#shopcarli"),
                direction: 1  
            });

@@ -1,11 +1,8 @@
 body{background: #fff !important;}
-#goods_class_main{height: 2600px;}
-.goods_list{height: 600px;width: 1070px;
-float: left;}
-.goods_host{height: 600px;width: 270px;
-float: right;}
-.class_one{border-bottom: 2px solid orangered;
-overflow: hidden;}
+.goods_list{width: 1070px;float: left;}
+#goods_class_main{overflow: hidden;}
+.goods_host{width: 270px;float: right;}
+.class_one{border-bottom: 2px solid orangered;overflow: hidden;}
 .class_one li{float: left;font-size: 16px;line-height: 38px;
 height: 38px;padding: 0 20px;transition: all .5s;cursor: pointer;}
 .class_one li:nth-child(1){color: #fff;background: orangered}
@@ -98,8 +95,6 @@ background-position: -436px -383px;
     .iconfont_2_4{    background-position: -435px -86px;width: 16px;height: 16px;}
 
 .iconfont_down_2{  background-position: -435px -86px;width: 16px; height: 16px;}
-
-        .goods_main_list{height: 800px;}
         .li_goods{display: flex;
         justify-content: space-between;flex-wrap: wrap;}
         .li_goods li{width: 252px;height: 392px;float: left;margin-top: 22px;border: 1px solid #ccc;transition: all .4s}
@@ -139,13 +134,13 @@ background-position: -436px -383px;
         margin-bottom: 13px;font-weight: 600;font-size: 16px;display: flex;justify-content: space-between;}
         .goods_host_list li{width: 270px;height: 300px;box-sizing: border-box;margin-bottom: 15px;
         border: 1px solid #ccc;}
-        .goods_host_list li img{width: 268px;height: 268px;}
+        .goods_host_list li img{width: 268px;height: 268px;cursor: pointer;}
         .goods_host_list li .title_num{display: flex;justify-content: space-between;width: 268px;
         align-items: center;height: 20px;position: relative;}
         .goods_host_list .title_num >p{margin: 0 5px;}
         .goods_host_list .title_num > p:nth-child(2){color: orangered;font-size: 18px;}
         .goods_host_list .title_num  .number{font-weight: 600} 
-        .iconfont_host{width: 16px; height: 16px; margin: 1px 5px 0 0;display: inline-block;
+        .iconfont_host{width: 16px; height: 16px; margin: 1px 5px 0 0;display: inline-block;cursor: pointer;
         background-image: url(//img.alicdn.com/tfscom/TB1MD2xHVXXXXbxXXXXwu0bFXXX.png);}
         .goods_host_list li:hover{border-color: orangered;}
         .goods_host_list li:hover .message{display: block;}
@@ -154,7 +149,7 @@ background-position: -436px -383px;
         .message div p{font-size: 12px;}
         .goods_host_list .message div:nth-child(1){height: 32px;display: flex;justify-content:space-between;align-items: center;
         }
-         .message div:nth-child(1) p{width: 133px; height: 32px;line-height: 32px;background: rgba(255, 255,255,0.9);color: #000;text-align: center;}
+         .message div:nth-child(1) p{width: 133px; height: 32px;line-height: 32px;background: rgba(255, 255,255,0.9);color: #000;text-align: center;cursor: pointer;}
          .message div:nth-child(2) {background: rgba(255, 255,255,0.9);height: 32px;margin-top: 1px;}
          .message div:nth-child(2) p{width: 250px;margin: 0 auto;overflow: hidden;height: 32px;line-height: 32px;}
          
