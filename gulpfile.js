@@ -44,17 +44,17 @@ gulp.task('copyfile1', () => {
 
 //3.压缩html文件 - 引入插件包
 gulp.task('uglifyhtml', () => {
-    return gulp.src('src/*.html')
+    return gulp.src('taobao/*.html')
         .pipe(html()) //执行html插件包
-        .pipe(gulp.dest('dist/'));
+        .pipe(gulp.dest('dist/taobao/'));
 });
 
-//4.压缩css文件 - 引入插件包
-// gulp.task('uglifycss', () => {
-//     return gulp.src('src/css/*.css')
-//         .pipe(css()) //执行css插件包
-//         .pipe(gulp.dest('dist/css'));
-// });
+// 4.压缩css文件 - 引入插件包
+gulp.task('uglifycss', () => {
+    return gulp.src('taobao/css/*.css')
+        .pipe(css()) //执行css插件包
+        .pipe(gulp.dest('dist/taobao/css'));
+});
 
 //5.sass编译成css - 引入插件包
 gulp.task('compilesass', () => {
@@ -70,12 +70,12 @@ gulp.task('compilesass', () => {
 
 //6.压缩js文件 - 引入插件包
 gulp.task('uglifyjs', () => {
-    return gulp.src('src/script/*.js')
+    return gulp.src('taobao/js/*.js')
         .pipe(babel({ //先将es6转换成es5
             presets: ['es2015'] //es2015->es6  es2016->es7...
         }))
         .pipe(script()) //执行js压缩
-        .pipe(gulp.dest('dist/script'));
+        .pipe(gulp.dest('dist/taobao/js'));
 });
 
 //7.图片压缩 - jpg/gif/bmp/webp/ [png] - imagemin

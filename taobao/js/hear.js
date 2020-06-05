@@ -30,7 +30,7 @@
     this.$fat.css("position","relative")
     // 创建 一个ul 用作定位父元素    绝对定位 父元素可视宽度                  相对父元素 位置  top 父元素高度
     this.ul = this.ce("div",{position:"absolute",background:"#fff",width:this.width+"px",display:"none"
-    ,overflowY:this.sroll ? "scroll" : "none",height: this.height ? this.height+"px": "none",zIndex:"300",
+    ,overflowY:this.sroll ? "scroll" : "none",height: this.height ? this.height+"px": "none",zIndex:"1000",
     left:this.direction ? 0 :"none",border :"1px solid #ccc",
     borderTop : "none",
     right:this.direction ? "none":0,top:this.$fat.height()-2+"px"
@@ -145,12 +145,13 @@
                     $fat: $(".CustomerService"),
                     direction: 1
                 });
-               //  菜单
+
+                
+               //  菜单  二级
                 new $.oneMenu({
-                    titleList: ['消费者客服','卖家客服'],
-                    hrefList: arr2,
+                    customLi:this.liList,     // 自定义li 数组
                     width:1200,
-                    $child:$("#Webnavigation .Webnavigation"),
+                    height:300,
                     $fat: $("#Webnavigation"),
                     direction: 0
                 });
@@ -358,7 +359,7 @@ new $.shopcarInitialize({cookie : new Cookiefn(),
                     // 遍历后台购物车数据   有则数据相加   否则添加进入数组
                 user_json_shop.forEach((item,index)=>{
                   if( this.user_shopcar_id.indexOf(item) != -1 ){
-            this.arr_goods_number[index]= parseInt(this.arr_goods_number[index])+parseInt(user_json_num[index]);
+            this.arr_goods_number[index]=parseInt(user_json_num[index]);
                   }else{
             this.arr_goods_number.push(user_json_num[index]);  
             this.user_shopcar_id.push(item);
@@ -387,16 +388,10 @@ new $.shopcarInitialize({cookie : new Cookiefn(),
                     password:this.password
                 }
             })
-
-     
-
         }
         })
-
     }
-
    }
-
 
 $.$userShopcar = userShopcar;
 
