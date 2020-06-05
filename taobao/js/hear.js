@@ -13,8 +13,7 @@
     
     //   -----------------  父元素添加下菜单 类-------------
     !function($){
-    class  oneMenu{
-    
+    class oneMenu{
     // 下拉框需要父元素 添加的title数组  数组对应的跳转数组  ul 的宽度  ul 相对于父元素的位置 左上角 或 右上角
     constructor(option){
         this.success = function(data){}
@@ -22,22 +21,20 @@
     this.width = !this.width ? this.$fat.innerWidth() : this.width;
     this.liList = new Array();
     this. init();
-
-    }
-    //初始化 通过
+    }1
+    
+    //初始化 通过0
     init(){
     //  应为需要定位父元素   用到绝对定位   所以父元素需要相对定位  自家加上
     this.$fat.css("position","relative")
     // 创建 一个ul 用作定位父元素    绝对定位 父元素可视宽度                  相对父元素 位置  top 父元素高度
     this.ul = this.ce("div",{position:"absolute",background:"#fff",width:this.width+"px",display:"none"
     ,overflowY:this.sroll ? "scroll" : "none",height: this.height ? this.height+"px": "none",zIndex:"1000",
-    left:this.direction ? 0 :"none",border :"1px solid #ccc",
+    left:this.direction ? ( this.directionbt ? "none" : 0)  :"none",border :"1px solid #ccc",
     borderTop : "none",
-    right:this.direction ? "none":0,top:this.$fat.height()-2+"px"
-    },this.$fat);
-
-
-   
+    right:this.direction ? ( this.directionbt ? -this.$fat.innerWidth()-2+"px" : "none" ) : (this.directionbt ? this.width+"px" :  0   ) ,  
+    top: this.directionbt ?  0  : this.$fat.height()-2+"px"
+    },this.$fat); 
     if(!this.customLi)
     this.creatLi();
     else
@@ -58,7 +55,7 @@
             //  遍历 添加的一级菜单的 数组   创建 li 并添加 跳转数组
     $.each(this.titleList,(index,item)=>{
         this.liList[index] = this.ce("p",{height:this.$fat.height()+"px",fontSize:"12px"
-        ,lineHeight:this.$fat.height()+"px",textIndent:"1em"
+        ,lineHeight:this.$fat.height()+"px",textIndent:"1em",width:"100%"
         ,cursor:"pointer",background:"#fff"},$(this.ul));
         this.liList[index].index = this.hrefList[index];
         this.liList[index].textContent = item;
@@ -73,8 +70,6 @@
             },function(){
                 this.style.background="#fff";
             })
-
-
     }
 
 
@@ -85,6 +80,7 @@
     })
 
     }
+
 
     // 创建
     ce(type,style,parent){
@@ -138,13 +134,31 @@
                     $fat: $(".maijiaconter"),
                     direction: 1
                 });
+
+ 
+                //   菜單測試-----------1    加入是否和父元素在同一行   要解決  代碼地獄
                 new $.oneMenu({
                     titleList: ['消费者客服','卖家客服'],
                     hrefList: arr2,
                     width:100,
                     $fat: $(".CustomerService"),
-                    direction: 1
-                });
+                    direction: 1,
+                    success:function(data){
+                    //    $.each(data,(index,item)=>{
+                    //     new $.oneMenu({
+                    //         titleList: ['消费者客服','卖家客服'],
+                    //         hrefList: arr2,
+                    //         width:100,
+                    //         $fat: $(item),
+                    //         direction:0,
+                    //         directionbt:1,
+                    //         success:function(data){
+                         
+                    //         }
+                    //         })
+                    //     })
+                       }
+                   });
 
                 
                //  菜单  二级

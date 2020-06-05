@@ -28,6 +28,36 @@ const imagemin = require('gulp-imagemin'); //图片压缩
 const watch = require('gulp-watch'); //gulp监听
 
 
+//3.压缩html文件 - 引入插件包
+gulp.task('uglifyhtml', () => {
+    return gulp.src('taobao/*.html')
+        .pipe(html()) //执行html插件包
+        .pipe(gulp.dest('dist/taobao/'));
+});
+
+// 4.压缩css文件 - 引入插件包
+gulp.task('uglifycss', () => {
+    return gulp.src('taobao/css/*.css')
+        .pipe(css()) //执行css插件包
+        .pipe(gulp.dest('dist/taobao/css'));
+});
+//6.压缩js文件 - 引入插件包
+gulp.task('uglifyjs', () => {
+    return gulp.src('taobao/js/*.js')
+        .pipe(babel({ //先将es6转换成es5
+            presets: ['es2015'] //es2015->es6  es2016->es7...
+        }))
+        .pipe(script()) //执行js压缩
+        .pipe(gulp.dest('dist/taobao/js'));
+});
+//7.图片压缩 - jpg/gif/bmp/webp/ [png] - imagemin
+gulp.task('uglifyimg', () => {
+    return gulp.src('src/img/*.{png,jpg}')
+        .pipe(imagemin())
+        .pipe(gulp.dest('dist/src/img'))
+});
+
+
 
 
 
@@ -42,19 +72,6 @@ gulp.task('copyfile1', () => {
         .pipe(gulp.dest('dist/src/fonts'));
 });
 
-//3.压缩html文件 - 引入插件包
-gulp.task('uglifyhtml', () => {
-    return gulp.src('taobao/*.html')
-        .pipe(html()) //执行html插件包
-        .pipe(gulp.dest('dist/taobao/'));
-});
-
-// 4.压缩css文件 - 引入插件包
-gulp.task('uglifycss', () => {
-    return gulp.src('taobao/css/*.css')
-        .pipe(css()) //执行css插件包
-        .pipe(gulp.dest('dist/taobao/css'));
-});
 
 //5.sass编译成css - 引入插件包
 gulp.task('compilesass', () => {
@@ -68,22 +85,9 @@ gulp.task('compilesass', () => {
 });
 
 
-//6.压缩js文件 - 引入插件包
-gulp.task('uglifyjs', () => {
-    return gulp.src('taobao/js/*.js')
-        .pipe(babel({ //先将es6转换成es5
-            presets: ['es2015'] //es2015->es6  es2016->es7...
-        }))
-        .pipe(script()) //执行js压缩
-        .pipe(gulp.dest('dist/taobao/js'));
-});
 
-//7.图片压缩 - jpg/gif/bmp/webp/ [png] - imagemin
-gulp.task('uglifyimg', () => {
-    return gulp.src('src/img/*.{png,jpg}')
-        .pipe(imagemin())
-        .pipe(gulp.dest('dist/src/img'))
-});
+
+
 
 //8.监听
 // 监听插件-gulp-watch()
