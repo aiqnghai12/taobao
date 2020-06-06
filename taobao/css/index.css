@@ -8,7 +8,7 @@ header .main1 .advice{
 }
 header .main1 .advice span{font-size: 20px;color: orangered}
 header .main1 .advice:hover{
-    color: orangered;
+    color: orangered;     
 }
 
 .backImg{    position: absolute;

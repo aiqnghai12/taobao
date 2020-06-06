@@ -234,11 +234,8 @@
        const goods_place = $(".goods_place");
        leftAright();
        let cookie2 = new Cookiefn();
-
        const url = "http://10.31.162.16/";
-    
        dataAdd();
-
        function dataAdd(){
   let sp =   window.location.search.substring(1);
 
@@ -256,7 +253,7 @@
            message.html(data.goods_name);
            num.html(data.goods_price);
            goods_number.html(data.goods_number)
-           original_num.html((data.goods_price-0.1+100.1)+"--"+(data.goods_price-0.1+200))
+           original_num.html((data.goods_price-0.1+100.1).toFixed(2)+"--"+(data.goods_price-0.1+200).toFixed(2))
            goods_place.html(data.goods_prace)
         }
     })  

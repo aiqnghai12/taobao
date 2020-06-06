@@ -193,6 +193,7 @@ display: flex;justify-content: center;align-items: center;}
     .srollfiexd li:nth-child(5) a:hover{background-position: -324px -237px;}
     .srollfiexd li:nth-child(2) a{background: url(//img.alicdn.com/tfs/TB1HKMrPpXXXXa2XFXXXXXXXXXX-106-53.png);}
     .srollfiexd li:nth-child(2) a:hover{background-position: -53px 0;}
+    .goods_li img{cursor: pointer;}
     </style>
 
 
@@ -285,29 +286,42 @@ var str3 = `
             });
 
     
-    
+    //  分页封装方法。  
+    /*--------------- 分页跳转 加载 类 ------------ */   
     !function($){
-      
+    /*  ----------------- 分页跳转 视例 ---------------- */
+    // new $.$paging({
+    //     $leftAright:$(".p_list_goods"),    //  左右按钮
+    //     $num:$(".paging_goods"),      // 中间 涵盖有数字的按钮
+    //     $span:$(".paging_list_span"), // ...  样式标签   
+    //     $input:$(".paging_input input"),  //    页面跳转 的input表单 用于 输入页码
+    //     $button:$(".paging_input a"),   //  确定通过 input 跳转页码 
+    //     $number:$(".paging_input span"),  //  最大数量 显示标签 
+    //     max:30         //  跳转最大页数规定
+    // });
+
       class paging{
+          /* 构造函数 */
           constructor(option){
             Object.assign(this,option);
             this.value = 1;   // 通过标记 决定一切   通过按钮 只改变 标记 
-            this.num = 12;
-            this.init();
+            this.num = 12;    // num为 加载个数  可以不需要   用于 创建时
+            this.init();    // 初始化 创建点击 添加逻辑条件
           }
-
+          /* 初始化 添加 点击事件  */
           init(){
            this.$number.html(this.max);
               // 正则 输入框不能输入 数字以外的
           this.$input.on("input",()=>{
               this.$input.val(this.$input.val().replace(/\D/g,""))  
-              if(parseInt(this.$input.val())>=30){
-                this.$input.val('30') 
+              if(parseInt(this.$input.val())>=this.max){
+                this.$input.val(this.max) 
               }else if(parseInt(this.$input.val())<=1){
                 this.$input.val('1') 
-              }
-              })
+              }})
+
           let _this = this;
+          /* 数字按钮 点击事件 */
           this.$num.on("click",function(){
             _this.value = $(this).val();
             _this.creatpaging_goods_lis();
@@ -316,24 +330,26 @@ var str3 = `
           })
          this.disable_left_right();
         // this.$leftAright[0].attr("disabled",true) ;
+                  /* 左右按钮 点击事件 */
           this.$leftAright.on("click",function(){
+              /* 左右 唯一改变的 是 标记值 */
              if($(this).hasClass("p_list_left"))
               _this.value--;
               else
               _this.value++;
              _this.disable_left_right();
             _this.creatpaging_goods_lis();})
-
+         /* 确定按钮 点击事件 通过 input 改变 表单 */
           this.$button.on("click",()=>{
             this.value = parseInt(this.$input.val());
             this.disable_left_right();
             this.creatpaging_goods_lis();
           })
-
           }
 
 
        // 冻结 左右条件语句
+       /* 通过 value标记 判断 左右的是否点击 通过 printer-*events类的添加和删除来实现 */
        disable_left_right(){
                 this.$leftAright.removeClass("pointer-events") ;
                 this.$leftAright.css("color","#000");
@@ -346,6 +362,9 @@ var str3 = `
             }
        }
 
+
+
+      /* 通过 value 标记 数字按钮的 样式变化方法。 数字按钮中需要添加 value属性 才能正确通过juqery 的属性选择器 改变指定的 按钮样式 */
        creatpaging_goods_lis(){
         this.changdisplay();
         this.$num.css({ borderColor:"#ccc", background:"none", color:"#000"})
@@ -360,17 +379,21 @@ var str3 = `
                num:this.num
             });
        }
-     
+
+
+       /*   判断 逻辑 方法  统一通过 this.value 标记  */
        changdisplay(){
+           /* 当 value 在4时  ... 需要显示 并视影藏的数字按钮 显示出来 */
            if(this.value>=4){
                this.$span.eq(0).css("display","block");
                this.$num.eq(this.value+1).css("display","block");
                this.$num.eq(this.value+2).css("display","none");
            }else{
+               /* 因为是先改变value  再执行方法。 再 value标记 退回时 需要 吧指定的数字按钮手动 设置为none 并且 ... 消失 */
             this.$num.slice(5).css("display","none");
             this.$span.eq(0).css("display","none");
            }
-
+           /* 先余着..  */
            if(this.value>=5 && this.value<=this.max-2){
                this.$num.slice(2).css("display","block")
             this.$span.eq(1).css("display","block");
@@ -408,16 +431,19 @@ var str3 = `
 
      $.$paging = paging;
     }(jQuery)
-
+    /*  ----------------- 分页跳转 实例 ---------------- */
     new $.$paging({
-        $leftAright:$(".p_list_goods"),
-        $num:$(".paging_goods"),
-        $span:$(".paging_list_span"),
-        $input:$(".paging_input input"),
-        $button:$(".paging_input a"),
-        $number:$(".paging_input span"),
-        max:30
+        $leftAright:$(".p_list_goods"),    //  左右按钮
+        $num:$(".paging_goods"),      // 中间 涵盖有数字的按钮
+        $span:$(".paging_list_span"), // ...  样式标签   
+        $input:$(".paging_input input"),  //    页面跳转 的input表单 用于 输入页码
+        $button:$(".paging_input a"),   //  确定通过 input 跳转页码 
+        $number:$(".paging_input span"),  //  最大数量 显示标签 
+        max:42         //  跳转最大页数规定
     });
+
+
+    
     $(".srollfiexd_a").hide();
 
    $(window).on("scroll",function(){

@@ -3,7 +3,6 @@
     const url = "http://10.31.162.16/";
     let cookie2 = new Cookiefn();
 
-
     initStyle();
     function initStyle(){
     navliList.forEach((item,index)=>{
@@ -16,12 +15,12 @@
     class oneMenu{
     // 下拉框需要父元素 添加的title数组  数组对应的跳转数组  ul 的宽度  ul 相对于父元素的位置 左上角 或 右上角
     constructor(option){
-        this.success = function(data){}
+    this.success = function(data){}
     Object.assign(this,option)
     this.width = !this.width ? this.$fat.innerWidth() : this.width;
     this.liList = new Array();
     this. init();
-    }1
+    }
     
     //初始化 通过0
     init(){
@@ -55,7 +54,7 @@
             //  遍历 添加的一级菜单的 数组   创建 li 并添加 跳转数组
     $.each(this.titleList,(index,item)=>{
         this.liList[index] = this.ce("p",{height:this.$fat.height()+"px",fontSize:"12px"
-        ,lineHeight:this.$fat.height()+"px",textIndent:"1em",width:"100%"
+        ,lineHeight:this.$fat.height()+"px",textIndent:"1em",width:"100%",float:this.float ? this.float : "none"
         ,cursor:"pointer",background:"#fff"},$(this.ul));
         this.liList[index].index = this.hrefList[index];
         this.liList[index].textContent = item;
@@ -90,7 +89,7 @@
     return elem;
     }
     }
-    $.oneMenu = oneMenu;
+    $.$oneMenu = oneMenu;
     }(jQuery)
 
 
@@ -101,7 +100,7 @@
     './index.html','./index.html','./index.html'];
 
     //   -----------------  父元素添加下菜单 实例-------------
-                new $.oneMenu({
+                new $.$oneMenu({
                     titleList: arr1,   // 数据
                     hrefList: arr2,   // 导向
                     width: 120,    // ul 长
@@ -111,7 +110,7 @@
                     direction: 1   // 靠左 1  靠右 0
                 });
     
-                new $.oneMenu({
+                new $.$oneMenu({
                     titleList: ['已买到的宝贝','我的足迹'],
                     hrefList: arr2,
                     width:100,
@@ -119,7 +118,7 @@
                     direction: 1
                 });
                
-                new $.oneMenu({
+                new $.$oneMenu({
                     titleList: ['收藏的宝贝','收藏的店铺'],
                     hrefList: arr2,
                     width:80,
@@ -127,7 +126,7 @@
                     direction: 1
                 });
                 arr1 = ['免费开店','已卖出的宝贝','出售中的宝贝','卖家服务市场','卖家培训中心','体检中心','问商友']
-                new $.oneMenu({
+                new $.$oneMenu({
                     titleList: arr1,
                     hrefList: arr2,
                     width:120,
@@ -137,7 +136,7 @@
 
  
                 //   菜單測試-----------1    加入是否和父元素在同一行   要解決  代碼地獄
-                new $.oneMenu({
+                new $.$oneMenu({
                     titleList: ['消费者客服','卖家客服'],
                     hrefList: arr2,
                     width:100,
@@ -145,7 +144,7 @@
                     direction: 1,
                     success:function(data){
                     //    $.each(data,(index,item)=>{
-                    //     new $.oneMenu({
+                    //     new $.$oneMenu({
                     //         titleList: ['消费者客服','卖家客服'],
                     //         hrefList: arr2,
                     //         width:100,
@@ -161,15 +160,98 @@
                    });
 
                 
-               //  菜单  二级
-                new $.oneMenu({
-                    customLi:this.liList,     // 自定义li 数组
-                    width:1200,
-                    height:300,
-                    $fat: $("#Webnavigation"),
-                    direction: 0
-                });
+               //  菜单  二级    再次 添加 float 属性   用作 li的 浮动。
+                // new $.$oneMenu({
+                //     customLi:this.liList,     // 自定义li 数组
+                //     width:1200,
+                //     height:300,
+                //     $fat: $("#Webnavigation"),
+                //     direction: 0
+                // });
+            //   创建 自定义 li的闭包   
+!function($){
 
+    class creatli{
+    constructor(success){
+        this.success = success;
+    this.LiList =  new Array();
+    
+    this.creatli();
+    }
+
+
+    creatli(){
+        $.ajax({
+            type:"get",
+            url:url+"php/class_data_data.php",
+            success:data=>{
+                this.customLi(JSON.parse(data))
+            }
+        })
+     }
+      customLi(data){
+        data.forEach((item,index)=>{
+            switch (index) {
+                    case 0: this.color = "orangered" ; this.width = $(".main1").width()/16-10+"px";
+                    break;
+                    case 1: this.color = "green";this.width = $(".main1").width()/12-10+"px";
+                    break;
+                    case 2: this.color = "orange"; this.width = $(".main1").width()/12-10+"px";
+                    break;
+                    case 3:this.color = "blueviolet" ;this.width = $(".main1").width()/8-10+"px";
+                    break;
+            }
+            this.LiList[index] = this.ce("li",{width:$(".main1").width()/4-20+"px",float:"left",
+             borderRight:index < data.length-1 ?"1px solid #ccc" : "none",
+        padding:"8px"})
+        this.ce("p",{color:this.color,fontWeight:"600"},this.LiList[index]).textContent = item.name ;
+        let color = this.color;
+        item.data_message.split(" ").forEach(item=>{
+         this.div =  this.ce("div",{width:this.width,float:"left",
+          padding:"3px 0",marginTop:"7px"},this.LiList[index])
+        $(this.ce("li",{borderRadius:"3px",fontSize:"12px",display:"inline-block",cursor:"pointer",
+    padding:"2px 4px"},this.div)).html(item)
+        .hover(function(){
+          $(this).css({background:color,color:"#fff"})
+        },function(){
+            $(this).css({background:"none",color:"#000"})
+        })
+        })
+        })
+
+        // this.success(this.LiList);
+        new $.$oneMenu({
+            customLi:this.LiList,     // 自定义li 数组
+            width:$(".main1").width(),
+            height:370,
+            $fat: $("#Webnavigation"),
+            direction: 0
+        });
+     }
+ 
+      ce(type,style,parent){
+         let elem = document.createElement(type);
+         Object.assign(elem.style,style);
+         if(parent)
+         $(parent).append(elem);
+         return elem;
+     }
+    }
+    $.$creatli = creatli;
+}(jQuery)
+
+new $.$creatli(
+    // data=>{
+    //     console.log(data);
+    //         new $.$oneMenu({
+    //         customLi:data,     // 自定义li 数组
+    //         width:$(".main1").width(),
+    //         height:370,
+    //         $fat: $("#Webnavigation"),
+    //         direction: 0
+    //     });
+    // }
+);
 
 
 
@@ -195,6 +277,8 @@
 
          init(){
             if(this.password){
+                this.Pleaselogin.hover(function(){$(this).css("background","#fff")},function(){$(this).css("background","#f5f5f5")})
+                this.Pleaselogin.css("padding","0 16px");
                 this.Pleaselogin.html(this.email);
                 this.Pleaselogin.parent().next().css("display","none");
                 this.arrclick.forEach((item,index)=>{
@@ -203,11 +287,10 @@
                 
                 // 验证成功后  需要改变
                 // 账户菜单   拥有退出个和个人
-                new $.oneMenu({
+                new $.$oneMenu({
                     titleList: ['个人信息','退出'],   // 数据
                     hrefList: ['./index.html','./index.html'],   // 导向
-                    width: 100,    // ul 长
-                    height:50,    // ul 搞
+                   
                     $fat: $("#Pleaselogin"),  // 父元素
                     direction: 1,   // 靠左 1  靠右 0
                     success:function(list){
@@ -283,7 +366,7 @@
 
             let height = this.liList.length < 4 ?  this.liList.length*82 : 320;
 
-            new $.oneMenu({
+            new $.$oneMenu({
                customLi:this.liList,     // 自定义li 数组
                sroll: height < 310 ? 0 : 1,
                width:400,
@@ -385,7 +468,6 @@ new $.shopcarInitialize({cookie : new Cookiefn(),
                                     this.error("用户没有购物车数据")
                                 }
         }else{
-            console.log(1);
             this.error("用户错误没有登录")
         }
                     //  后台返回合并的数据
