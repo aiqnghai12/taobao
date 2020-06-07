@@ -112,7 +112,6 @@ display: flex;justify-content: center;align-items: center;}
 .paging_list > li{border: 1px solid #ccc;margin-left: -0.5px;width: 33px;height: 33px;cursor: pointer;}
 .paging_input{font-size: 12px;color: #ccc;}
 .paging_list > li:nth-child(2){background: orangered;color: #fff;border-color: orangered}
-.paging_list > li:hover{border-color: orangered;color: #fff;background: orangered;}
 .paging_list_span{margin: 0 5px;}
 .paging_input a{cursor: pointer;border: 1px solid #ccc;border-radius: 3px;width: 40px;display: inline-block;}
 .paging_input a:hover{border-color: orangered;color: orangered;}
@@ -328,6 +327,22 @@ var str3 = `
             _this. disable_left_right();
             _this.changdisplay();
           })
+          this.$num.hover (
+        function(){
+            $(this).css({
+                borderColor: "orangered",
+                color: "#fff",
+                background: "orangered"
+            })
+          },function(){
+            $(this).css({
+                borderColor: "#ccc",
+                color: "#000",
+                background: "#fff"
+            })
+          })
+
+
          this.disable_left_right();
         // this.$leftAright[0].attr("disabled",true) ;
                   /* 左右按钮 点击事件 */

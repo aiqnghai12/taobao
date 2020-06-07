@@ -80,9 +80,9 @@
 <style>
     #goods_main{overflow: hidden;margin-bottom: 50px;}
     .main1_left{float: left;width: 950px;}
-    .left_goods{height: 700px;border-right: 1px solid #ccc;padding-right: 10px; }
+    .left_goods{height: 600px;border-right: 1px solid #ccc;padding-right: 10px; }
     .main1_message{width: 530px;height: 648px;float: right;}
-    .main1_right{    padding: 10px 12px 2px 13px;width: 200px;height: 600px;background: green;float: right;}
+    .main1_right{    padding: 10px 12px 2px 13px;width: 200px;float: right;}
     .smallpic{width: 400px;height: 400px;}
     .smallpic img{width: 400px;height: 400px;}
     .message .title{height: 20px;font-weight: 600;overflow: hidden;line-height: 20px;padding: 0 5px;}
@@ -162,6 +162,28 @@
                 font-size: 18px;line-height: 30px;margin: 10px 15px;cursor: pointer;}
                 .btn_goods_div{width: 430px;margin-left: 42px;}
                 .btn_goods_div .but{    background-color: #ff0036; border: 1px solid #ff0036; color: #fff;}
+                .main1_right .m_r_text{color: #ccc;font-size: 12px;height: 20px;line-height: 20px;}
+       .m_r_goods_list {overflow: hidden;height: 624px;}
+       .m_r_goods_list .m_r_goods_li{margin: 10px auto;display: flex;justify-content: center;
+       flex-wrap: wrap;
+       }
+       .goods_li_div p{position: absolute;bottom: 0;left: 0;text-align: center;width: 180px;
+       height: 20px;line-height: 20px;background: rgba(255, 255, 255, 0.7);font-size: 12px;}
+       .m_r_goods_li img{width: 180px;height: 180px;}
+       .goods_li_div{width: 180px;position: relative;height: 180px;}
+       .goods_li img{cursor: pointer;}
+       .m_r_goods_li p:nth-child(2){text-overflow: ellipsis;white-space: nowrap;
+           font-size: 12px;overflow: hidden;height: 15px;line-height: 15px;text-indent: 1em;
+       }
+       .goods_list_Btns{display: flex;justify-content: space-between;align-items: center;
+       padding: 10px 20px;}
+       .goods_list_Btns div{background-image: url(//img-tmdetail.alicdn.com/tps/i1/T1Z0VbFEdcXXbcIIcR-80-112.png);
+        background-color: transparent;  width: 27px; height: 27px;cursor: pointer; background-repeat: no-repeat;    }
+       .goods_list_Btns .goods_dowmbtn{background-position: 0 -30px;} 
+       .goods_refund{margin-top: 10px;height: 100px;}
+       .goods_refund p{display: inline-block;width: 310px;float: right;margin-right: 150px;}
+       .goods_refund p span{margin-right: 30px;margin-bottom: 15px;cursor: pointer;display: inline-block;
+       height: 20px;}
                 </style>
                 <div class="goods_text_message">
                     <div class="goods_text_freight">
@@ -193,23 +215,114 @@
                 </div>
                 <div class="btn_goods_div">
                         <button class="btn_goods">立即购买</button><button class="btn_goods but">加入购物车</button>
-                       </div>
+                </div>
+                <div class="goods_refund">
+                    <span class="goods_text_span">服务承诺</span>
+                    <p><span>不支持七天无理由退换</span><span>坏单包退</span><span>正品保证</span><span>极速退款</span></p>
+                </div>
                 </div>
 
                 </div>
                 </div>
                 </div>
+
+         <style>
+         .detailed_information{margin-top: 30px;width: 100%;
+         display: flex;justify-content: space-between;}
+         .detailed_information .detailed_left{width: 190px;
+         height: 700px;}
+         .detailed_information .detailed_right{width: 750px;}
+         .detailed_right .right_nav{border: 1px solid #ccc; display: flex;justify-content:space-between;
+         align-items: center;font-size: 12px;height: 48px;border-left: none;}
+         .right_nav > div:nth-child(1) p{float: left;height: 48px;line-height: 48px;padding: 0 20px;}
+         .right_nav > div:nth-child(1) p:nth-child(1){color: orangered;border-top: 2px solid orangered;
+         border-left: 1px solid #555;border-right: 1px solid #555;font-weight: 600;}
+         .erweima{ background-image: url(//img-tmdetail.alicdn.com/tps/i1/T12Fs8Fo0XXXb2csDf-38-59.png);
+         width: 150px;height: 48px; line-height: 48px;text-indent: 25px;
+            background-repeat: no-repeat; cursor: pointer;background-position: 100px 12px;display: inline-block;
+         }
+         .erweima:hover{background-position:100px -26.2px;}
+ 
+         .photoprice{display: flex;justify-content: center;align-items: center;position: relative;}
+         .photoprice img{width: 170px;height: 170px;position: absolute;top: 50px;left: 25px;display: none;}
+         .erweima:hover + img{display: inline-block;}
+        .iconfont_up{ background: no-repeat url(http://img.alicdn.com/tps/i1/T15AD7FFFaXXbJnvQ_-130-60.gif);
+        display: inline-block;   
+        }
+        .left_state{height: 184px;border: 1px solid #ccc;}
+        .iconfont_up_1{background-position: -80px 0; width: 20px;height: 20px;}
+        .left_state_p{font-size: 12px;background: #fafafa;height: 48px;
+        border-bottom: 1px solid #ccc;line-height: 48px;text-indent: 2em;font-weight: 600;}
+        .left_state_div{width: 130px;margin: 0 auto;font-size: 12px;}
+        .left_state_div p > span{display: inline-block;width: 40px;}
+        .left_state_div p{margin-top: 5px;}
+        .left_state_div > p:nth-child(1) {color: #ccc;font-weight: 600;margin-top: 20px;}
+        .left_state_div > p:nth-child(2) {color: #ccc;margin-top: 10px;}
+        .left_state_div > p:nth-child(3) {color: orangered;}
+        .left_state_div > p:nth-child(3) > span >span{font-size: 15px;}
+        .left_state_div > p:nth-child(1) span{height:18px;width: 18px;background: orangered;
+        color: orange;line-height: 18px;text-align: center; }
+        .left_state_btns{display: flex;justify-content: center;align-items: center;}
+        .left_state_btns div{padding: 3px 12px;border: 1px solid #ccc;font-size: 12px;
+        margin-top: 15px;}
+        .left_state_btns div:nth-child(1){background: #000;color: #fff;margin-right: 15px;}
+        .left_state_btns div:nth-child(2){background: #f5f5f5;color: #000;}
+         </style>
+               <div class="detailed_information">
+
+                   <div class="detailed_left">
+                    <div class="left_state">
+                        <p class="left_state_p"><span class="goods_state">当年故事旗舰但</span>
+                            <span class="iconfont_up iconfont_up_1"></span></p>
+                            <div class="left_state_div">
+                               <p> <span>4</span> 天猫4年店</p>
+                               <p> <span>描述</span><span>服务</span><span>物流</span> </p>
+                               <p> <span>4.8<span>↑</span></span><span>4.8<span>↑</span></span><span>4.9<span>↑</span></span> </p>
+                            </div>
+                            <div class="left_state_btns">
+                                <div>进店逛逛</div>
+                                <div>收藏店铺</div>
+                            </div>
+                    </div>
+                   </div>
+
+                   <div class="detailed_right">
+                       <div class="right_nav">
+                           <div><p> <span></span> 商品详情</p>
+                           <p>累计评价 <span>22577</span></p>
+                        </div> 
+                         <div class="photoprice">
+                         <span class="erweima">手机购买</span>
+                         <img src="//gcodex.alicdn.com/qrcode.do?biz_code=tmallpc&content=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fmit%2Fact%2Fdownload%3Ftype%3Ddetail%26iframe%3D1%26key%3D538030101546%26src%3Dpcdetail%26mmstat%3Ddetail_pctab%26biz%3Dtmall%26dl_redirect%3Dhttps%253A%252F%252Fdetail.tmall.com%252Fitem.htm%253Fid%253D538030101546&size=175&margin=0&logo_url=http%3A%2F%2Fimg.alicdn.com%2Ftfs%2FTB1xrwucwMPMeJjy1XcXXXpppXa-198-198.png&channel_id=1" alt="">
+                         </div>
+                    </div>
+
+                   <div id="goods_introduce"></div>
+
+                   </div>
+               </div>
+           
                 </div>
 
        <!-- 右邊 -->
-        <div class="main1_right"></div>
+        <div class="main1_right">
+            <div class="m_r_text">
+                <p><span>——————</span> 看了又看 <span>——————</span></p>
+            </div>
+            <div class="m_r_goods_list">
+            </div>
+            <div class="goods_list_Btns">
+                <div class="goods_upbtn "></div>
+                <div class="goods_dowmbtn"></div>
+            </div>
+        </div>
 
 
         </div>
   
        <!-- 屁股导入 -->
   <div id="footer"></div>
-  
+      <script src="./js/list_class.js"></script>
       <script type="text/javascript">
         $(document).ready(function () {
             $('#footer').load('foot.html');
@@ -218,6 +331,7 @@
 
    <script>
 
+    
 
 !function($){
        const smallpicSf = $(".smallpic img");
@@ -232,6 +346,18 @@
        const goods_number =$(".goods_number");
        const original_num = $(".original_num");
        const goods_place = $(".goods_place");
+       const goods_introduce = $("#goods_introduce");
+
+
+
+    var str =  `<li class="goods_li m_r_goods_li" value="?id?">
+                 <div class="goods_li_div"><img src="?goods_img?" alt="">
+                  <p>￥<span class="goods_class_num">?goods_price?</span></p>
+                 </div>
+                 <p>?goods_name?</p>
+             </li>`;
+    var arr = ['id','goods_img','goods_price','goods_name'];
+
        leftAright();
        let cookie2 = new Cookiefn();
        const url = "http://10.31.162.16/";
@@ -247,14 +373,16 @@
         data:{
             sid:sp
         },success:function(data){
-            console.log(data)
+            speciesquery(data.id,data.cat_two_id)
            smallpicSf.prop("src" ,data.goods_img)
            bigpic.prop("src" ,data.goods_img)
            message.html(data.goods_name);
            num.html(data.goods_price);
            goods_number.html(data.goods_number)
-           original_num.html((data.goods_price-0.1+100.1).toFixed(2)+"--"+(data.goods_price-0.1+200).toFixed(2))
-           goods_place.html(data.goods_prace)
+           $(".original_num").html((data.goods_price-0.1+100.1).toFixed(2)+"--"+(data.goods_price-0.1+200).toFixed(2))
+           $(".goods_place").html(data.goods_prace)
+           $("#goods_introduce").html(data.goods_introduce);
+           $(".goods_state").html(data.goods_state);
         }
     })  
 // 初始化小图标
@@ -290,6 +418,32 @@
     });
 }
 
+
+ //  按照种类 查询 商品数据
+ function speciesquery(id,cat_two_id){   
+              new $.creatgoodslist_$({
+                   url: url + "php/data/goods_select_class.php", 
+                   $fat: $(".m_r_goods_list"), 
+                   li: str,
+                   data:{id,cat_two_id},
+                   arr:arr ,
+                   href:url+"taobao/goods.html",
+                   first:500
+                });    
+ }
+
+
+           
+
+
+
+
+
+
+
+
+
+
 //  购物车小图标方法    记录id数量
 function gouwuchejingru(){
 
@@ -308,7 +462,6 @@ function gouwuchejingru(){
      }
     }
 }
-
 
 
 //  左右按钮 修改数量方法   数量不超过99个 不少于1個 並不能輸入非数字的符号
@@ -335,7 +488,6 @@ function leftAright(){
     }
 }
 }(jQuery)
-
 
 
 //  有问题 ！！！！！！！！！！！！
@@ -374,10 +526,8 @@ function leftAright(){
                 };
             }
             move(ev) {
- 
                 let leftvalue = ev.pageX-this.scale.offsetLeft - this.sf.clientWidth/2;
                 let topvalue = ev.pageY-this.scale.offsetTop - this.sf.clientHeight/2;
-              
                 if (leftvalue < 0) {
                     leftvalue = 0;
                 } else if (leftvalue >= this.smallpic.clientWidth - this.sf.clientWidth) {
@@ -396,7 +546,20 @@ function leftAright(){
         }
         new Scale().init();
 
-    </script>
+$(".goods_list_Btns div").on("click",function(){
+     if($(this).hasClass("goods_upbtn")){
+            $(".m_r_goods_list").stop("true").animate({
+                scrollTop:$(".m_r_goods_list").scrollTop()-628
+            },500)   
+     }else{
+        $(".m_r_goods_list").stop("true").animate({
+                scrollTop:$(".m_r_goods_list").scrollTop()+628
+            },500)   
+     }
+})
 
+
+
+    </script>
 </body>
 </html>

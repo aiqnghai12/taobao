@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>淘宝购物车页面</title>
+    <link rel="stylesheet" href="./css/first.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+     <script src="./js/Cookie.js"></script>
+</head>
+<body>
+ 
+        <style>
+                body{background: #fff !important;}
+            #shopcarWeb{margin-top: 20px;margin-bottom: 60px;}
+            .shopcarnav{height: 33px;}
+            .shopcarnav li{width: 130px;height: 22px;padding-left: 15px;font-weight: 700;font-size: 16px;float: left;}
+            .shopcarnav li:nth-child(1){color: #f40}
+            .shopcarnav li span{color: #f40;padding: 0 30px 0 8px;border-right: 1px solid #ccc;font-weight: normal;font-size: 14px;}
+            .shopcarnav li:nth-child(3) span{border: none;}
+            .shopcarnav ul {overflow: hidden;height: 30px;margin-bottom: 5px;}
+            .goods_price_div{float: right;font-size: 12px;display: flex;height: 30px;
+            justify-content: center;align-items: center;}
+            .goods_price_div .goods_price_all{color: #f40;font-weight: 600;}
+            .goods_price_div p span:last-child{color: #eee;padding: 5px 16px;background: #999;
+                
+                border-radius: 3px;margin-left: 15px;}
+             .div_hr{height: 3px; background: #ccc;}
+             .div_hr   .div_hr_min{height: 3px;width: 130px;background: #f40;}
+               </style>
+        <div id="header"></div>
+        <div id="searchfirst"></div>
+
+        <div id="shopcarWeb">
+              <div class="main1">
+                    <div class="shopcarnav">
+                        <ul>
+                            <li>全部商品<span class="goods_shopcarnum">13</span></li>
+                            <li>降价商品<span>0</span></li>
+                            <li>库存紧张<span>0</span></li>
+                            <div class="goods_price_div">
+                                <p>已选商品(不含运费) <span class="goods_price_all">0.00</span><span>结算</span> </p>
+                            </div>
+                        </ul>
+                        <div class="div_hr">
+                                <div class="div_hr_min"></div>
+                        </div>
+                    </div>
+                
+                    <style>
+             .iconfont_taobao{background: no-repeat url(http://gw.alicdn.com/tfs/TB1boCXfmCWBuNjy0FhXXb6EVXa-800-600.png);
+                display: inline-block; cursor: pointer; }
+             .iconfont_taobao_1{margin: -3px 6px 0 0;width: 16px; height: 16px;background-position: -20px -125px;}
+             .iconfont_taobao_2{ display: inline-block;width: 5px; height: 3px;background-position: 0 -65px;position: relative;left: -6px;}
+             .iconfont_taobao_3{ display: inline-block;width: 57px; height: 25px;line-height: 25px;
+    padding: 0 0 0 11px;color: #f40;background-position: -20px -75px;
+}
+
+
+
+
+             .iconfont_gif{background: no-repeat url(//gtd.alicdn.com/tps/i1/T15AD7FFFaXXbJnvQ_-130-60.gif); display: inline-block; 
+                cursor: pointer;position: relative;top: -3px;margin: 0 5px;
+            }
+            .iconfont_gif_1{    background-position: -80px 0;width: 20px;height: 20px;}
+                    #shopcar_goods_lilist .Basic_information{display: flex;align-items: center;
+                    padding: 20px 0 20px 10px;font-size: 12px;}
+                    #shopcar_goods_lilist .Basic_information li{margin: 0 2px;height: 15px;line-height: 15px;}
+                    #shopcar_goods_lilist .radius  p:nth-child(1) {display: inline-block;    width: 15px;    line-height: 200em; overflow: hidden;
+    cursor: pointer; height: 15px;background: no-repeat url(http://gw.alicdn.com/tfs/TB1boCXfmCWBuNjy0FhXXb6EVXa-800-600.png);
+                }
+                #shopcar_goods_lilist .radius  p:nth-child(1):hover{background-position:0 -20px; }
+                    #shopcar_goods_lilist .goods_choose{width:100px;}
+                    #shopcar_goods_lilist .goods_name{width:342px;}
+                    #shopcar_goods_lilist .goods_class{width:212px;}
+                    #shopcar_goods_lilist .goods_price{width:130px;}
+                    #shopcar_goods_lilist .goods_number{width:120px;}
+                    #shopcar_goods_lilist .goods_money{width:140px;}
+                    #shopcar_goods_lilist .operation{width:120px;}
+                    #shopcar_goods_lilist .goods_li{display: flex;align-items: center;
+                    padding: 20px 0 20px 12px;font-size: 12px;border: 1px solid #ccc;background: #fafafa;}
+                    #shopcar_goods_lilist .goods_li > li{margin: 0 2px;}
+                    .radius_goods_store{display: flex;align-content: center;font-size: 12px;height: 20px;
+                    margin-left: 12px;}
+                   .shop_goods_li li{margin-bottom: 16px;}
+
+                    .radius{position: relative;top:2px;left: 0;}
+                    .radius_goods_store p:nth-child(2){margin-left: 5px;}
+                    .radius_goods_store p:last-child > span{display: flex;justify-content: space-between;align-items: center;
+                    position: relative;top: -5px;}
+                    .discount_div{height: 38px;padding: 0 9px; border: 1px solid #ccc;border-bottom: none;
+                    display: flex;flex-wrap: wrap;align-content: center;font-size: 12px;}
+                    .discount_div p:nth-child(1){margin:0 20px;height: 22px;background: #ccc;line-height: 22px;padding: 0 6px;}
+                    .discount_div p:nth-child(2){height: 22px;line-height: 22px;}
+                     .goods_li:hover .operation_span {display: block}
+                     .goods_li li:nth-child(1) > p{height: 88px;}
+                     .goods_li .radius div{height: 88px;}
+                     .goods_choose img{width: 80px;height: 80px;}
+                     .goods_div{height: 88px;}
+                     .goods_name  .goods_name_div{padding-right:26px;}
+                     .goods_name_div > p:hover{color: orange;text-decoration: underline;}
+                     .goods_name_div > p{margin-bottom: 35px;overflow: hidden;cursor: pointer;
+                    height: 32px;}
+                    .goods_name_div img{margin-right: 6px;cursor: pointer;}
+                    .goods_class_div{border: 1px dashed rgba(0, 0, 0, 0);transition: all .5s;
+                    color: #aaa;}
+                    .goods_class_div:hover{border-color: #f40;}
+                    .g_price_div p:nth-child(1){color: #999;text-decoration:line-through;}
+                    .g_price_div p:nth-child(2){font-size: 14px;font-weight: 700;}
+                    .goods_number_div span{display: inline-block;border: 1px solid #ccc;width: 18px;width: 18px;line-height: 18px;
+                    text-align: center;cursor: pointer;}
+                    .goods_number_div input{width: 50px;height: 16px;position: relative;top: 1px}
+                    .goods_money_div{color: orangered;font-size: 15px;font-weight: 700;}
+                    .operation_div p:hover{text-decoration: underline;color: orangered;cursor: pointer;}
+                    .operation_div .operation_span span{position: relative;left:6px;top: -2px;}
+                    .operation_div .operation_span{display: none}
+                    </style>
+                    <div id="shopcar_goods_lilist">
+                       <div class="Basic_information">
+                           <li class="radius">  <p></p> </li>
+                           <li class="goods_choose"><p>全选</p></li>
+                           <li class="goods_name"><p>商品信息</p></li>
+                           <li class="goods_class"><p>商品类别</p></li>
+                           <li class="goods_price"><p>单价</p></li>
+                           <li class="goods_number"><p>数量</p></li>
+                           <li class="goods_money"><p>金额</p></li>
+                           <li class="operation"><p>操作</p></li>
+                       </div>
+                       <div class="shop_goods_li">
+                           <li>
+                                <li class="radius radius_goods_store"><p></p> <p class="iconfont_taobao iconfont_taobao_1"></p>店铺: <p class="goods_store">蝴蝶牌直销店</p>
+                                     <p class="iconfont_gif iconfont_gif_1"></p> 
+                                 <p><span class="iconfont_taobao iconfont_taobao_3"><span>优惠券</span><span class="iconfont_taobao_2 iconfont_taobao"></span></span></p>
+                                </li>
+                                <div class="discount_div">
+                                    <p>2件7.5折</p>  <p>满两件打7.5折</p>
+                                </div>
+                               <div class="goods_li">
+                                    <li class="radius"> <div><p></p></div> </li>
+                                    <li class="goods_choose"><p><img src="https://img.alicdn.com/bao/uploaded/i3/1015563178/O1CN01omEpxi1ZLZIB5la1n_!!1015563178-0-lubanu-s.jpg_80x80.jpg" alt=""> </p></li>
+                                    <li class="goods_name"><p> <div class="goods_name_div goods_div">
+                                        <p>正宗飞人牌家用缝纫机蝴蝶牌老式电动衣车手动脚踩裁缝机台式吃厚</p>
+                                        <div><img src="//assets.alicdn.com/sys/common/icon/trade/xcard.png" alt="">
+                                            <img src="//img.alicdn.com/tps/i3/T1bnR4XEBhXXcQVo..-14-16.png" alt="">
+                                        <img src="//img.alicdn.com/tps/i2/TB1XY_zGpXXXXbeXXXXAz6UFXXX-16-16.png" alt=""></div>
+                                    </div> </p></li>
+                                    <li class="goods_class"><p>
+                                        <div class="goods_class_div goods_div">
+                                          类别: <span>类别1</span>><span>类别2</span>><span>类别3</span>
+                                        </div>
+                                    </p></li>
+                                    <li class="goods_price"><p>
+                                        <div class="g_price_div goods_div">
+                                          <p>￥<span>  413.50</span></p>
+                                          <p>￥<span> 330.80</span></p>
+                                        </div>
+                                    </p></li>
+                                    <li class="goods_number"><p>
+                                        <div class="goods_number_div goods_div">
+                                            <span>-</span><input type="text" value="1"><span>+</span>
+                                        </div>
+                                    </p></li>
+                                    <li class="goods_money"><p>
+                                        <div class="goods_money_div goods_div">
+                                            <p>￥<span>1984.80</span></p>
+                                        </div>
+                                    </p></li>
+                                    <li class="operation"><p>
+                                        <div class="operation_div goods_div ">
+                                            <p>移入收藏夹</p>
+                                            <p>删除</p>
+                                            <p class="operation_span">相似宝贝<span class="iconfont_taobao_2 iconfont_taobao"></span></p>
+                                        </div>
+                                    </p></li>
+                               </div>
+
+                           </li>
+                       </div>
+                    </div>
+             
+
+              </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <div id="footer"></div>
+        <!-- 屁股导入 -->
+
+     <!-- 搜索 login 页面  -->
+     <script type="text/javascript">
+         //在js中引入
+         $(document).ready(function () {
+             $('#header').load('hear.html');
+         });
+         //在js中引入
+         $(document).ready(function () {
+             $('#searchfirst').load('searchfirst.html');
+         });
+         $(document).ready(function () {
+     $('#footer').load('foot.html');
+ });
+ </script>
+
+
+<script src="./js/list_class.js"></script>
+<script>
+ const url = "http://10.31.162.16/";
+ let cookie = new Cookiefn();
+ // 获取购物车数据初始化
+ let arrsid =  cookie.selectCookie('arrsid').split(",");
+  // 购物车数量 数组
+  let arrnum =  cookie.selectCookie('arrnum').split(",");
+var li = `
+<li value="?id?">
+<li class="radius radius_goods_store"><p></p> <p class="iconfont_taobao iconfont_taobao_1"></p>店铺: <p class="goods_store">?goods_state?</p>
+<p class="iconfont_gif iconfont_gif_1"></p> 
+ <p><span class="iconfont_taobao iconfont_taobao_3"><span>优惠券</span><span class="iconfont_taobao_2 iconfont_taobao"></span></span></p>
+</li>
+<div class="discount_div"><p>2件7.5折</p>  <p>满两件打7.5折</p> </div>
+                               <div class="goods_li"> <li class="radius"> <div><p></p></div> </li>
+                                    <li class="goods_choose"><p><img src="?goods_small_logo?" alt=""> </p></li>
+                                    <li class="goods_name"><p> <div class="goods_name_div goods_div">
+                                        <p>?goods_name?</p>
+                                        <div><img src="//assets.alicdn.com/sys/common/icon/trade/xcard.png" alt="">
+                                            <img src="//img.alicdn.com/tps/i3/T1bnR4XEBhXXcQVo..-14-16.png" alt="">
+                                        <img src="//img.alicdn.com/tps/i2/TB1XY_zGpXXXXbeXXXXAz6UFXXX-16-16.png" alt=""></div>
+                                    </div> </p></li>
+                                    <li class="goods_class"><p>
+                                        <div class="goods_class_div goods_div">
+                                          类别: <span>?goods_class?</span>><span>?cat_two_id?</span>><span>?cat_three_id?</span>
+                                        </div>
+                                    </p></li>
+                                    <li class="goods_price"><p>
+                                        <div class="g_price_div goods_div">
+                                          <p>￥<span> ?goods_price?</span></p>
+                                          <p>￥<span> ?goods_price?</span></p>
+                                        </div>
+                                    </p></li>
+                                    <li class="goods_number"><p><div class="goods_number_div goods_div"> <span>-</span><input type="text" value="?goods_num?"><span>+</span>
+                                        </div>
+                                    </p></li>
+                                    <li class="goods_money"><p>  <div class="goods_money_div goods_div">  <p>￥<span>?goods_num_all?</span></p>  </div></p></li>  <li class="operation"><p> <div class="operation_div goods_div ">
+                                            <p>移入收藏夹</p> <p>删除</p> <p class="operation_span">相似宝贝<span class="iconfont_taobao_2 iconfont_taobao"></span></p>
+                                        </div> </p></li> </div></li>`
+
+var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','goods_price','cat_two_id','cat_three_id','goods_price']
+
+                 new $.creatgoodslist_$({
+                   url: url + "php/data/goods_select_arrsid.php", 
+                   $fat: $(".shop_goods_li"), 
+                   li, 
+                   data:{
+                    arrsid,
+                    selfdata:{    // 自己另外加的属性。
+                        goods_num:arrnum
+                    }
+                   },
+                   arr,
+                   href:"none",
+                   success:function(data){
+                       //  回调成功添加数据的函数   
+                       //  给各个按钮 添加点击事件   
+                 console.log($(".goods_money_div span"));
+                   }
+                });    
+
+
+
+
+      //  数据改变类  封装   通过点击事件的cookie 改变 做到 数据的增删改。   并存入数据库。
+      //  需要获取对应的 账号 密码信息 需要从cookie 中获取  
+      //  需要一个 默认的获取cookie所有数据的方法
+     !function($){
+          class goods_data_change{
+              constructor(option){
+                Object.assign(this,option)
+               }
+         // init 初始化 创建点击事件   左右添加按钮   删除按钮 
+          init(){
+
+   
+
+
+
+          }
+
+
+
+
+            // 数据传入后  添加到数据库 
+              mysqlupdate(){
+             
+              }
+          }
+
+   
+
+     }(jQuery)
+
+
+
+
+</script>
+
+
+</body>
+</html>

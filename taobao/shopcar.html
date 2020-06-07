@@ -63,7 +63,6 @@ let cookie = new Cookiefn();
 
 init();
 function init(){
-
    cookieGoods();
    checkboxremove();
 }
@@ -228,7 +227,7 @@ if(parseInt(goodsnumber.value)<=0){
 
 //  變換 在不重新加載的情況下 需要 sid 以及 num  和 價格。
 function changnumber(sid,num,price){
-    let arrsid =  cookie.selectCookie('arrsid').split(",");
+  let arrsid =  cookie.selectCookie('arrsid').split(",");
   let arrnum =  cookie.selectCookie('arrnum').split(",");
   arrnum[arrsid.indexOf(sid)] = num;
   cookie.addCookie('arrnum',arrnum,100);
@@ -244,7 +243,6 @@ function all(){
 let numpricAll = 0;
 $(".spannumprice").each((index,item)=>{
     numpricAll+= parseInt( item.innerHTML*1000);
-
 })
 
 allPrice.innerHTML = (numpricAll/1000).toFixed(2);

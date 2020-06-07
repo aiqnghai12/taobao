@@ -397,7 +397,7 @@ $.shopcarInitialize = shopcarInitialize;
 //  购物车验证类   传入 在用户登录前后不同点击的按钮  
 let arrclick = [$("#shopcar"),$("#favorites"),$("#mytaobao")];
 //  购物车验证类 传入 在用户登录后点击的按钮 的 跳转   和按钮一一对应
-let arrhref = ["./shopcar.html","./shopcar.html","./shopcar.html"];
+let arrhref = ["./shopcarnew.html","./shopcarnew.html","./shopcarnew.html"];
 // ------------------- 用户购物车操作 实例 -----------
 new $.shopcarInitialize({cookie : new Cookiefn(),
     arrclick:arrclick
