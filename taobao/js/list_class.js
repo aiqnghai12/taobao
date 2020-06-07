@@ -105,6 +105,8 @@
                 // this.liList = this.data.arrnum.reduce()
 
                 this.$fat.html(this.liList);
+                
+
 
                 this.success(this.goods_data);     //  返回查询到的数据
                 if(this.href!=="none")
