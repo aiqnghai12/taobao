@@ -9,25 +9,22 @@ if ($conn -> connect_errno) {
     echo "数据库连接失败";
 }
 $conn->query('SET names utf8');
+
 // if(isset($_GET['num'])){
 //     $num = $_GET['num'];
 // }else{
 //     exit "非法操作";
 // }
 // echo $_GET['num'];
-//  SELECT * from goods_all ORDER BY goods_price ASC limit 5,5 ;
+$arrnumber = $_POST["arrnumber"];
+$sid = $_POST['arrsid'];
+$row = array();
 
-$first = $_GET['first']+50;
-$num = $_GET['num'];
-// SELECT * from goods_all ORDER BY goods_price ASC limit 5,5 
-$sql =" select  * from goods_all  ORDER BY goods_price limit {$first},{$num}";
+
+foreach($sid as $key => $item){
+    $sql ="update goods_all set goods_number = '{$arrnumber[$key]}' where id=$item";
 $query = $conn->query($sql);
-$arr = array();
-while($row = $query->fetch_assoc()){
-    $arr[] = $row;
 }
-if($arr){
-    echo json_encode($arr);
-}
+
 $conn -> close();
 

@@ -41,7 +41,11 @@
                 this.init();         // 初始化 + 创建 + 添加
             }
             //  初始化
-            init() {
+            init(url) {
+
+              if(url){
+                  this.url = url;
+              }
 
                 if(!this.data){
                 // 数据获取

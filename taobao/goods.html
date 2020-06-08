@@ -97,6 +97,10 @@
       #goods_main .new_price .num{font-size: 30px;font-weight: 600}
       #goods_main .goods_price p:nth-child(1){color: #444;width: 70px;font-size: 13px;}
       #goods_main .new_price P:nth-child(1){line-height: 40px;}
+      #goods_main .imgs_min{margin-top: 10px;width: 400px;
+    display: flex;flex-wrap: wrap;}
+      #goods_main .imgs_min li{margin-right: 15px;margin-bottom: 10px;padding:2px;width: 55px;height: 55px;}
+      #goods_main .imgs_min img{width: 55px;height: 55px;}
 </style>
  <!-- 数据主要布局 -->
  <div id="goods_main" class="main1">
@@ -114,6 +118,9 @@
                 <div class="bf">
                     <!--大图-->
                     <img alt="" class="bigpic">
+                </div>
+                <div class="imgs_min">
+                  <li><img src="https://img14.360buyimg.com/n0/jfs/t1/97930/20/9251/822007/5e0ca9a6Ebc107a6a/901ea4294766a519.jpg" alt=""></li>
                 </div>
             </div>
              <div class="main1_message">
@@ -373,7 +380,6 @@
         data:{
             sid:sp
         },success:function(data){
-            console.log(data)
             speciesquery(data.id,data.cat_two_id)
            smallpicSf.prop("src" ,data.goods_img)
            bigpic.prop("src" ,data.goods_img)
@@ -384,6 +390,7 @@
            $(".goods_place").html(data.goods_prace)
            $("#goods_introduce").html(data.goods_introduce);
            $(".goods_state").html(data.goods_state);
+           minImgscreat(data.piclistimg.split(","))
         }
     })  
 // 初始化小图标
@@ -436,7 +443,32 @@
 
            
 
+function minImgscreat(arr){
+   let str = `<li><img src="${$(".smallpic img").prop("src")}" alt=""></li>`;
+//    <div class="imgs_min">
+//                   <li><img src="https://img14.360buyimg.com/n0/jfs/t1/97930/20/9251/822007/5e0ca9a6Ebc107a6a/901ea4294766a519.jpg" alt=""></li>
+//    </div>
+   arr.forEach(item=>{
+    str+=`<li><img src="${item}" alt=""></li>`;
+   })
 
+   $(".imgs_min").html(str);
+    
+   $(".imgs_min li img").hover(
+       function(){
+       $(".smallpic img").prop("src",$(this).prop("src")) ;
+       $(".bigpic").prop("src",$(this).prop("src")) ;
+       $(this).parent().css({
+           background:"red"
+       })
+       }
+       ,function(){
+        $(this).parent().css({
+           background:"none"
+       })
+       })
+
+}
 
 
 

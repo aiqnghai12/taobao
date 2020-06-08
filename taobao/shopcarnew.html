@@ -28,9 +28,16 @@
                 border-radius: 3px;margin-left: 15px;}
              .div_hr{height: 3px; background: #ccc;}
              .div_hr   .div_hr_min{height: 3px;width: 130px;background: #f40;}
+             .settlement_div{position: absolute;width: 100%;height: 100%;z-index: 1000;
+            background:rgba(0, 0, 0, 0.3);top: 0;left: 0;}
                </style>
         <div id="header"></div>
         <div id="searchfirst"></div>
+
+
+        <div class="settlement_div" style="display: none">
+            
+        </div>
 
         <div id="shopcarWeb">
               <div class="main1">
@@ -316,7 +323,7 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
                      $remove:$(".goods_remove"),
                      $removeAll:$(".goods_remove_all"),
                      data
-                });   
+                });
             } 
             }); 
 
@@ -394,7 +401,37 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
               _this.removegoods(this.arrindex);
             })
 
+            //  保存购买的商品的数量加成 + 删除
+            $(".settlement").on("click",()=>{
+                this.arrindex = [];
+                this.arr_goods_number = [];
+                this.arr_goods_id = [];
+              this.addradius_checked().forEach((item,index)=>{
+              this.arrindex[index] =  _this.data.id.indexOf($(item).parents(".goods_li").attr("value"))
+              })
+              
+              $.each(this.arrindex,(index,item)=>{
+                this.arr_goods_number[index] = parseInt(this.data[item].goods_number)+parseInt(this.$input.eq(item).val());
+                this.arr_goods_id[index] = this.data.id[item];
+              })
+              $.ajax({
+                  type:"post",
+                  url:url+"php/data/goods_all_update.php",
+                  data:{
+                    arrnumber:this.arr_goods_number,
+                    arrsid: this.arr_goods_id 
+                }
+              })
+              
+              this.removegoods(this.arrindex);
+            })
           }
+           
+
+
+          
+
+
           // 按钮 点击后 的处理方法。 通过 辨别 所有点击的按钮 的类 来 镜像逻辑
           //  传入点击的按钮  进行 类甄别
            radiusinput(_checked){

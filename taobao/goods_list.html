@@ -66,6 +66,10 @@
                 </div>
                 </div>
            </div>
+      
+           <style>
+           .goods_sort_left li{cursor: pointer;margin-left: 0;}
+           </style>
 
            <!-- 排序 类表 -->
         <div class="goods_sort">
@@ -236,10 +240,10 @@ display: flex;justify-content: center;align-items: center;}
 </body>
 <script src="./js/list_class.js"></script>
 <script src="./js/jquery.lazyload.js"></script>
-<script>
- const url = "http://10.31.162.16/";
-
-
+<script aysnc="aysnc"   defer>
+ var url = "http://10.31.162.16/php/data/goods_all.php";
+ var url1 = "http://10.31.162.16/php/data/goods_all.php";
+ var url2 = "http://10.31.162.16/php/data/goods_all_price.php";
  let str = `<li class="goods_li" value="?id?"> <img class="lazy" data-original="?goods_img?" 
     width='252' height='252'
     alt=""><div class="title"> <div class="same_style">  <p>找相似</p><p>找同款</p> </div><div class="title_back"></div>
@@ -252,13 +256,14 @@ var str2 =
 </li>`
 
 var str3 = `
-<li class="goods_li" value="?id?"><img src="?goods_img?"   alt="">  <div class="A_G_L_title">  <p>￥<span>?goods_price?</span></p><div><p>?goods_name?</p></div> <div class="A_G_L_title_store"><p>?goods_state?</p><p>销量<span>5</span></p></div> <div> <span class="iconfont_host"></span></div></li>`
+<li class="goods_li" value="?id?"><img src="?goods_img?"   alt="">  <div class="A_G_L_title">  <p>￥<span>?goods_price?</span></p><div><p>?goods_name?</p></div> <div class="A_G_L_title_store"><p>?goods_state?</p><p>销量<span>?goods_number?</span></p></div> <div> <span class="iconfont_host"></span></div></li>`
                       // 商品 id 商品 图片  商品 价格   商品 名字      商品 销售数量    商品店面      商品地点
  let goods_list_arr = ['id','goods_img','goods_price','goods_name','goods_number','goods_state','goods_prace'];
  let goods_list_arr2 = ['id','goods_img','goods_name','goods_number','goods_price'];
  let goods_list_arr3 = ['id','goods_img','goods_name','goods_number','goods_price','goods_state'];
-          new $.creatgoodslist_$({
-               url: url + "php/data/goods_all.php", 
+          
+        new $.creatgoodslist_$({
+               url: url, 
                $fat: $(".li_goods"), 
                li:str, 
                arr: goods_list_arr ,
@@ -271,10 +276,10 @@ var str3 = `
         });
         });
                },
-               num:12
+               num:20
             });
        let goods_host =     new $.creatgoodslist_$({
-               url: url + "php/data/goods_all.php", 
+               url: url, 
                $fat: $(".goods_host_list"), 
                li:str2, 
                arr: goods_list_arr2 ,
@@ -283,7 +288,7 @@ var str3 = `
                num:6
             });
             new $.creatgoodslist_$({
-               url: url + "php/data/goods_all.php", 
+               url: url, 
                $fat: $(".A_goods_liList"), 
                li:str3, 
                arr: goods_list_arr3 ,
@@ -292,7 +297,8 @@ var str3 = `
                num:5
             });
 
-    
+
+
     //  分页封装方法。  
     /*--------------- 分页跳转 加载 类 ------------ */   
     !function($){
@@ -312,7 +318,7 @@ var str3 = `
           constructor(option){
             Object.assign(this,option);
             this.value = 1;   // 通过标记 决定一切   通过按钮 只改变 标记 
-            this.num = 12;    // num为 加载个数  可以不需要   用于 创建时
+            this.num = 20;    // num为 加载个数  可以不需要   用于 创建时
             this.init();    // 初始化 创建点击 添加逻辑条件
           }
           /* 初始化 添加 点击事件  */
@@ -368,9 +374,26 @@ var str3 = `
             this.disable_left_right();
             this.creatpaging_goods_lis();
           })
+          
+          $(".goods_sort_left > li").on("click",e=>{
+          $(".goods_sort_left > li").css({
+                 background:"#f5f5f5",
+                 borderColor:"rgba(0,0,0,0)",
+                 color:"#000"
+          }).eq(0).css({borderLeftColor:"#ccc"})
+         $(e.target).css({borderColor:"#ccc",
+         background:"#fff"
+         })
+         if($(e.target).index()==0){
+         url = url1;
+         }else if($(e.target).index()==3){
+            url = url2;
+         }
+     this.creatpaging_goods_lis();
+     })
           }
 
-
+       
        // 冻结 左右条件语句
        /* 通过 value标记 判断 左右的是否点击 通过 printer-*events类的添加和删除来实现 */
        disable_left_right(){
@@ -393,7 +416,7 @@ var str3 = `
         this.$num.css({ borderColor:"#ccc", background:"none", color:"#000"})
         this.$num.not( `[value!='${this.value}']`).css({borderColor:"orangered",background:"orangered",color:"#fff"})
         new $.creatgoodslist_$({
-               url: url + "php/data/goods_all.php", 
+               url: url, 
                $fat: $(".li_goods"), 
                li:str, 
                arr: goods_list_arr ,
@@ -461,26 +484,48 @@ var str3 = `
      $.$paging = paging;
     }(jQuery)
     /*  ----------------- 分页跳转 实例 ---------------- */
-    new $.$paging({
+    let $pagin  =  new $.$paging({
         $leftAright:$(".p_list_goods"),    //  左右按钮
         $num:$(".paging_goods"),      // 中间 涵盖有数字的按钮
         $span:$(".paging_list_span"), // ...  样式标签   
         $input:$(".paging_input input"),  //    页面跳转 的input表单 用于 输入页码
         $button:$(".paging_input a"),   //  确定通过 input 跳转页码 
         $number:$(".paging_input span"),  //  最大数量 显示标签 
-        max:42         //  跳转最大页数规定
+        max:50         //  跳转最大页数规定
     });
 
-
-    
     $(".srollfiexd_a").hide();
-
    $(window).on("scroll",function(){
        if($(window).scrollTop()>=600)
        $(".srollfiexd_a").show(100);
        else
        $(".srollfiexd_a").hide(100);
    })
+
+
+
+
+
+
+
+
+        // new $.creatgoodslist_$({
+        //        url: url, 
+        //        $fat: $(".li_goods"), 
+        //        li:str, 
+        //        arr: goods_list_arr ,
+        //        href:"./goods.html",
+        //        first:0,
+        //        success:function(data){
+        //         $(function() { //和拼接的元素放在一起。
+        // $("img.lazy").lazyload({
+        // effect: "fadeIn" //图片显示方式
+        // });
+        // });
+        //        },
+        //        num:40
+        //     });
+    
 
 
 
