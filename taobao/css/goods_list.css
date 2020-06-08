@@ -111,7 +111,7 @@ display: inline-block;}
         .li_goods{display: flex;
         justify-content: space-between;flex-wrap: wrap;}
         .li_goods li{width: 252px;height: 392px;float: left;margin-top: 22px;border: 1px solid #ccc;transition: all .4s}
-        .li_goods li img{width: 100%;height: 252px;cursor: pointer;}
+        .li_goods li img{width:  252px;height: 252px;cursor: pointer;}
         .li_goods li .title{height: 140px;padding:5px 10px;position: relative;z-index: 100;}
         .title .same_style{position: absolute;z-index: -12;top: 0;left: 0;background: rgba(255,69,0, 0.7);
         height:40px;width: 100%;transition: all .4s}

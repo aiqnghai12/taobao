@@ -143,7 +143,6 @@ display: flex;justify-content: center;align-items: center;}
            <div class="goods_host_list">
            </div>
        </div>
-
     </div>
 
 
@@ -236,22 +235,24 @@ display: flex;justify-content: center;align-items: center;}
 
 </body>
 <script src="./js/list_class.js"></script>
+<script src="./js/jquery.lazyload.js"></script>
 <script>
  const url = "http://10.31.162.16/";
 
 
- let str = `<li class="goods_li" value="?id?"> <img src="?goods_img?" alt=""><div class="title"> <div class="same_style">  <p>找相似</p><p>找同款</p> </div><div class="title_back"></div>
+ let str = `<li class="goods_li" value="?id?"> <img class="lazy" data-original="?goods_img?" 
+    width='252' height='252'
+    alt=""><div class="title"> <div class="same_style">  <p>找相似</p><p>找同款</p> </div><div class="title_back"></div>
     <div class="title_num"><p><span>￥</span>?goods_price?<span>包邮</span></p><p><span>?goods_number?</span>人付款</p></div><div class="title_text">?goods_name?</div> <div class="title_prace"><div><span><h6></h6><h6></h6><h6></h6></span><a href="">?goods_state?</a></div><p>?goods_prace?</p></div>
       <div class="title_host"><span class="iconfont_2 iconfont_2_3"></span><span class="iconfont_2 iconfont_2_1"></span><span class="iconfont_2 iconfont_2_2"></span><span class="iconfont_down iconfont_down_2"></span></div>
      </div></li>`
-
-
 var str2 = 
-`  <li class="goods_li" value="?id?"><img src="?goods_img?" alt=""><div class="title_num"><div class="message"><div><p>喜欢</p><p>不喜欢</p></div><div><p>?goods_name?</p></div></div> <p><span class="iconfont_host"></span>￥<span class="number" >?goods_price?</span></p><p style="color: #ccc;font-size: 12px;">销量<span>?goods_number?</span></p></div>
+`  <li class="goods_li" value="?id?"><img 
+    src="?goods_img?"><div class="title_num"><div class="message"><div><p>喜欢</p><p>不喜欢</p></div><div><p>?goods_name?</p></div></div> <p><span class="iconfont_host"></span>￥<span class="number" >?goods_price?</span></p><p style="color: #ccc;font-size: 12px;">销量<span>?goods_number?</span></p></div>
 </li>`
 
 var str3 = `
-<li class="goods_li" value="?id?"><img src="?goods_img?"  alt="">  <div class="A_G_L_title">  <p>￥<span>?goods_price?</span></p><div><p>?goods_name?</p></div> <div class="A_G_L_title_store"><p>?goods_state?</p><p>销量<span>5</span></p></div> <div> <span class="iconfont_host"></span></div></li>`
+<li class="goods_li" value="?id?"><img src="?goods_img?"   alt="">  <div class="A_G_L_title">  <p>￥<span>?goods_price?</span></p><div><p>?goods_name?</p></div> <div class="A_G_L_title_store"><p>?goods_state?</p><p>销量<span>5</span></p></div> <div> <span class="iconfont_host"></span></div></li>`
                       // 商品 id 商品 图片  商品 价格   商品 名字      商品 销售数量    商品店面      商品地点
  let goods_list_arr = ['id','goods_img','goods_price','goods_name','goods_number','goods_state','goods_prace'];
  let goods_list_arr2 = ['id','goods_img','goods_name','goods_number','goods_price'];
@@ -263,6 +264,13 @@ var str3 = `
                arr: goods_list_arr ,
                href:"./goods.html",
                first:0,
+               success:function(data){
+                $(function() { //和拼接的元素放在一起。
+        $("img.lazy").lazyload({
+        effect: "fadeIn" //图片显示方式
+        });
+        });
+               },
                num:12
             });
        let goods_host =     new $.creatgoodslist_$({
@@ -390,6 +398,13 @@ var str3 = `
                li:str, 
                arr: goods_list_arr ,
                href:"./goods.html",
+               success:function(data){
+                $(function() { //和拼接的元素放在一起。
+        $("img.lazy").lazyload({
+        effect: "fadeIn" //图片显示方式
+        });
+        });
+               },
                first:(this.value-1)*this.num,
                num:this.num
             });
@@ -440,7 +455,6 @@ var str3 = `
         //        })
         //    }
        }
-      
       
       }
 

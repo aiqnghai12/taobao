@@ -8,7 +8,7 @@ const url = "http://10.31.162.16/";
 	const lun_min = $(".main_lun .lun_min");
 	const lun_min_imgs =new Array();
     const leftandright_min ={left:$(".lun_min .left"),right:$(".lun_min .right")};
-
+   
    imgajax1(lun_max_imgs,lun_min_imgs)
    function imgajax1(max,min){
       $.ajax({
@@ -36,7 +36,14 @@ const url = "http://10.31.162.16/";
 	var obj_max = {
 	fat : lun_max,
 	imgs : lun_max_imgs,
-	leftandright : leftandright_max
+	leftandright : leftandright_max,
+	// listyle:{
+	// 	width:"20px",
+	// 	height:"20px",
+	// },
+	// ulstyle:{
+    //    background:"none"
+	// }
 	}
 
 	var obj_min = {
@@ -49,11 +56,13 @@ const url = "http://10.31.162.16/";
     new lun_$(obj_max);
 	new lun_$(obj_min);
 	}
-
+   
    //封装 轮播图
 	!function(window){
 	 class lun_{
 		 constructor(option){
+			 this.listyle = {};
+			 this.ulstyle = {};
             Object.assign(this,option)
 			this.list = new Array();
 			this.liList = new Array();
@@ -78,15 +87,17 @@ const url = "http://10.31.162.16/";
 			//  console.log(this.option);     图片生成 到this.list  中。
 		    if(typeof this.imgs[0]==="string"){
 				//  大的ul
-				this.ul = this.ce("ul",{position:"absolute",background:"rgba(255,255,255,0.8)",padding:"2px",borderRadius:"8px",
+				this.ul = this.ce("ul",Object.assign({position:"absolute",background:"rgba(255,255,255,0.8)",padding:"2px",borderRadius:"8px",
 				left:(this.w-7-this.imgs.length*(13))/2+"px",zIndex:"200",bottom:"20px"
-				},this.fat);
+				},this.ulstyle),this.fat);
 				this.imgs.forEach((item,index)=>{
 					this.list[index] = this.ce("img",{position:"absolute",width:this.w+"px",height:this.y+"px",display:"none"},this.fat);
 					this.list[index].src = item;
 					this.list[index].index = index;
-					this.liList[index] = this.ce("li",{width:"10px",height:"10px",borderRadius:"50%",background:"#fff",cursor: "pointer",
-					marginLeft:index==0 ?"0": "3px",float:"left"},$(this.ul));
+					//  li 样式 
+					this.liList[index] = this.ce("li",Object.assign( {width:"10px",height:"10px",borderRadius:"50%",background:"#fff",cursor: "pointer",
+					marginLeft:index==0 ?"0": "3px",float:"left"},this.listyle),$(this.ul));
+			
 					this.liList[index].index = index;
 				}) 
 				this.liList[0].style.background = "red"

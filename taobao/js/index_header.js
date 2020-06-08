@@ -32,9 +32,9 @@
 	function creatli2(data){
 	data.forEach((item,index)=>{
 		//   data_message 信息
-		let  str_1 = "<a>"+ item.title[0].data_message.split(" ").join("</a><a>") + "</a>";
-		let  str_2 = "<a>"+ item.title[1].data_message.split(" ").join("</a><a>") + "</a>";
-		let  str_3 = "<a>"+ item.title[2].data_message.split(" ").join("</a><a>") + "</a>";
+		let  str_1 = "<a href='./goods_list.html'>"+ item.title[0].data_message.split(" ").join("</a><a href='./goods_list.html'>") + "</a>";
+		let  str_2 = "<a href='./goods_list.html'>"+ item.title[1].data_message.split(" ").join("</a><a href='./goods_list.html'>") + "</a>";
+		let  str_3 = "<a href='./goods_list.html'>"+ item.title[2].data_message.split(" ").join("</a><a href='./goods_list.html'>") + "</a>";
     
 	classul.innerHTML += `<li><a href="./goods_list.html">${item.title[0].name}</a><span>/</span><a href="./goods_list.html">${item.title[1].name}</a><span>/</span><a href="./goods_list.html">${item.title[2].name}</a><span class="inc_">></span><div class="df_message">
 	<div class="df_message_left">

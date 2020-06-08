@@ -14,14 +14,17 @@
     //       <div class="title_host"><span class="iconfont_2 iconfont_2_3"></span><span class="iconfont_2 iconfont_2_1"></span><span class="iconfont_2 iconfont_2_2"></span><span class="iconfont_down iconfont_down_2"></span></div>
     //      </div>
     // </li>`
-            //   new $.creatgoodslist_$({
-            //        url: url + "php/data/goods_all.php", 
-            //        $fat: $(".li_goods"), 
-            //        li: str, 
-            //        arr: goods_list_arr ,
-            //        href:url+"taobao/goods.html?",
-            //        first:500
-            //     });     演示
+    // var arr = ['goods_small_logo','id','id','goods_state','goods_state','goods_state','goods_name','goods_class','goods_price','cat_two_id','cat_three_id','goods_price']
+        
+    //           new $.creatgoodslist_$({
+    //                url: url + "php/data/goods_all.php", 
+    //                $fat: $(".li_goods"),
+    //                li: str, 
+    //                arr: goods_list_arr ,
+    //                href:url+"taobao/goods.html?",
+    //                first:500
+    //             });   
+                //   演示
     
         // 商品类表加载类 
         class creatgoodslist {
@@ -82,15 +85,14 @@
                 }
 
                 let liString =  this.arr.reduce((value,item2,index)=>{
-                    return  value.replace(`?${item2}?`,item[`${item2}`]); 
+                     let regExp = new RegExp("\\?"+item2+"\\?","gim");
+                    return  value.replace(regExp,item[`${item2}`]); 
                     },this.li)
-                    
                  this.liList += liString;
                 })
                 //  针对  数据库中没有的语句，需要自行添加进入的数据  如果存在 
                 if(this.data && this.data.selfdata){
                     $.each(this.data.selfdata,(key,item)=>{
-                        console.log()
                       this.liList = item.reduce((value,item,index)=>{
                         return value.replace(`?${key}?`,item);
                       },this.liList)
@@ -105,9 +107,7 @@
                 // this.liList = this.data.arrnum.reduce()
 
                 this.$fat.html(this.liList);
-                
-
-
+  
                 this.success(this.goods_data);     //  返回查询到的数据
                 if(this.href!=="none")
                 this.creatgoods_li_click();
