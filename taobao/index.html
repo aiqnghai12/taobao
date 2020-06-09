@@ -52,7 +52,7 @@
 	.main_lun > li:nth-child(1){width: 520px;height: 510px;}
 	.main_lun > li:nth-child(2){width: 160px;height: 510px;background: #fff}
 	.main_lun > li:nth-child(3){width: 290px;background: #fff;height: 510px;}
-	.main_lun .lun_max{width: 100%;height: 280px;margin-bottom: 23px;position: relative;}
+	.main_lun .lun_max{width: 100%;height: 280px;margin-bottom:15px;position: relative;}
 	.main_lun .lun_min{width: 100%;height: 215px;position: relative;}
 	.main_lun .lun_max .left,.main_lun .lun_max .right{width: 35px;position: absolute;
 	height: 35px;color: #fff;background: rgba(200, 200, 200, 0.7);font-size: 40px;line-height: 26px;text-align: center}
@@ -241,7 +241,7 @@
 				display: flex;justify-content: center;align-items: center;transition: all .1s;overflow: hidden;
 			} 
 			.fixedtool li:nth-child(1) a{color:orangered}
-			.fixedtool li:nth-child(3) a{color:pink}
+			.fixedtool li:nth-child(3) a{color:yellow}
 			.fixedtool li:nth-child(5) a{color:blue}
 			.fixedtool li:nth-child(7) a{color:darkkhaki}
 			.fixedtool li:nth-child(9) a{color:fuchsia}
@@ -252,7 +252,7 @@
 
 	<!-- 楼梯    返回上面   跳转指定位置. -->
 	<div class="fixedtool" style="position: absolute;z-index: 500; top: 375px; display: block;right:40px;background: #fff;">
-  <li value="orangered" ><a>爱逛<br>好货</a></li><p></p>
+   <li value="orangered" ><a>爱逛<br>好货</a></li><p></p>
 	<li value="pink"><a>好店<br>直播</a></li><p></p>
 	<li value="blue"><a>品质<br>特色</a></li><p></p>
 	<li value="darkkhaki"><a>热卖<br>单品</a></li><p></p>
@@ -412,7 +412,7 @@
 			.goods_ul li h4 span{font-size: 12px;}
 			.goods_ul li h3{position: absolute;right:10px;bottom: 5px;font-size: 12px;}
 			.taobao_tuijian{background: #fff;margin-top:20px;/* font-size: 23px;color: #ff9000;height: 50px; */padding: 10px;}
-			.taobao_tuijian span{border-left: 5px solid maroon;font-size: 20px;color: #ff9000;}
+			.taobao_tuijian span{border-left: 5px solid ;font-size: 20px;}
 			/* .taobao_tuijian span{} */
              .goods_ul_tuijian li{height: 350px;}
 			 .goods_ul_tuijian .Similarbaby{width:240px;position: absolute;height: 80px;background: orangered;left: 0;
@@ -427,13 +427,66 @@
 		  .goods_host .goods_ul_host  h6{color:blue;font-size: 12px;height: 33px;overflow: hidden;}
 		  .goods_host .goods_ul_host  .baoyou{width: 40px;height: 20px}
 
-          
+          .fashion{display: flex;justify-content: space-between;padding-top: 20px;}
+		   .fashion .fashion_left{width: 840px;background: #fff;}
+		   .fashion .taobao_tuijian{margin: 0;}
+		   .fashion .goods_fashion{height: 240px;border-top: 1px solid #f5f5f5;}
+		.fashion .goods_fashion li{width: 258px;border: 1px solid rgba(0,0,0,0);
+			border-right-color: #f5f5f5;    padding-left: 20px;
+		float: left;height: 240px;}
+		.fashion .goods_fashion li:last-child{border-color:rgba(0,0,0,0); }
+		.fashion .goods_fashion li:hover{border-color: orangered;}
+		.fashion .fashion_left_title p:nth-child(1){    margin-top: 27px;  font-size: 18px;
+	color: #333; line-height: 26px; height: 26px; font-weight: normal;}
+	.fashion_left_title p:nth-child(1) a:hover {color: orange;}
+	.fashion .fashion_left_title p:nth-child(2){ font-size: 12px; margin-bottom: 15px;
+		  color: #999; line-height: 22px;height: 22px; overflow: hidden;}
+	.fashion .fashion_left_title p:nth-child(3){width: 238px;display: flex;
+	justify-content: space-between;}
+	.fashion_left_title p:nth-child(3) img{width: 120px; height: 120px;}
 
+	.fashion_right{border: 1px solid #fff;padding: 20px;width: 300px;height: 250px;
+	background: #fff;}
+	.fashion_right:hover{border-color: orangered;}
+	.fashion_right img{width: 300px;height: 250px;}
 		</style>
-
+         <div class="main1 fashion">
+			 <div class="fashion_left">
+				<p class="taobao_tuijian"><span style="border-color:deeppink;color: deeppink; ">&emsp;时尚爆料王</span></p>	
+			<div class="goods_fashion">
+            <li class="fashion_left_title">
+				<p><a href="https://www.taobao.com/markets/designer/stylish?spm=a21bo.2017.2005-qd.3.5af911d9IKhH9d">腔调</a></p>
+				<p>全球创意设计师平台</p>
+				<div>
+				<a href="https://www.taobao.com/markets/designer/stylish?spm=a21bo.2017.2005-qd.3.5af911d9IKhH9d"><img src="//img.alicdn.com/imgextra/i4/129/TB2wR1mf6oIL1JjSZFyXXbFBpXa_!!129-2-luban.png_120x120q90.jpg_.webp" alt=""></a>
+				<a href="https://www.taobao.com/markets/designer/stylish?spm=a21bo.2017.2005-qd.3.5af911d9IKhH9d"><img src="//img.alicdn.com/imgextra/i2/165/TB2e0x7X138SeJjSZFPXXc_vFXa_!!165-2-luban.png_120x120q90.jpg_.webp" alt=""></a>
+				</div>
+			</li>
+			<li  class="fashion_left_title">
+					<p><a href="https://www.taobao.com/markets/gmall/pc-index?spm=a21bo.2017.2005-qqg.2.5af911d9IKhH9d">全球购</a></p>
+					<p>探索全球美好生活</p>
+					<div>
+					<a href="https://www.taobao.com/markets/gmall/pc-index?spm=a21bo.2017.2005-qqg.2.5af911d9IKhH9d"><img src="//img.alicdn.com/imgextra/i4/105/TB2GLjObtqUQKJjSZFIXXcOkFXa_!!105-2-luban.png_120x120q90.jpg_.webp" alt=""></a>
+					<a href="https://www.taobao.com/markets/gmall/pc-index?spm=a21bo.2017.2005-qqg.2.5af911d9IKhH9d"><img src="//img.alicdn.com/imgextra/i2/190/TB2oU0EXaagSKJjy0FaXXb0dpXa_!!190-2-luban.png_120x120q90.jpg_.webp" alt=""></a>
+					</div>
+			</li>
+			<li  class="fashion_left_title">
+					<p><a href="https://www.tmall.com/wow/mlh/act/timei?spm=a21bo.2017.2005-lrg.1.5af911d9IKhH9d">魅力惠</a></p>
+					<p>奢品好物立即购</p>
+					<div>
+					<a href="https://www.tmall.com/wow/mlh/act/timei?spm=a21bo.2017.2005-lrg.1.5af911d9IKhH9d"><img src="//img.alicdn.com/imgextra/i1/113/TB2aHnNdrsTMeJjy1zcXXXAgXXa_!!113-2-luban.png_120x120q90.jpg_.webp" alt=""></a>
+					<a href="https://www.tmall.com/wow/mlh/act/timei?spm=a21bo.2017.2005-lrg.1.5af911d9IKhH9d"><img src="//img.alicdn.com/imgextra/i4/37/TB2vUd6cRxRMKJjy0FdXXaifFXa_!!37-2-luban.png_120x120q90.jpg_.webp" alt=""></a>
+					</div>
+			</li>
+			</div>
+			</div>
+			<div class="fashion_right">
+                <a href="https://jiyoujia35990299.jiyoujia.com/shop/view_shop.htm"><img src="https://img.alicdn.com/simba/img/TB1IBfXEQT2gK0jSZPcSuwKkpXa.jpg" alt=""></a> 
+			</div>
+		 </div>
 
      <div class="main1 goods_host" style="background: #fff;">
-			<p class="taobao_tuijian"><span style="border-color:pink ">&emsp;热卖单品</span></p>
+			<p class="taobao_tuijian"><span style="border-color:darkkhaki;color: darkkhaki; ">&emsp;热卖单品</span></p>
 			<p class="goods_class"></p>
 			<ul class="goods_ul_host goods_ul">
 				<!-- <li>
@@ -447,7 +500,7 @@
 	 </div>
 
 	<div class="main1" id="taobao_tuijian">
-		<p class="taobao_tuijian"><span>&emsp;淘宝推荐</span></p>
+		<p class="taobao_tuijian"><span style="border-color:fuchsia;color: fuchsia;">&emsp;淘宝推荐</span></p>
 	
 		<ul class="goods_ul goods_ul_tuijian">
 			
@@ -546,6 +599,8 @@
 	 </div>
    </div>
  </div>
+
+
 
 
  <!-- 引入 脚页面 -->

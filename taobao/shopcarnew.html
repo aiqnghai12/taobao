@@ -15,16 +15,17 @@
                 body{background: #fff !important;}
             #shopcarWeb{margin-top: 20px;margin-bottom: 60px;}
             .shopcarnav{height: 33px;}
-            .shopcarnav li{width: 130px;height: 22px;padding-left: 15px;font-weight: 700;font-size: 16px;float: left;}
+            .shopcarnav li{height: 18px;font-weight: 700;font-size: 16px;float: left;padding: 0 10px;border-right: 1px solid #ccc;
+            display: flex;justify-content: center;align-items: center;}
             .shopcarnav li:nth-child(1){color: #f40}
-            .shopcarnav li span{color: #f40;padding: 0 30px 0 8px;border-right: 1px solid #ccc;font-weight: normal;font-size: 14px;}
+            .shopcarnav li span{color: #f40;padding: 0 30px 0 8px;font-weight: normal;font-size: 14px;line-height: 18px;}
             .shopcarnav li:nth-child(3) span{border: none;}
             .shopcarnav ul {overflow: hidden;height: 30px;margin-bottom: 5px;}
             .goods_price_div{float: right;font-size: 12px;display: flex;height: 30px;
             justify-content: center;align-items: center;}
             .goods_price_div .goods_price_all{color: #f40;font-weight: 600;}
             .goods_price_div p span:last-child{color: #eee;padding: 5px 16px;background: #999;
-                
+            
                 border-radius: 3px;margin-left: 15px;}
              .div_hr{height: 3px; background: #ccc;}
              .div_hr   .div_hr_min{height: 3px;width: 130px;background: #f40;}
@@ -43,11 +44,11 @@
               <div class="main1">
                     <div class="shopcarnav">
                         <ul>
-                            <li>全部商品<span class="goods_shopcarnum">13</span></li>
+                            <li>全部商品<span class="goods_shopcarnum">0</span></li>
                             <li>降价商品<span>0</span></li>
                             <li>库存紧张<span>0</span></li>
                             <div class="goods_price_div">
-                                <p>已选商品(不含运费) <span class="goods_price_all">0.00</span><span class="settlement">结算</span> </p>
+                                <p>已选商品(不含运费) <span class="goods_price_all">0.00</span><span class="settlement cantclick">结算</span> </p>
                             </div>
                         </ul>
                         <div class="div_hr">
@@ -217,14 +218,75 @@
                         <li class="goods_amount">
                             <p>已选择商品 <span>0</span> 件 </p>
                             <p>合计 (不含运费): <span class="goods_price_all">0.00</span></p>
-                            <p class="settlement information_bottom_settlement">结算</p>
+                            <p class="settlement information_bottom_settlement cantclick">结算</p>
                         </li>
                        
                     </div>
                     </div>
              
-
-              </div>
+                    <style>
+                        
+.iconfont_2{    display: inline-block;
+    font-size: 0;
+    background: url(//img.alicdn.com/tps/i3/TB1bh5IMpXXXXacaXXXrG06ZpXX-316-272.png);
+    background-repeat: no-repeat;}
+    .iconfont_2_1{background-position: -213px -199px;width: 16px; height: 16px;}
+    .iconfont_2_2{background-position: -83px -199px; width: 16px; height: 16px;}
+    .iconfont_2_3{    background-position: -5px -113px;width: 49px;height: 16px;}
+    .iconfont_2_4{    background-position: -435px -86px;width: 16px;height: 16px;}
+                        .goods_host{margin-top: 100px; }
+                        .goods_host .shopcarnav ul{height: 33px;text-align: center;display: flex;align-items: center;}
+                        .shopcarnav ul li{font-size: 14px;border-right: 1px solid #ccc;padding: 0 10px;}
+                        .shopcarnav ul li:last-child{border: none;}
+                        .goods_host .div_hr_min{width: 77px;}
+                        .goods_host_lilist{margin-top: 15px;position: relative;}
+                        .goods_host_lilist .goods_lilist_br{display: flex;
+                            flex-wrap: wrap;justify-content: space-between;
+                            overflow: hidden;
+                            position: relative;height: 320px;}
+                        .goods_lilist_br > div{height: 317px;border: 1px solid #e5e5e5;width: 230px;
+                        float: left;}
+                        .goods_lilist_br img{width: 230px;height: 230px;cursor: pointer;}
+                        .goods_lilist_br > div > p{font-weight: 700;color:orangered;
+                        display: flex;align-items: center;padding: 2px 6px;}
+                        .goods_lilist_br > div .old_price{font-size: 12px;color: #ccc;text-decoration:line-through;
+                        margin-left: 15px;}
+                        .goods_lilist_br > div > div{font-size: 12px;padding: 2px 6px;
+                        height: 16px;overflow: hidden;margin-top: 3px;}
+                        .goods_lilist_br > div > div:nth-child(3):hover{cursor: pointer;color: orange;
+                        text-decoration: underline;}
+                        .goods_lilist_br .iconfont_2{float: right;margin-left: 3px;cursor: pointer;}
+                        .goods_host_lilist ul{position: absolute;
+                        left: 0;right: 0;z-index:200;overflow: hidden;width:120px;
+                    bottom: -30px;margin: 0 auto;}
+                     .goods_host_lilist ul li{width: 12px; height: 12px;margin: 2px 4px;
+                    background: #ccc;border-radius: 50%;float: left;cursor: pointer;}
+                        </style>
+         
+                    <div class="goods_host">
+                        <div class="shopcarnav">
+                            <ul>
+                                <li>掌柜热卖</li>
+                                <li>最近浏览过的</li>
+                                <li>猜你喜欢</li>
+                            </ul>
+                            <div class="div_hr">
+                               <div class="div_hr_min"></div>
+                            </div>
+                        </div>
+                        <div class="goods_host_lilist">
+                            <div class="goods_lilist_br"> 
+                            </div>
+                            <ul>
+                                <li style="background: red;"></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </div>
+            </div>
         </div>
 
 
@@ -329,6 +391,32 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
 
 
 
+     var str2 = `<div class="goods_li" value="?id?">
+<img src="?goods_img?" alt="">
+<p>￥<span>?goods_price?</span><span class="old_price">￥<span>?goods_price?</span> </span>  </p>
+<div>?goods_name?</div>
+<div>销量 <span>?goods_number?</span><span class="iconfont_2 iconfont_2_1"></span><span class="iconfont_2 iconfont_2_2"></div>
+</div> `
+
+     var arr2 = ['goods_img','id','goods_price','goods_number','goods_name']
+     new $.creatgoodslist_$({
+                   url: url + "php/data/goods_all.php", 
+                   $fat: $(".goods_lilist_br"), 
+                   li:str2,
+                   arr:arr2,
+                   num:25,
+                   first:500,
+                   href:"./goods.html",
+                   success:function(data){
+               
+                   }
+            }); 
+  
+
+          
+
+
+        
       //  数据改变类  封装   通过点击事件的cookie 改变 做到 数据的增删改。   并存入数据库。
       //  需要获取对应的 账号 密码信息 需要从cookie 中获取  
       //  需要一个 默认的获取cookie所有数据的方法
@@ -401,7 +489,7 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
               _this.removegoods(this.arrindex);
             })
 
-            //  保存购买的商品的数量加成 + 删除
+            //  保存购买的商品的数量加成 + 删除   
             $(".settlement").on("click",()=>{
                 this.arrindex = [];
                 this.arr_goods_number = [];
@@ -445,13 +533,15 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
             if(_checked.hasClass("radius_goods_store")){
             $(`[value=${_checked.attr("value")}]`).css("backgroundPosition",`${_checked.css("backgroundPosition")}`);
             }else if(_checked.hasClass("radius_all")){
-                this.$radius.css("backgroundPosition",`${_checked.css("backgroundPosition")}`);
+               $(".radius p").css("backgroundPosition",`${_checked.css("backgroundPosition")}`);
             }else {
             if(_checked.css("backgroundPosition") =="0% 0%")
             $(`.radius[value=${goods_id}] p`).css("backgroundPosition","0% 0%");
             }
 
-            
+            if(this.addradius_checked.length==0){
+                $(".settlement").css(" cursor","unset")
+            }
                 this.addradius_checked();
  
            }
@@ -464,7 +554,7 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
                      arrchecked.push(item);
                  }
              })
-            if(this.data.length!=arrchecked.length){
+            if(this.data.id.length!=arrchecked.length){
             $(".radius_all").css("backgroundPosition","0% 0%")
             }else{
                 $(".radius_all").css("backgroundPosition","0 -20px")
@@ -479,6 +569,14 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
             this.numberAll = 0;
             $(".goods_price_all").html(this.priceAll.toFixed(2));
             this.priceAll = 0;
+
+            if(arrchecked.length==0){
+             $(".settlement").css("cursor","not-allowed")
+            }else{
+            $(".settlement").css("cursor","pointer")
+            }
+
+
             return arrchecked;
            }
 
@@ -532,8 +630,6 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
              $('#header').load('hear.html');
              });
             }
-
-            
             
             // 数据传入后  添加到数据库 
               mysqlupdate(){
@@ -556,12 +652,64 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
 
               }
          
-
          }
      $.$goods_data_change = goods_data_change;
      }(jQuery)
 
 
+
+
+
+
+
+
+
+  //  垃圾代码  轮播商品
+  let index = 0;
+       let goods_host_timer =  setInterval(function(){
+                index >=4 ? index=0 : index++;
+                $('.goods_host_lilist ul li').css("background","#ccc").eq(index).css("background","red");
+                    $(".goods_lilist_br").prop("scrollTop",index*319 );
+            },3500)
+            $('.goods_host_lilist ul li').hover(
+                function(){
+            
+                    $('.goods_host_lilist ul li').css("background","#ccc");
+                    $(this).css("background","red");
+                    index = $(this).index();
+                    $(".goods_lilist_br").prop("scrollTop",$(this).index()*319 )    
+                }
+            ,function(){
+              
+            })
+            $(".goods_host_lilist").hover(()=>{
+                clearInterval(goods_host_timer);
+            },()=>{
+                goods_host_timer = setInterval(function(){
+                index >=4 ? index=0 : index++;
+                $('.goods_host_lilist ul li').css("background","#ccc").eq(index).css("background","red");
+                    $(".goods_lilist_br").prop("scrollTop",index*319 );
+            },3500)
+            })
+          
+            
+
+          $(".shopcarnav  ul li").hover(
+              function(){
+            $(this).parents(".shopcarnav").find(".div_hr_min").stop(true).animate({
+                marginLeft:$(this).offset().left-$(this).parents(".shopcarnav").offset().left+"px",
+                width:$(this).width()+20+"px"
+            },200)
+           
+           
+            
+
+
+          },function(){
+
+          })
+
+          
 
 
 </script>

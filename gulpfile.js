@@ -43,12 +43,12 @@ gulp.task('uglifyhtml', () => {
         .pipe(gulp.dest('dist/taobao/'));
 });
 
-//4.压缩css文件 - 引入插件包
-// gulp.task('uglifycss', () => {
-//     return gulp.src('src/css/*.css')
-//         .pipe(css()) //执行css插件包
-//         .pipe(gulp.dest('dist/css'));
-// });
+// 4.压缩css文件 - 引入插件包
+gulp.task('uglifycss', () => {
+    return gulp.src('taobao/css/*.css')
+        .pipe(css()) //执行css插件包
+        .pipe(gulp.dest('dist/taobao/css'));
+});
 
 //5.sass编译成css - 引入插件包
 gulp.task('compilesass', () => {

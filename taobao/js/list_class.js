@@ -87,7 +87,6 @@
                 if(item.id==this.data.id || index>=16){
                     return;
                 }
-
                 let liString =  this.arr.reduce((value,item2,index)=>{
                      let regExp = new RegExp("\\?"+item2+"\\?","gim");
                     return  value.replace(regExp,item[`${item2}`]); 
@@ -120,7 +119,7 @@
               let _this = this;
               //  带有 goods_li 类的子元素 就是商品元素 value中 含有 id 跳转用
             this.$fat.children(".goods_li").on("click",function(){
-            let goods_id = $(this).val();
+            let goods_id = $(this).attr("value");
                 window.location.href = _this.href +"?"+ goods_id;
             })
             }
