@@ -58,7 +58,7 @@ gulp.task('compilesass', () => {
             outputStyle: 'compressed' //压缩
         }))
         .pipe(plugins.sourcemaps.write('.')) //通过sourcemaps,生成.map文件
-        .pipe(gulp.dest('dist/taobao/css'));
+        .pipe(gulp.dest('dist/taobao/sass_css'));
 });
 
 
