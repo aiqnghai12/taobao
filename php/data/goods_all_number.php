@@ -14,13 +14,12 @@ $conn->query('SET names utf8');
 // }else{
 //     exit "非法操作";
 // }
-// echo $_GET['num'];
-//  SELECT * from goods_all ORDER BY goods_price ASC limit 5,5 ;
+
 
 $first = $_POST['first'];
 $num = $_POST['num'];
 // SELECT * from goods_all ORDER BY goods_price ASC limit 5,5 
-$sql =" select  * from goods_all  ORDER BY goods_price DESC limit {$first},{$num}";
+$sql =" select  * from goods_all  ORDER BY goods_number DESC limit {$first},{$num}";
 $query = $conn->query($sql);
 $arr = array();
 while($row = $query->fetch_assoc()){

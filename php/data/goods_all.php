@@ -18,8 +18,8 @@ $conn->query('SET names utf8');
 // echo $_GET['num'];
 
 
-$first = $_GET['first']+50;
-$num = $_GET['num'];
+$first = $_POST['first']+50;
+$num = $_POST['num'];
 
 $sql =" select  * from goods_all limit {$first},{$num}";
 $query = $conn->query($sql);

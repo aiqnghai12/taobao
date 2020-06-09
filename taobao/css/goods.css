@@ -1,0 +1,168 @@
+.smallpic {
+    width: 450px;
+    height: 450px;
+    border: 1px solid #ccc;
+    position: relative;
+}
+.smallpic img{
+    width: 450px;
+    height: 450px;
+}
+
+.sf {
+    background-color: orange;
+    opacity: 0.3;
+    position: absolute;
+    left: 0;
+    top: 0;
+    visibility: hidden;
+    /* visibility: hidden;隐藏元素方便获取尺寸，dispaly:none某些浏览器下面会出问题 */
+    cursor: move;
+}
+
+.bf {
+    width: 400px;
+    height: 400px;
+    left: 405px;top:0;z-index: 100;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    position: absolute;
+    visibility: hidden;
+}
+
+.bigpic {
+    width: 800px;
+    height: 800px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+body{background: #fff !important;}
+.message{position: relative;float: right;}
+.gouwuche{position: absolute;right:-200px;top: 50px;background: pink;color: #fff;border: 1px solid #000;display: block;
+width: 100px;height: 40px;cursor:pointer;line-height: 40px;text-align: center}
+.gouwuche span{position: absolute;background: red;color: #fff;border-radius: 50%;width: 12px;height: 12px;
+line-height: 12px;font-size: 12px;text-align: center;top: 0;right: 0}
+.scale{float: left;position: relative;}
+
+#goods_main{overflow: hidden;margin-bottom: 50px;}
+.main1_left{float: left;width: 950px;}
+.left_goods{height: 600px;border-right: 1px solid #ccc;padding-right: 10px; }
+.main1_message{width: 530px;height: 648px;float: right;}
+.main1_right{    padding: 10px 12px 2px 13px;width: 200px;float: right;}
+.smallpic{width: 400px;height: 400px;}
+.smallpic img{width: 400px;height: 400px;}
+.message .title{height: 20px;font-weight: 600;overflow: hidden;line-height: 20px;padding: 0 5px;}
+ .message .title_adve{text-indent: 5px; font-size: 14px;color: #FF0036;}
+ .main1_message .title_num{height: 65px;background: no-repeat url(../src/img/123.jpg);padding: 5px;
+ margin-top: 15px;background-size: cover;}
+ .goods_price{display: flex;flex-wrap: wrap;align-content: center;}
+  #goods_main .original_price{height: 20px;font-size: 14px;}
+  #goods_main .original_price .original_num{text-decoration:line-through;}
+  #goods_main .new_price{height: 40px;}
+  #goods_main .new_price p:nth-child(2){color: orangered;}
+  #goods_main .new_price .num{font-size: 30px;font-weight: 600}
+  #goods_main .goods_price p:nth-child(1){color: #444;width: 70px;font-size: 13px;}
+  #goods_main .new_price P:nth-child(1){line-height: 40px;}
+  #goods_main .imgs_min{margin-top: 10px;width: 400px;
+display: flex;flex-wrap: wrap;}
+  #goods_main .imgs_min li{margin-right: 15px;margin-bottom: 10px;padding:2px;width: 55px;height: 55px;}
+  #goods_main .imgs_min img{width: 55px;height: 55px;}
+
+  .goods_text_message{height: 500px;font-size: 12px;}
+  #goods_main .goods_text_freight{height: 40px;display: flex;
+ flex-wrap: wrap;align-items: center;border-bottom: 1px dashed #ccc;}
+ #goods_main  .goods_text_span{width: 50px;margin-left: 7px;color: #ccc;display: inline-block}
+ #goods_main .goods_text_webnuber{border-bottom: 1px dashed #ccc;height: 35px;
+ display: flex;justify-content: center;align-items: center;}
+ #goods_main .goods_text_webnuber  p{width: 33%;border-right: 1px dashed #ccc;height: 15px;text-align: center;
+ color: #ccc;font-weight: 600;}
+ #goods_main .goods_text_webnuber  p:nth-child(3){border: none}
+ #goods_main .goods_text_webnuber span{color: orangered;display: inline-block;padding: 0 4px;}
+ #goods_main .goods_text_webnuber .text_green{color: green;}
+ .goods_text_size{display: flex;flex-wrap: wrap;
+     margin-top: 17px;
+ }
+ .goods_text_size .G_T_S_text{width: 430px;overflow: hidden;}
+ .goods_text_size .G_T_S_text li{ float: left;text-align: center;margin: 0 5px 5px  0;
+ display: flex;justify-content: center;align-items: center;height:31px;}
+ .G_T_S_text li p{padding: 5px 9px;border: 1px solid #ccc;
+ }
+ .G_T_S_text li p:hover{border: 2px solid red; padding: 5px 8px;}
+ .goods_text_size .goods_text_span{padding-top: 5px;}
+ .goods_text_imgs{display: flex;flex-wrap: wrap;
+     margin-top: 17px;margin-bottom: 10px;}
+ .G_T_S_color{height: 60px;width: 430px;overflow: hidden;border: 1px solid #ccc;}
+ .goods_shopcar{height: 60px;display: flex;justify-content: center;align-items: center;}
+ #goods_main .goods_shopcar .left,.right{background: #fff;box-shadow: none;display: inline-block;border: 1px solid #ccc;
+ width:20px;height: 20px;line-height: 10px; text-align: center;}
+ .goods_shopcar .goodsnumber{display: block;height: 37px;width: 33px;font-size: 15px;text-indent: 7px;}
+ .goods_btn_lr{width: 20px;height:40px;margin:0 3px;}
+ .btn_goods{width: 178px;height: 40px;text-align: center;background: pink;color:orangered;border: 1px solid orangered;
+ font-size: 18px;line-height: 30px;margin: 10px 15px;cursor: pointer;}
+ .btn_goods_div{width: 430px;margin-left: 42px;}
+ .btn_goods_div .but{    background-color: #ff0036; border: 1px solid #ff0036; color: #fff;}
+ .main1_right .m_r_text{color: #ccc;font-size: 12px;height: 20px;line-height: 20px;}
+.m_r_goods_list {overflow: hidden;height: 624px;}
+.m_r_goods_list .m_r_goods_li{margin: 10px auto;display: flex;justify-content: center;
+flex-wrap: wrap;
+}
+.goods_li_div p{position: absolute;bottom: 0;left: 0;text-align: center;width: 180px;
+height: 20px;line-height: 20px;background: rgba(255, 255, 255, 0.7);font-size: 12px;}
+.m_r_goods_li img{width: 180px;height: 180px;}
+.goods_li_div{width: 180px;position: relative;height: 180px;}
+.goods_li img{cursor: pointer;}
+.m_r_goods_li p:nth-child(2){text-overflow: ellipsis;white-space: nowrap;
+font-size: 12px;overflow: hidden;height: 15px;line-height: 15px;text-indent: 1em;
+}
+.goods_list_Btns{display: flex;justify-content: space-between;align-items: center;
+padding: 10px 20px;}
+.goods_list_Btns div{background-image: url(//img-tmdetail.alicdn.com/tps/i1/T1Z0VbFEdcXXbcIIcR-80-112.png);
+background-color: transparent;  width: 27px; height: 27px;cursor: pointer; background-repeat: no-repeat;    }
+.goods_list_Btns .goods_dowmbtn{background-position: 0 -30px;} 
+.goods_refund{margin-top: 10px;height: 100px;}
+.goods_refund p{display: inline-block;width: 310px;float: right;margin-right: 150px;}
+.goods_refund p span{margin-right: 30px;margin-bottom: 15px;cursor: pointer;display: inline-block;
+height: 20px;}
+
+.detailed_information{margin-top: 30px;width: 100%;
+    display: flex;justify-content: space-between;}
+    .detailed_information .detailed_left{width: 190px;
+    height: 700px;}
+    .detailed_information .detailed_right{width: 750px;}
+    .detailed_right .right_nav{border: 1px solid #ccc; display: flex;justify-content:space-between;
+    align-items: center;font-size: 12px;height: 48px;border-left: none;}
+    .right_nav > div:nth-child(1) p{float: left;height: 48px;line-height: 48px;padding: 0 20px;}
+    .right_nav > div:nth-child(1) p:nth-child(1){color: orangered;border-top: 2px solid orangered;
+    border-left: 1px solid #555;border-right: 1px solid #555;font-weight: 600;}
+    .erweima{ background-image: url(//img-tmdetail.alicdn.com/tps/i1/T12Fs8Fo0XXXb2csDf-38-59.png);
+    width: 150px;height: 48px; line-height: 48px;text-indent: 25px;
+       background-repeat: no-repeat; cursor: pointer;background-position: 100px 12px;display: inline-block;
+    }
+    .erweima:hover{background-position:100px -26.2px;}
+
+    .photoprice{display: flex;justify-content: center;align-items: center;position: relative;}
+    .photoprice img{width: 170px;height: 170px;position: absolute;top: 50px;left: 25px;display: none;}
+    .erweima:hover + img{display: inline-block;}
+   .iconfont_up{ background: no-repeat url(http://img.alicdn.com/tps/i1/T15AD7FFFaXXbJnvQ_-130-60.gif);
+   display: inline-block;   
+   }
+   .left_state{height: 184px;border: 1px solid #ccc;}
+   .iconfont_up_1{background-position: -80px 0; width: 20px;height: 20px;}
+   .left_state_p{font-size: 12px;background: #fafafa;height: 48px;
+   border-bottom: 1px solid #ccc;line-height: 48px;text-indent: 2em;font-weight: 600;}
+   .left_state_div{width: 130px;margin: 0 auto;font-size: 12px;}
+   .left_state_div p > span{display: inline-block;width: 40px;}
+   .left_state_div p{margin-top: 5px;}
+   .left_state_div > p:nth-child(1) {color: #ccc;font-weight: 600;margin-top: 20px;}
+   .left_state_div > p:nth-child(2) {color: #ccc;margin-top: 10px;}
+   .left_state_div > p:nth-child(3) {color: orangered;}
+   .left_state_div > p:nth-child(3) > span >span{font-size: 15px;}
+   .left_state_div > p:nth-child(1) span{height:18px;width: 18px;background: orangered;
+   color: orange;line-height: 18px;text-align: center; }
+   .left_state_btns{display: flex;justify-content: center;align-items: center;}
+   .left_state_btns div{padding: 3px 12px;border: 1px solid #ccc;font-size: 12px;
+   margin-top: 15px;}
+   .left_state_btns div:nth-child(1){background: #000;color: #fff;margin-right: 15px;}
+   .left_state_btns div:nth-child(2){background: #f5f5f5;color: #000;}

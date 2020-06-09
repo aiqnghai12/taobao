@@ -42,7 +42,7 @@
             }
             //  初始化
             init(url) {
-
+     
               if(url){
                   this.url = url;
               }
@@ -50,7 +50,7 @@
                 if(!this.data){
                 // 数据获取
                 $.ajax({
-                    type: "get",
+                    type: "post",
                     url: this.url, 
                     dataType: "json",
                     data:{
@@ -64,7 +64,7 @@
                     }
                 })}
                 else{
-                    console.log(this.url)
+                   
                 $.ajax({
                     type: "post",
                     url: this.url, 
@@ -79,7 +79,7 @@
             }
             }
         
-            //  懒加载   
+
                creatLiList(){
                    //  遍历  添加 商品  
                 $.each(this.goods_data,(index,item)=>{

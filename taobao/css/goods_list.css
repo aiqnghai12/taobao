@@ -105,7 +105,7 @@ display: inline-block;}
 .iconfont_down_3{    background-position: -174px -423px;width: 6px;height: 9px;margin-left: 5px;}
 
 
-
+.goods_sort_left li{cursor: pointer;margin-left: 0;}
 
 
         .li_goods{display: flex;
@@ -166,3 +166,61 @@ display: inline-block;}
          .message div:nth-child(2) {background: rgba(255, 255,255,0.9);height: 32px;margin-top: 1px;}
          .message div:nth-child(2) p{width: 250px;margin: 0 auto;overflow: hidden;height: 32px;line-height: 32px;}
          
+
+         .paging{margin-top: 20px;padding: 10px 0;height: 37px;}
+         .paging_list{height: 35px;text-align: center;line-height: 33px;
+        display: flex;justify-content: center;align-items: center;}
+        .paging_list > p{height: 33px; border: 1px solid #ccc;cursor: pointer;margin: 0 5px;padding:0 6px;}
+        .paging_list > p:hover{border-color: orangered}
+        .paging_list .p_list_left{margin-right: 5px;}
+        .paging_list  .p_list_right{margin-left: 5px;}
+        .paging_list > li{border: 1px solid #ccc;margin-left: -0.5px;width: 33px;height: 33px;cursor: pointer;}
+        .paging_input{font-size: 12px;color: #ccc;}
+        .paging_list > li:nth-child(2){background: orangered;color: #fff;border-color: orangered}
+        .paging_list_span{margin: 0 5px;}
+        .paging_input a{cursor: pointer;border: 1px solid #ccc;border-radius: 3px;width: 40px;display: inline-block;}
+        .paging_input a:hover{border-color: orangered;color: orangered;}
+        .paging_input input{width: 30px;}
+
+        #Advertising_goods{height: 542px;border: 1px solid #ccc; margin-top: 20px;margin-bottom: 15px;}
+        .A_goods_class{height: 35px;padding: 0 10px;background: #f5f5f5}
+        .A_goods_class > li{float: left;margin-right: 25px;font-size: 12px;height:35px;line-height:35px;}
+        .A_goods_class > li p:hover{color:orangered;cursor: pointer;}
+        .A_goods_class > li:nth-child(1){font-size: 16px;color: orangered;font-weight: 600}
+        .A_goods_hr div{height: 2px;float: left;background: #ccc;width:94%;}
+        .A_goods_hr div:nth-child(1){width:6%;background: orangered;}
+        .A_goods_liList{padding: 15px;display: flex;
+          display: flex;
+          justify-content: space-between;flex-wrap: wrap;
+      }
+        .A_goods_liList li{width: 250px;height: 370px;border: 1px solid #ccc;}
+        .A_goods_liList li:hover{border-color: orangered;}
+        .A_goods_liList li img{width: 250px;height: 250px;}
+        .A_G_L_title{padding: 6px 9px;}
+        .A_G_L_title p:nth-child(1){color: orangered;font-size: 18px;}
+        .A_G_L_title p:nth-child(1) span{font-weight:700;display: inline-block;}
+        .A_G_L_title div:nth-child(2) p{font-size: 12px;height: 30px;overflow: hidden;color: #000;
+      cursor: pointer;}
+      .A_G_L_title div:nth-child(2) p:hover{text-decoration:underline;color: orangered;}
+      .A_G_L_title_store{display: flex;justify-content: space-between;align-items: center;
+      height: 30px;cursor: pointer;}    
+        .A_goods_liList .A_G_L_title_store p{font-size: 12px;color: #a5a5a5;} 
+        .A_G_L_title_store p:nth-child(1){text-decoration:underline;}
+  
+        .pointer-events{pointer-events:none}
+        .srollfiexd{position: fixed;bottom: 50px; right: 10px;z-index: 220}
+  
+       .srollfiexd li { margin-bottom: 15px;}
+      .srollfiexd li a {display: block;width: 48px;height: 48px;  
+      background-repeat: no-repeat;}
+      .srollfiexd li:nth-child(1) a{background-position: -121px -195px;}
+      .srollfiexd li:nth-child(1) a:hover{background-position: -179px -195px;}
+      .srollfiexd li:nth-child(3) a{background-position: -121px -323px;}
+      .srollfiexd li:nth-child(3) a:hover{background-position: -179px -323px;}
+      .srollfiexd li:nth-child(4) a{background-position: -5px -323px;}
+      .srollfiexd li:nth-child(4) a:hover{background-position: -63px -323px;}
+      .srollfiexd li:nth-child(5) a{background-position: -324px -179px;}
+      .srollfiexd li:nth-child(5) a:hover{background-position: -324px -237px;}
+      .srollfiexd li:nth-child(2) a{background: url(//img.alicdn.com/tfs/TB1HKMrPpXXXXa2XFXXXXXXXXXX-106-53.png);}
+      .srollfiexd li:nth-child(2) a:hover{background-position: -53px 0;}
+      .goods_li img{cursor: pointer;}
