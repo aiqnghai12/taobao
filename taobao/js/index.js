@@ -1,31 +1,30 @@
 
-const inputSearch = document.querySelector(".inputSearch");  //  搜索框
-const inputSearch_scroll = document.querySelector("#suspension .inputSearch");  //搜索框2
-const searchfadaj = document.querySelector(".searchfadaj");   // 小图标
-const searchfadaj_scroll = document.querySelector("#suspension .searchfadaj");   // 小图标
-const searchinput = document.querySelector(".searchinput");   // 父元素
-const searchinput_scroll = document.querySelector("#suspension .searchinput");
-const csgoTWOSpan = document.querySelector(".csgoTWO span");  // 不重要
+const inputSearch = $(".inputSearch");  //  搜索框
+const inputSearch_scroll = $("#suspension .inputSearch");  //搜索框2
+const searchfadaj = $(".searchfadaj");   // 小图标
+const searchfadaj_scroll = $("#suspension .searchfadaj");   // 小图标
+const searchinput = $(".searchinput");   // 父元素
+const searchinput_scroll = $("#suspension .searchinput");
+const csgoTWOSpan = $(".csgoTWO span");  // 不重要
 
 var sousuo=0;
 initStyle();
 function initStyle(){
- csgoTWOSpan.onclick = ()=>{
-   csgoTWOSpan.parentNode.style.display = "none";
- }
+ csgoTWOSpan.on("click",()=>{
+  csgoTWOSpan.parent().css("display","none");
+}) 
 }
-
 window.onload = ()=>{
   //   如果 搜索框有 value 值， 则需要把图标 图标影藏.
-   if( inputSearch.value!==""){
-      searchfadaj.style.display = "none";
+   if( inputSearch.val()!==""){
+      searchfadaj.css("display","none");
    }else{
-      searchfadaj.style.display = "block";
+    searchfadaj.css("display","block");
    }
-   if( inputSearch_scroll.value!==""){
-    searchfadaj_scroll.style.display = "none";
+   if( inputSearch_scroll.val()!==""){
+    searchfadaj_scroll.css("display","none");
  }else{
-  searchfadaj_scroll.style.display = "block";
+  searchfadaj_scroll.css("display","block");
  }
 
 
@@ -34,40 +33,41 @@ window.onload = ()=>{
 }
 
 
-//   jsosp 数据 传入
+//   jsosp 数据 传入   回调函数接收成功后  渲染数据
 function jsonpheader(data){
-   //  数据传入
-   inputselect(searchinput,data);
+   //  数据传入 
+   inputselect(searchinput[0],data);  //  渲染数据方法
   //  inputselect(searchinput[1],data);
    }
 //   第二个回调函数
    function jsonpheader_scroll(data){
     //  数据传入
-    inputselect(searchinput_scroll,data);
+    inputselect(searchinput_scroll[0],data);
    //  inputselect(searchinput[1],data);
     }
 
 
-   // 初始化
+   // 初始化 
    class search{
       constructor(input,jsonp,searchfadaj){
-        this.searchfadaj = searchfadaj;
-   this.input = input;
-   this.jsonp = jsonp;
+   this.searchfadaj = searchfadaj;  // 小图标
+   this.input = input;  //  输入框
+   this.jsonp = jsonp;  // 回调函数名
       }
 
       creat(){
-        this.input.onfocus =  this.input.oninput = ()=>{
-            if( this.input.value!==""){
-              this.searchfadaj.style.display = "none";
-            }else{
-              this.searchfadaj.style.display = "block";
-            }
-            let scripts = document.createElement("script");
-            //创建scripts  回调
-            scripts.src = `https://suggest.taobao.com/sug?code=utf-8&q=${this.input.value}&_ksTS=1589778414101_315&callback=${this.jsonp}&k=1&area=c2c&bucketid=5`
-            document.body.appendChild(scripts);
-         }
+        // 添加 聚焦和改变 事件
+        this.input.on("focus input",()=>{
+          if( this.input.val()!==""){
+            this.searchfadaj.css("display","none");
+          }else{
+            this.searchfadaj.css("display","block");
+          }
+          let scripts = document.createElement("script");
+          //创建scripts  回调
+          scripts.src = `https://suggest.taobao.com/sug?code=utf-8&q=${this.input.val()}&_ksTS=1589778414101_315&callback=${this.jsonp}&k=1&area=c2c&bucketid=5`
+          document.body.appendChild(scripts);
+       }) 
       }
 }
 
@@ -75,17 +75,19 @@ function jsonpheader(data){
 
    init();
 function init(){
-  //  创建数据传输的script 标签    jsonpheader 为数据 的回调函数
+  //  创建数据传输的script 标签    jsonpheader 为数据 的回调函数 后面的是显示的小图标元素
      let headerSearch = new search(inputSearch,"jsonpheader",searchfadaj).creat();
     //  searchinput
     let headerSearch_scroll = new search(inputSearch_scroll,"jsonpheader_scroll",searchfadaj_scroll).creat();
 
 
       //  失去聚焦 取消所有
-      inputSearch.onblur =  inputSearch_scroll.onblur = function(){
+      inputSearch.on("blur",function(){
         setTimeout(function(){$(".inputselect_ul").remove()},100);
-       }
-
+       })
+      inputSearch_scroll.on("blur",function(){
+        setTimeout(function(){$(".inputselect_ul").remove()},100);
+       })
 
 
 
@@ -95,7 +97,7 @@ function init(){
 // https://suggest.taobao.com/sug?code=utf-8&q=&_ksTS=1589778414101_315&callback=jsonpheader&k=1&area=c2c&bucketid=5
 
 
-// 传入搜索框和 数据
+// 传入搜索框和 数据  渲染数据  传入父元素和 data
 function inputselect(parent,data){
    if(parent.lastElementChild.tagName=="UL"){
       parent.lastElementChild.style.border = "none";

@@ -1,21 +1,21 @@
 
-
 !function($){
-    const smallpicSf = $(".smallpic img");
-    const bigpic = $(".bf .bigpic");
-    const message = $(".message .title");
-    const num = $(".message .num");
-    const goodsnumber = document.querySelector(".goodsnumber");
-    const but = document.querySelector(".but");
-    const gouwuche = $("#shopcar .num");
-    const left= document.querySelector(".left");
-    const right= document.querySelector(".right");
-    const goods_number =$(".goods_number");
-    const original_num = $(".original_num");
-    const goods_place = $(".goods_place");
-    const goods_introduce = $("#goods_introduce");
-    let cookie2 = new Cookiefn();
-    const url = "http://10.31.162.16/";
+    /* 详情页 */
+    const smallpicSf = $(".smallpic img");   // 获取小图
+    const bigpic = $(".bf .bigpic");   // 获取大图
+    const message = $(".message .title");   // 获取 商品信息标签
+    const num = $(".message .num");       //  获取 商品价格 标签
+    const goodsnumber = $(".goodsnumber");  // 获取 数量表单
+    const but = $(".but");       //  加入购物车按钮  
+    const gouwuche = $("#shopcar .num");   // 获取购物车 数量标签
+    const left=$(".left");  // 获取作左右按钮
+    const right= $(".right");
+    const goods_number =$(".goods_number");      // 获取销售数量标签
+    const original_num = $(".original_num");      
+    const goods_place = $(".goods_place");      // 获取店家 标签
+    const goods_introduce = $("#goods_introduce");  
+    let cookie2 = new Cookiefn();    // 创建cookie操作插件对象
+    const url = "http://10.31.162.16/";   
 
 
  var str =  `<li class="goods_li m_r_goods_li" value="?id?">
@@ -25,12 +25,12 @@
               <p>?goods_name?</p>
           </li>`;
  var arr = ['id','goods_img','goods_price','goods_name'];
-
+ let bool = true;
     leftAright();
     dataAdd();
     function dataAdd(){
+let goods_id_message = 0;
 let sp =   window.location.search.substring(1);
-
 //  通过点击传过来的 域名id  通过ajax 获取响应的商品数据 
  $.ajax({
      type:"post",
@@ -39,6 +39,7 @@ let sp =   window.location.search.substring(1);
      data:{
          sid:sp
      },success:function(data){
+        goods_id_message = data;
         $("title").html(data.goods_name)
          speciesquery(data.id,data.cat_two_id)
         smallpicSf.prop("src" ,data.goods_img)
@@ -56,39 +57,82 @@ let sp =   window.location.search.substring(1);
 // 初始化小图标
 gouwuchejingru();
 
-//  左右按钮点击事件
- but.addEventListener("click",(e)=>{
+//  加入购物车点击事件
+ but.on("click",e=>{
+     
+    if(!bool) return;
+   bool = false;
+     //   判断 是否 购物车有值 取值
      if(cookie2.selectCookie('arrsid') && cookie2.selectCookie('arrnum')){
          let arrsid = cookie2.selectCookie('arrsid').split(",");
          let arrnum = cookie2.selectCookie('arrnum').split(",");
+         if(arrsid.indexOf(sp)!==-1){   //  如果
         
-         if(arrsid.indexOf(sp)!==-1){
-           
-         arrnum[arrsid.indexOf(sp)] = parseInt(arrnum[arrsid.indexOf(sp)])+parseInt(goodsnumber.value);
+         arrnum[arrsid.indexOf(sp)] = parseInt(arrnum[arrsid.indexOf(sp)])+parseInt(goodsnumber.val());
          if(arrnum[arrsid.indexOf(sp)]>100)
          arrnum[arrsid.indexOf(sp)]=99;
      }else{
          arrsid.push(sp);
-         arrnum.push(parseInt(goodsnumber.value));
+         arrnum.push(parseInt(goodsnumber.val()));
      }
-     cookie2.addCookie('arrsid',arrsid,100);
-     cookie2.addCookie('arrnum',arrnum,100);
-     }else{
+     cookie2.addCookie('arrsid',arrsid.join(","),100);
+     cookie2.addCookie('arrnum',arrnum.join(","),100);
+     }else{  //如果 购物车没有值 则 把
          cookie2.addCookie('arrsid',new Array(`${sp}`),100) ;
-         cookie2.addCookie('arrnum',new Array(`${parseInt(goodsnumber.value)}`),100) ;
-      }
+         cookie2.addCookie('arrnum',new Array(`${parseInt(goodsnumber.val())}`),100) ;
+      }    
 
-         
-         // 小图标方法
-         gouwuchejingru();
+//  存入数据库  ?
+        $.ajax({
+            type:"post",
+            url:url+"php/userpassword/user_shopcar_save.php",
+            data:{
+                shopcar:cookie2.selectCookie("arrsid") ,
+                shopcarnumber:cookie2.selectCookie("arrnum"),
+                user:cookie2.selectCookie("email"),
+                password:cookie2.selectCookie("password")
+            },
+            success:function(){
 
-             
+     //  成功添加 后  出现购物车效果
+                creatshopeffect(goods_id_message.goods_img,e.clientX,e.clientY);
+                 
+                 // 小图标方法
+            }
+        })
+
  });
+}
+
+ // 创建 效果盒子 以及 添加效果
+function creatshopeffect(img,positionX,positionY){
+  
+  // 创建
+  let elem = document.createElement("div");
+ Object.assign(elem.style,{
+    width:"90px",height:"90px",background:"url("+img+")",borderRadius:"80%",
+    backgroundSize:"cover",position:"fixed",top:positionY-45+"px",left:positionX-45+"px"
+ })
+
+ but.append(elem);
+
+ $(elem).stop(true).animate({
+    top:1,
+    left:860,borderRadius:"10%",
+    width:0,height:0
+ },700)
+ $("html,body").stop(true).animate({scrollTop:0},400);
+setTimeout(function(){
+    bool = true;
+ $(elem).remove();
+ gouwuchejingru();  
+},700)
+
 }
 
 
 //  按照种类 查询 商品数据
-function speciesquery(id,cat_two_id){   
+function speciesquery(id,cat_two_id){
            new $.creatgoodslist_$({
                 url: url + "php/data/goods_select_class.php", 
                 $fat: $(".m_r_goods_list"), 
@@ -139,52 +183,40 @@ $(".imgs_min li img").hover(
 
 //  购物车小图标方法    记录id数量
 function gouwuchejingru(){
-
  //在js中引入
  $(document).ready(function () {
      $('#hearhtml').load('hear.html');
  });
-
- // console.log($("#hearhtml").children());
- if(cookie2.selectCookie('arrsid')){
- if(cookie2.selectCookie('arrsid').split(",").length==0){
-     gouwuche.css("dispaly","none");
-  }else{
-     gouwuche.html(cookie2.selectCookie('arrsid').split(",").length) 
-     gouwuche.css("dispaly","block");
-  }
- }
 }
 
 
 //  左右按钮 修改数量方法   数量不超过99个 不少于1個 並不能輸入非数字的符号
 function leftAright(){ 
-  goodsnumber.oninput = e=>{
-      e.target.value = e.target.value.replace(/[^0-9]/g,"");
-      if(parseInt(e.target.value)<=0){
-         e.target.value = 1;
-      }else if(parseInt(e.target.value)>=99){
-         e.target.value = 99;
-      }
-  }
- left.onclick = right.onclick = e=>{
-  if($(e.target).hasClass("left")){
-     goodsnumber.value = parseInt(goodsnumber.value)-1;
-  }else{
-     goodsnumber.value = parseInt(goodsnumber.value)+1;
-  }
-  if(parseInt(goodsnumber.value)<=0){
-     goodsnumber.value = 1;
-      }else if(parseInt(goodsnumber.value)>=99){
-         goodsnumber.value = 99;
-      }
- }
+  goodsnumber.on("input",e=>{
+    e.target.value = e.target.value.replace(/[^0-9]/g,"");
+    if(parseInt(e.target.value)<=0 || e.target.value==""){
+       e.target.value = 1;
+    }else if(parseInt(e.target.value)>=99){
+       e.target.value = 99;
+    }
+}) 
+
+ left.on("click", e=>{
+       goodsnumber.val(parseInt(goodsnumber.val())-1) 
+    if(parseInt(goodsnumber.val() )<=0)
+       goodsnumber.val(1);
+   })  
+   right.on("click", e=>{
+       goodsnumber.val(parseInt(goodsnumber.val())+1)
+        if(parseInt(goodsnumber.val() )>=99)
+           goodsnumber.val(99);
+   })
 }
 }(jQuery)
 
 
-//  有问题 ！！！！！！！！！！！！
-//  放大镜   类
+//  ！！！！！！！！！！！！
+//  放大镜  类     直接引用。
 class Scale {
          constructor() {
              this.goods_main = document.querySelector("#goods_main");

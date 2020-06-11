@@ -63,10 +63,10 @@
 	.our_message  .jubao{width: 100%;height: 26px;line-height: 26px;position: relative; background: pink;color: orangered;text-align: center;display: block;font-size: 13px;}
 	.our_message  .jubao span{font-size: 12px;position: absolute;right: 30px;line-height: 30px}
 	/* tables */
-	.our_message .table{width: 100%;font-size: 12px;padding:0 20px;}
-	.our_message .table li{cursor: pointer;height: 29px;box-sizing: border-box}
-	.our_message .table1{padding-top: 10px;display: flex;justify-content:space-around;align-items: center}
-	.our_message .table li:last-child{margin-right: 0;}
+	.our_message .table{width: 100%;font-size: 12px;}
+	.our_message .table li{cursor: pointer;height: 20px;box-sizing: border-box;}
+	#classification .our_message .table1{padding-top: 10px;display: flex;justify-content:space-around !important;align-items: center}
+   
 	.our_message .table2 ul{ margin: 0 12px;
     height: 50px;overflow: hidden;padding-top: 9px;   padding-bottom: 6px;}
 	.our_message .table2 ul li{ width: 260px;    float: left;

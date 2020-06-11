@@ -1,11 +1,14 @@
 // const url = "./";
-	//   右边的导航 
+!function(){
 
+	//   右边的导航 
+    const url = "http://10.31.162.16/";
     !function($){
+      
         // 商品类表加载类
         class creatgoodslist {
             // 传入 php地址 传入父元素 传入需要分类的参数
-            constructor(url, parent,Spanadd) {
+            constructor(url,parent,Spanadd) {
                 this.spanadd = Spanadd;
                 this.$fat = parent;  // 父元素
                 this.liList = null;
@@ -144,11 +147,13 @@
             $.creatgoodslist_$ = creatgoodslist;
         }(jQuery)
                              //  并给所有的li中除li以外的元素添加手型以及 点击详情页.
-    
+        
     
         ///  数据创建 商品页面   
         creatgoods_li_on();
+
         function creatgoods_li_on(){
+            
             new $.creatgoodslist_$(url + "php/data/goods_all.php",$(".goods_ul_host"),$(".goods_class"));
             new $.creatgoodslist_$(url + "php/data/goods_all.php",$(".goods_ul_tuijian"));
     }
@@ -173,11 +178,8 @@
             $(window).off("scroll",scrollwin);
                 
             //  点击返回顶上的
-                if($(this).index(".fixedtool li")==5){
-                    console.log(11);
-                    scroolli($liList.eq(0),1);
-                    
-                }
+                if($(this).index(".fixedtool li")==5 || $(this).index(".fixedtool li")==0){
+                    scroolli($liList.eq(0),1);}
                 // 淘宝推荐
                 if($(this).index(".fixedtool li")==4){
                     let litop = $("#taobao_tuijian").offset().top;
@@ -273,3 +275,5 @@
      
      },1000);
     
+     
+}()

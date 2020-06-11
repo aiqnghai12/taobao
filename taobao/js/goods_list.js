@@ -1,3 +1,4 @@
+
 var url = "http://10.31.162.16/php/data/goods_all.php";
 var url1 = "http://10.31.162.16/php/data/goods_all.php";
 var url2 = "http://10.31.162.16/php/data/goods_all_price.php";
@@ -19,24 +20,6 @@ var str3 = `
 let goods_list_arr = ['id','goods_img','goods_price','goods_name','goods_number','goods_state','goods_prace'];
 let goods_list_arr2 = ['id','goods_img','goods_name','goods_number','goods_price'];
 let goods_list_arr3 = ['id','goods_img','goods_name','goods_number','goods_price','goods_state'];
-         
-    //    new $.creatgoodslist_$({
-    //           url: url, 
-    //           $fat: $(".li_goods"), 
-    //           li:str, 
-    //           arr: goods_list_arr ,
-    //           href:"./goods.html",
-    //           first:0,
-    //           success:data=>{
-    //            $(function() { //和拼接的元素放在一起。
-    //             $("img.lazy").lazyload({
-    //             effect: "fadeIn" //图片显示方式
-    //             });
-    //             });
-    //           },
-    //           first:600,
-    //           num:20
-    //        });
       let goods_host =     new $.creatgoodslist_$({
               url: url, 
               $fat: $(".goods_host_list"), 
@@ -56,7 +39,7 @@ let goods_list_arr3 = ['id','goods_img','goods_name','goods_number','goods_price
               num:5
            });
 
-
+   
 
    //  分页封装方法。  
    /*--------------- 分页跳转 加载 类 ------------ */   
@@ -273,26 +256,5 @@ let goods_list_arr3 = ['id','goods_img','goods_name','goods_number','goods_price
 
 
 
-
-
-
-
-       // new $.creatgoodslist_$({
-       //        url: url, 
-       //        $fat: $(".li_goods"), 
-       //        li:str, 
-       //        arr: goods_list_arr ,
-       //        href:"./goods.html",
-       //        first:0,
-       //        success:function(data){
-       //         $(function() { //和拼接的元素放在一起。
-       // $("img.lazy").lazyload({
-       // effect: "fadeIn" //图片显示方式
-       // });
-       // });
-       //        },
-       //        num:40
-       //     });
-   
 
 

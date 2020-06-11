@@ -1,17 +1,16 @@
-    const navliList =Array.from(document.querySelectorAll("nav li"));   // 不重要 
-    const gouwuche= document.querySelector("#shopcar .num");
-    const url = "http://10.31.162.16/";
-    let cookie2 = new Cookiefn();
 
-    initStyle();
-    function initStyle(){
-    navliList.forEach((item,index)=>{
-    item.style.float = index<4 ? "left" : "right";
-    })
-    }
-    
+    const url = "http://10.31.162.16/";   //表头全局
+    let cookie2 = new Cookiefn();    //  cookie2 全局
+    const gouwuche=$("#shopcar .num");   //  购物车数量 全局
     //   -----------------  父元素添加下菜单 类-------------
     !function($){
+        const navliList =$("nav li");   // 不重要 
+        initStyle();
+        function initStyle(){
+        $.each(navliList,(index,item)=>{
+        item.style.float = index<4 ? "left" : "right";
+        })
+        }
     class oneMenu{
     // 下拉框需要父元素 添加的title数组  数组对应的跳转数组  ul 的宽度  ul 相对于父元素的位置 左上角 或 右上角
     constructor(option){
@@ -240,18 +239,7 @@
     $.$creatli = creatli;
 }(jQuery)
 
-new $.$creatli(
-    // data=>{
-    //     console.log(data);
-    //         new $.$oneMenu({
-    //         customLi:data,     // 自定义li 数组
-    //         width:$(".main1").width(),
-    //         height:370,
-    //         $fat: $("#Webnavigation"),
-    //         direction: 0
-    //     });
-    // }
-);
+new $.$creatli();
 
 
 
@@ -416,10 +404,9 @@ new $.shopcarInitialize({cookie : new Cookiefn(),
 !function gouwuchejingru(){
     if(cookie2.selectCookie('arrsid')){
     if(cookie2.selectCookie('arrsid').split(",").length==0){
-        gouwuche.style.display = "none";
+        gouwuche.css("display","none");
      }else{
-        gouwuche.innerHTML= cookie2.selectCookie('arrsid').split(",").length;
-        gouwuche.style.display = "block" ;
+        gouwuche.html(cookie2.selectCookie('arrsid').split(",").length).css("display","block");
      }
     }
 }()
@@ -431,7 +418,7 @@ new $.shopcarInitialize({cookie : new Cookiefn(),
    class userShopcar{
      constructor(option){
     Object.assign(this,option);
-      
+      //  如果有 arrsid 的值   则 传入 user_shopcar_id 分钟创建 array
       this.user_shopcar_id = (this.arrsid ? this.arrsid.split(",") : new Array() );
       this.arr_goods_number = (this.arrnumber ? this.arrnumber.split(",") : new Array());
       this.obtainuserShopcar();
@@ -443,20 +430,24 @@ new $.shopcarInitialize({cookie : new Cookiefn(),
             type:"post",
             url:url+"php/userpassword/user_email.php",
             data:{
-                user:this.user,password:this.password,shopcar:1
+                user:this.user,password:this.password,shopcar:1  //  数据库验证登录 是否正确
             },
             success:data=>{
                // 如果用户没有数据
                this.userdata = JSON.parse(data)
                 if(data!=="null"){
+
                     //  data = JSON.parse(data);
                     if(this.userdata.shopcar!=""){
+                      
                     let user_json_shop =  this.userdata.shopcar.split(",");
                     let user_json_num = this.userdata.shopcar_number.split(",");
                     // 遍历后台购物车数据   有则数据相加   否则添加进入数组
+  
                 user_json_shop.forEach((item,index)=>{
-                  if( this.user_shopcar_id.indexOf(item) != -1 ){
+                  if(this.user_shopcar_id.indexOf(item) != -1 ){
             this.arr_goods_number[index]=parseInt(user_json_num[index]);
+            
                   }else{
             this.arr_goods_number.push(user_json_num[index]);  
             this.user_shopcar_id.push(item);

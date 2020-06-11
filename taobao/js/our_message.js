@@ -1,6 +1,6 @@
 !function($){
     const $table2 = $(".table2 ul");	 
- 
+
 	$(".table1 li").hover(
 	function(){
 		$(this).css("color","red");
@@ -14,25 +14,16 @@
 	   $(this).css({
 		   borderBottom:"2px solid #000",fontWeight:600
 	})},100)
-	
 	}
 	,function(){
 		$(this).css("color","#000");
 		clearTimeout(this.timer);
 	})
-
     $(".table2 ul li a").hover(function(){
       this.style.color = "red";
 	},function(){
 		this.style.color = "#000";
 	})
-
-   $(".taobao-icons ul li").hover(
-		 function(){
-          
-	 },function(){
-
-	 })
 
 $(window).on("scroll",function(){
 

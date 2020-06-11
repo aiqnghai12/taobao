@@ -1,4 +1,6 @@
-const url = "http://10.31.162.16/";
+	
+!function(){
+	const url = "http://10.31.162.16/";
 	// 轮播图 大
 	const lun_max = $(".main_lun .lun_max");
 	const lun_max_imgs =new Array(); 
@@ -47,7 +49,7 @@ const url = "http://10.31.162.16/";
 	}
 
 	var obj_min = {
-	fat : lun_min,
+	fat : lun_min,   // 
 	imgs : lun_min_imgs,
 	leftandright : leftandright_min
 	}
@@ -57,7 +59,7 @@ const url = "http://10.31.162.16/";
 	new lun_$(obj_min);
 	}
    
-   //封装 轮播图
+   //封装 轮播图  通过传入 各种数据 实现自动轮播图切换类型的 实现
 	!function(window){
 	 class lun_{
 		 constructor(option){
@@ -268,3 +270,5 @@ const url = "http://10.31.162.16/";
 
     window.lun_$ = lun_;
 	}(window)
+
+}()	

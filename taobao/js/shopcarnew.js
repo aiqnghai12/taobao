@@ -1,10 +1,12 @@
 
+
+!function($){
  const url = "http://10.31.162.16/";
  const cookie = new Cookiefn();
  // 获取购物车数据初始化
  let arrsid = cookie.selectCookie('arrsid') ?  cookie.selectCookie('arrsid').split(",") : "null";
   // 购物车数量 数组
-  let arrnum =cookie.selectCookie('arrnum') ?  cookie.selectCookie('arrnum').split(",") : "null";
+ let arrnum =cookie.selectCookie('arrnum') ?  cookie.selectCookie('arrnum').split(",") : "null";
 var li = `
 <div><li class="radius radius_goods_store"  value="?id?"><p class="radius_goods_store" value="?goods_state?"></p> <h6 class="iconfont_taobao iconfont_taobao_1"></h6>店铺: <p class="goods_store">?goods_state?</p>
 <p class="iconfont_gif iconfont_gif_1"></p> 
@@ -13,7 +15,7 @@ var li = `
                                <div class="goods_li"  value="?id?"> <li class="radius"> <div><p class="radius_goods"  value="?goods_state?" ></p></div> </li>
                                     <li class="goods_choose"><span><img src="?goods_small_logo?" alt=""> </span></li>
                                     <li class="goods_name"><p> <div class="goods_name_div goods_div">
-                                        <p>?goods_name?</p>
+                                        <p value="?id?">?goods_name?</p>
                                         <div><img src="//assets.alicdn.com/sys/common/icon/trade/xcard.png" alt="">
                                             <img src="//img.alicdn.com/tps/i3/T1bnR4XEBhXXcQVo..-14-16.png" alt="">
                                         <img src="//img.alicdn.com/tps/i2/TB1XY_zGpXXXXbeXXXXAz6UFXXX-16-16.png" alt=""></div>
@@ -33,10 +35,6 @@ var li = `
                                             <p>移入收藏夹</p> <p class="goods_remove">删除</p> <p class="operation_span">相似宝贝<span class="iconfont_taobao_2 iconfont_taobao"></span></p>
                                         </div> </p></li> </div></div>`
 var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat_two_id','cat_three_id','goods_price']
-
-
-
-
      var str2 = `<div class="goods_li" value="?id?">
 <img src="?goods_img?" alt="">
 <p>￥<span>?goods_price?</span><span class="old_price">￥<span>?goods_price?</span> </span>  </p>
@@ -54,12 +52,10 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
                    first:500,
                    href:"./goods.html",
                    success:function(data){
-               
                    }
             }); 
   
 
-          
 
 
         
@@ -71,8 +67,8 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
               constructor(option){
                 Object.assign(this,option)
                 this.cookie = new Cookiefn();
-                this.arrsid = this.cookie.selectCookie("arrsid").split(",");
-                this.arrnum = this.cookie.selectCookie("arrnum").split(",");
+                this.arrsid = arrsid;
+                this.arrnum = arrnum;
                 this.password = this.cookie.selectCookie("password");
                 this.user = this.cookie.selectCookie("email");
                 this.numberAll = 0;
@@ -82,6 +78,8 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
                }
          // init 初始化 创建点击事件   左右添加按钮   删除按钮 
           init(){  let _this = this;
+            this.$radius.css("backgroundPosition","0 -20px");
+            this.addradius_checked();
               //  确定按钮 群 
             this.$radius.on("click",function(){
                 if($(this).css("backgroundPosition") == "0% 0%"  )
@@ -160,8 +158,7 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
             })
           }
            
-          
-
+    
 
           // 按钮 点击后 的处理方法。 通过 辨别 所有点击的按钮 的类 来 镜像逻辑
           //  传入点击的按钮  进行 类甄别
@@ -175,7 +172,7 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
             if(_checked.hasClass("radius_goods_store")){
             $(`[value=${_checked.attr("value")}]`).css("backgroundPosition",`${_checked.css("backgroundPosition")}`);
             }else if(_checked.hasClass("radius_all")){
-               $(".radius p").css("backgroundPosition",`${_checked.css("backgroundPosition")}`);
+               this.$radius.css("backgroundPosition",`${_checked.css("backgroundPosition")}`);
             }else {
             if(_checked.css("backgroundPosition") =="0% 0%")
             $(`.radius[value=${goods_id}] p`).css("backgroundPosition","0% 0%");
@@ -217,12 +214,8 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
             }else{
             $(".settlement").css("cursor","pointer")
             }
-
-
             return arrchecked;
            }
-
-
         //   各种点击 输入 后的样式改变    
         //                 单价    下标  数量 
             stylenumchange(goods,index,number){   
@@ -272,7 +265,6 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
              $('#header').load('hear.html');
              });
             }
-            
             // 数据传入后  添加到数据库 
               mysqlupdate(){
                   $(".goods_shopcarnum").html(this.arrsid.length);
@@ -291,10 +283,8 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
                     password:this.password
                 }
             })
-
-              }
-         
-         }
+}
+          }
      $.$goods_data_change = goods_data_change;
      }(jQuery)
 
@@ -314,12 +304,15 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
        arr,
        href:"none",
        success:function(data){
+// $(".goods_name_div > p")
         data.id = [];
        //  给每个数组的 添加 id 属性 方便查询
        data.forEach((item,index)=>{
         data.id[index] = item.id
        })
-
+       $(".goods_name_div > p").on("click",function(){
+           window.location.href = './goods.html?'+$(this).attr("value");
+       })
         $(".goods_shopcarnum").html(data.length);
            //  回调成功添加数据的函数   
            // 需要事件 和 改变的 li 有4个位置 
@@ -348,7 +341,6 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
             },3500)
             $('.goods_host_lilist ul li').hover(
                 function(){
-            
                     $('.goods_host_lilist ul li').css("background","#ccc");
                     $(this).css("background","red");
                     index = $(this).index();
@@ -367,17 +359,13 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
             },3500)
             })
           
-            
-
           $(".shopcarnav  ul li").hover(
               function(){
             $(this).parents(".shopcarnav").find(".div_hr_min").stop(true).animate({
                 marginLeft:$(this).offset().left-$(this).parents(".shopcarnav").offset().left+"px",
                 width:$(this).width()+20+"px"
             },200)
-          },function(){
+          },function(){})
 
-          })
-
+        }(jQuery)
           
-

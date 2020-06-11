@@ -240,44 +240,6 @@
   right: 30px;
   line-height: 30px;
 }
-#classification .main_lun .our_message .table {
-  width: 100%;
-  font-size: 12px;
-}
-#classification .main_lun .our_message .table li {
-  cursor: pointer;
-  height: 29px;
-  box-sizing: border-box;
-}
-#classification .main_lun .our_message .table li:last-child {
-  margin-right: 20px;
-}
-#classification .main_lun .our_message .table1 {
-  padding-top: 10px;
-}
-#classification .main_lun .our_message .table2 ul {
-  margin: 0 12px;
-  height: 50px;
-  overflow: hidden;
-  padding-top: 9px;
-  padding-bottom: 6px;
-}
-#classification .main_lun .our_message .table2 ul li {
-  width: 260px;
-  float: left;
-  display: inline;
-  line-height: 25px;
-  height: 25px;
-  width: 130px;
-  display: list-item;
-  overflow: hidden;
-}
-#classification .main_lun .our_message .class-icons {
-  width: 100%;
-  height: 155px;
-  min-height: 0;
-  background-color: #FFF;
-}
 #classification .main_lun .our_message .class-icons li {
   width: 70px;
   overflow: visible;

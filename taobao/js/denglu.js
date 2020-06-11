@@ -1,48 +1,51 @@
 
-const maindenglu = document.querySelectorAll(".maindenglu");
- const textSelect = document.querySelectorAll(".textSelect span");
- const inputText =Array.from(document.querySelectorAll(".inputText"));
- const otherA = document.querySelectorAll(".otherA a");
- const Switchicon = document.querySelector(".Switchicon");
- const warning = document.querySelector("#warning");
+ 
+ !function($){
+ // 垃圾代码
+ const maindenglu = $(".maindenglu");
+ const textSelect =$(".textSelect span");
+ const inputText =$(".inputText");
+ const otherA = $(".otherA a");
+ const Switchicon = $(".Switchicon");
+ const warning = $("#warning");
  init();
  function init(){
-     textSelect[0].onclick =textSelect[1].onclick = (e)=>{
+     textSelect.on("click",e=>{
         e.target.style.borderBottom = " 2px solid #000";
            if(textSelect[0]==e.target){
-            textSelect[1].style.borderBottom = " none";
-            inputText.forEach((item,index)=>{
+            textSelect.eq(1).css("borderBottom","none");
+          $.each(inputText,(index,item)=>{
                item.style.display =  index<2? "flex" : "none";
-               otherA.forEach(item=>{
+               $.each(otherA,(index,item)=>{
                    item.style.display = "block";
                })
             })
            }else{
-            textSelect[0].style.borderBottom = " none";
-            inputText.forEach((item,index)=>{
+            textSelect.eq(0).css("borderBottom","none");
+            $.each(inputText,(index,item)=>{
                 item.style.display = index<2?"none" : "flex";
             })
-            otherA.forEach(item=>{
+            $.each(otherA,(index,item)=>{
                 item!==otherA[0]    ?  item.style.display = "none" : "";
-               })
+            })
            }
-     }
-Switchicon.bool = true;
-Switchicon.onclick = e=>{
-    if(Switchicon.bool){
-    Switchicon.innerHTML = "&#xe63b;"
-    maindenglu[0].style.display = "none";
-    maindenglu[1].style.display = "block";
+     }) 
+     
+let bool = true;
+Switchicon.on("click",e=>{
+    if(bool){
+    Switchicon.html("&#xe63b;");
+    maindenglu.eq(0).css("display","none");
+    maindenglu.eq(1).css("display","block");
     }else{
-        Switchicon.innerHTML = "&#xe642;"
-        maindenglu[1].style.display = "none";
-    maindenglu[0].style.display = "block";
+        Switchicon.html("&#xe642;");
+        maindenglu.eq(1).css("display","none");
+        maindenglu.eq(0).css("display","block");
     }
-    
     e.preventDefault();
-Switchicon.bool = !Switchicon.bool;
+    bool = !bool;
 return false;
- }
+ })  
 }
 
 
@@ -54,9 +57,9 @@ class userApassword{
 //   传 账号 密码以及 点击 元素.
 constructor(option){
 this.settings = {
-    user: document.querySelector(".data-user"),  // 账号
-    password:document.querySelector(".data-password"), //密码
-    sumbit:document.querySelector(".sumbit"), // 登录按钮
+    user: $(".data-user"),  // 账号
+    password:$(".data-password"), //密码
+    sumbit:$(".sumbit"), // 登录按钮
     type:"normal",    //验证账号类型
     validation:false,   // 是否验证
     href:"www.baidu.com",    //跳转的页面
@@ -88,9 +91,9 @@ if(_this.validation!==false && _this.validation!=="false" ){
 BTN(){
     let _this = this.settings;
     try{
-        _this.sumbit.onclick = e =>{
-      this.dataAjax(_this);
-    }
+        _this.sumbit.on("click",e =>{
+            this.dataAjax(_this);
+          }) 
     }catch(error){
     }
     window.addEventListener("keyup",e=>{
@@ -103,26 +106,26 @@ BTN(){
 
 dataAjax(_this){
 //   验证账号密码不为空
-if(_this.user.value==""){
-    warning.textContent = "账号不能为空";
-}else if(_this.password.value==""){
-    warning.textContent = "密码不能为空";
+if(_this.user.val()==""){
+    warning.html("账号不能为空");
+}else if(_this.password.val()==""){
+    warning.html( "密码不能为空");
 }else{
     // 
     $.ajax({
     type:"post",
     url:_this.url,
     data:{
-      user:  _this.user.value,
-      password:  hex_sha1( _this.password.value)
+      user:  _this.user.val(),
+      password:  hex_sha1( _this.password.val())
     },
     success:function(data){
         data  = data.split("?");
         if(data[0]=="1"){
-          _this.success(hex_sha1( _this.password.value),_this.user.value);
+          _this.success(hex_sha1( _this.password.val()),_this.user.val());
           window.location.href = data[1];
         }else{
-          warning.textContent = data[1];
+          warning.html(data[1]);
         }
     },
     error:function(error){
@@ -132,6 +135,7 @@ if(_this.user.value==""){
 }}}
 window.userApassword = userApassword;
 }(window)
+
 let cookie = new Cookiefn();
 
 var obj = {
@@ -141,12 +145,14 @@ var obj = {
     cookie.addCookie("email",email);
    }
 }
+//  登录 封装方法 调用
 new userApassword(obj);
 
-const backgroundimg = document.querySelector(".backImg");
+const backgroundimg = $(".backImg");
 
 //  垃圾代碼  隨機 背景圖
 let backgroundimgsarr = ['https://gtms01.alicdn.com/tps/i1/TB1GTCYLXXXXXcHXpXXcoeQ2VXX-2500-600.jpg',
 'https://img.alicdn.com/tfs/TB1KURxGFP7gK0jSZFjXXc5aXXa-2500-600.png']
-backgroundimg.style.backgroundImage = "url(" + backgroundimgsarr[Math.floor(Math.random()*2)] + ")" ;
+backgroundimg.css("backgroundImage","url(" + backgroundimgsarr[Math.floor(Math.random()*2)] + ")" ) ;
 
+}(jQuery)

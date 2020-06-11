@@ -1,30 +1,4 @@
 !function($){
-    //     var str = `<li value="?id?">
-    //   <img src="?goods_img?" alt="">
-    //     <div class="title">
-    //     <div class="same_style">
-    //        <p>找相似</p><p>找同款</p>
-    //      </div>
-    //      <div class="title_back"></div>
-    //     <div class="title_num">
-    //        <p><span>￥</span>?goods_price?<span>包邮</span></p><p><span>?goods_number?</span>人付款</p>
-    //      </div>
-    //        <div class="title_text">?goods_name?</div>
-    //       <div class="title_prace"><div><span><h6></h6><h6></h6><h6></h6></span><a href="">?goods_store?</a></div><p>?goods_place?</p></div>
-    //       <div class="title_host"><span class="iconfont_2 iconfont_2_3"></span><span class="iconfont_2 iconfont_2_1"></span><span class="iconfont_2 iconfont_2_2"></span><span class="iconfont_down iconfont_down_2"></span></div>
-    //      </div>
-    // </li>`
-    // var arr = ['goods_small_logo','id','id','goods_state','goods_state','goods_state','goods_name','goods_class','goods_price','cat_two_id','cat_three_id','goods_price']
-        
-    //           new $.creatgoodslist_$({
-    //                url: url + "php/data/goods_all.php", 
-    //                $fat: $(".li_goods"),
-    //                li: str, 
-    //                arr: goods_list_arr ,
-    //                href:url+"taobao/goods.html?",
-    //                first:500
-    //             });   
-                //   演示
     
         // 商品类表加载类 
         class creatgoodslist {
