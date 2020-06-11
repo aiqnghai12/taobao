@@ -14,7 +14,8 @@
     const original_num = $(".original_num");
     const goods_place = $(".goods_place");
     const goods_introduce = $("#goods_introduce");
-
+    let cookie2 = new Cookiefn();
+    const url = "http://10.31.162.16/";
 
 
  var str =  `<li class="goods_li m_r_goods_li" value="?id?">
@@ -26,8 +27,6 @@
  var arr = ['id','goods_img','goods_price','goods_name'];
 
     leftAright();
-    let cookie2 = new Cookiefn();
-    const url = "http://10.31.162.16/";
     dataAdd();
     function dataAdd(){
 let sp =   window.location.search.substring(1);
@@ -40,6 +39,7 @@ let sp =   window.location.search.substring(1);
      data:{
          sid:sp
      },success:function(data){
+        $("title").html(data.goods_name)
          speciesquery(data.id,data.cat_two_id)
         smallpicSf.prop("src" ,data.goods_img)
         bigpic.prop("src" ,data.goods_img)

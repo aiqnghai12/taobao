@@ -27,15 +27,31 @@
         $('#hearhtml').load('hear.html');
 	});
 </script>
-
+    
 		<link rel="stylesheet" href="../taobao/css/font_d72pqdvv4sg/iconfont.css">
 		
 		<div style="background-color: #f40d4d;height:71px;">
 				<!-- 头广告 图片-->
 		<img src="../src/img/header.jpg" class="headerImag main1"></div>
-
-			
-		<div style="background-color: #fff;">
+		 <style>
+		 .bakcground_{
+    width: 360px;
+    height: 800px;top: 0;position: absolute;
+		z-index: -100;}
+		.bakcground_left{left: 0;background: url(https://img.alicdn.com/tfs/TB12T_dHYj1gK0jSZFuXXcrHpXa-360-800.png) no-repeat;}
+		.bakcground_right{right: 0;background: url(https://img.alicdn.com/tfs/TB13se9HVY7gK0jSZKzXXaikpXa-360-800.png) no-repeat;}
+		 
+		.bakcground_flexd{
+    width: 360px; position: fixed;bottom: 0;z-index: -100;
+		height: 508px;}
+		.bakcground_flexdleft{background: url(https://img.alicdn.com/tfs/TB1FSu_H1T2gK0jSZFvXXXnFXXa-360-508.png) no-repeat;left: 0;}
+		.bakcground_flexdright{right: 0;background: url(https://img.alicdn.com/tfs/TB16Lq_H4z1gK0jSZSgXXavwpXa-360-508.png) no-repeat;}
+		 </style>
+		<div class="bakcground_ bakcground_left"></div>
+		<div class="bakcground_ bakcground_right"></div>
+		<div class="bakcground_flexd bakcground_flexdleft"></div>
+		<div class="bakcground_flexd bakcground_flexdright"></div>
+		<div>
 			<div class="main1" style="height: 121px;background-color: #fff;padding-top:24px;box-sizing: border-box;">
 				<!-- 主页面-->
 				<img src="../src/img/login.png" class="login" alt="">
@@ -81,10 +97,9 @@
 		</div>
 
 
-
 	<!-- 隐藏的搜索框     通过页面滚动显示。 -->
 	<div id="suspension">
-		<div class="main1 " >
+		<div class="main1 " style="background:#fff !important" >
 			<img src="../src/img/login.png" class="login" alt="">
 			<div class="searchinput " style="position: relative;">
 					<input type="text" placeholder="        请输入" class="inputSearch">
@@ -245,8 +260,127 @@
 			  </div>
 		  </div>
 	</div>
+ <style>
+	 .J_Module .main1{padding-top: 15px;
+	display: flex;justify-content: space-between;align-items:center;}
+	 .J_Module li{width: 234px;height: 92px;border-radius: 20px;background: green;}
+	 .good_shop{padding-top: 20px;display: flex;
+	justify-content: space-between;justify-items: center;}
+	 .good_shop > div{width: 550px;height: 488px;padding: 20px;position: relative;
+		font-size: 12px;color: #999;background: #fff;
+}
+  .good_shop > div > div:nth-child(1){display: flex;align-items: center;}
+	 .good_shop .good_shop_left .login_{width: 81px;height: 24px;margin-right: 6px;}
+	 .good_shop .good_shop_left .more{position: absolute;right: 20px;cursor: pointer;} 
+	 .good_shop_left .more:hover{color: orange;}
+	 .good_shop .good_shop_right .login_{height: 21px;margin-right: 6px;}
+	 .good_shop_message{display: flex;flex-wrap: wrap;justify-content: space-between;}
+	 .good_shop_message li{width: 271px;margin: 4px 0;}
+	 .good_shop_message .title_{display: flex;align-items: center;}
+	 .good_shop_message .title_ span:nth-child(1){line-height: 42px;font-size: 16px;margin-right: 10px;color:#222;height: 42px;}
+	 .imgs {display: flex;justify-content: space-between;align-items: center;}
+	 .good_shop_message .imgs > img:nth-child(1){width: 180px;height: 180px;}
+	 .imgs > div img{width: 89px;height: 89px;}
+	 .imgs > div {width: 89px;}
+ </style>
+	<div class="J_Module">
+		<div class="main1">
+			 <li><a href="https://pages.tmall.com/wow/a/act/tmall/dailygroup/22/wupr?spm=a21bo.2017.jianianhua.1.5af911d9ypcvS3&wh_pid=daily-198574"><img src="https://img.alicdn.com/tfs/TB1R4ICIQL0gK0jSZFAXXcA9pXa-234-92.png" alt=""></a></li>
+			 <li><a href="https://pages.tmall.com/wow/a/act/tmall/dailygroup/1376/wupr?wh_pid=daily-187090"><img src="https://img.alicdn.com/tfs/TB13mAAIFY7gK0jSZKzXXaikpXa-234-92.png" alt=""></a></li>
+			 <li><a href="https://pages.tmall.com/wow/a/act/tmall/dailyact/1735/wupr?wh_pid=dailyAct-199540"><img src="https://img.alicdn.com/tfs/TB1fi.FIKL2gK0jSZFmXXc7iXXa-234-92.png" alt=""></a></li>
+			 <li><a href="https://pages.tmall.com/wow/a/act/tmall/dailyact/1758/wupr?wh_pid=dailyAct-199580"><img src="https://img.alicdn.com/tfs/TB1T.cEIHj1gK0jSZFOXXc7GpXa-234-92.png" alt=""></a></li>
+			 <li><a href="https://pages.tmall.com/wow/a/act/tmall/dailyact/1735/wupr?wh_pid=dailyAct-199970"><img src="https://img.alicdn.com/tfs/TB1hUwBIUT1gK0jSZFrXXcNCXXa-234-92.png" alt=""></a></li>
+		</div>
+	</div>
 
-	
+  <div class="good_shop main1">
+    <div class="good_shop_left">
+			<div><img class="login_" src="//img.alicdn.com/tfs/TB1_EXwb3oQMeJjy0FpXXcTxpXa-162-48.png" alt=""> <span>发现深藏的好店</span><div class="more">更多></div></div>
+		  <div class="good_shop_message">
+				<li>
+					<p class="title_"><span>今日推荐—1天3波</span><span>一个月被关注了5838</span> </p>
+				<div class="imgs">
+				<img src="//img.alicdn.com/bao/uploaded/i1/2838887950/TB2q2eepFXXXXagXFXXXXXXXXXX_!!2838887950.jpg_180x180q90.jpg_.webp" alt="">
+			 <div>	
+				<img src="//img.alicdn.com/bao/uploaded/i2/T1WF.HFMRbXXXXXXXX_!!0-item_pic.jpg_100x100q90.jpg_.webp" alt="">
+			  <img src="//img.alicdn.com/bao/uploaded/i3/2838887950/TB2AWKkqVXXXXbYXXXXXXXXXXXX_!!2838887950.jpg_100x100q90.jpg_.webp" alt=""></div>
+			</div>	
+				</li>
+				<li>
+						<p class="title_"><span>一间老店—N个故事</span><span>一个月</span> </p>
+					<div class="imgs">
+					<img src="//img.alicdn.com/bao/uploaded/i1/132110009/TB2hKq3jVXXXXblXpXXXXXXXXXX_!!132110009.jpg_180x180q90.jpg_.webp" alt="">
+				 <div>	
+					<img src="//img.alicdn.com/bao/uploaded/i4/10009019440869076/T1hpk5XglXXXXXXXXX_!!0-item_pic.jpg_100x100q90.jpg_.webp" alt="">
+					<img src="//img.alicdn.com/bao/uploaded/i1/10009023015952583/T1av1DXrXXXXXXXXXX_!!0-item_pic.jpg_100x100q90.jpg_.webp" alt=""></div>
+				</div>	
+					</li>
+					<li>
+							<p class="title_"><span>爱鞋人</span><span>一个月被关注了24698次，一定有好东</span></p>
+						<div class="imgs">
+						<img src="//img.alicdn.com/bao/uploaded/i1/TB1JePFKFXXXXaYXVXXXXXXXXXX_!!0-item_pic.jpg_180x180q90.jpg_.webp" alt="">
+					 <div>	
+						<img src="//img.alicdn.com/bao/uploaded/i1/87948303/TB2TuwztFXXXXXeXXXXXXXXXXXX_!!87948303.jpg_100x100q90.jpg_.webp" alt="">
+						<img src="//img.alicdn.com/bao/uploaded/i3/TB1ZQNZLXXXXXaXXXXXXXXXXXXX_!!0-item_pic.jpg_100x100q90.jpg_.webp" alt=""></div>
+					</div>	
+						</li>
+						<li>
+								<p class="title_"><span>生活家</span><span>爱的杂货铺 一个月</span> </p>
+							<div class="imgs">
+							<img src="//img.alicdn.com/bao/uploaded/i3/TB17fLDFVXXXXbAXXXXXXXXXXXX_!!0-item_pic.jpg_180x180q90.jpg_.webp" alt="">
+						 <div>	
+							<img src="//img.alicdn.com/bao/uploaded/i3/TB1e0YeFVXXXXcDXpXXXXXXXXXX_!!0-item_pic.jpg_100x100q90.jpg_.webp" alt="">
+							<img src="//img.alicdn.com/bao/uploaded/i2/TB1iM0FLpXXXXcwXVXXXXXXXXXX_!!0-item_pic.jpg_100x100q90.jpg_.webp" alt=""></div>
+						</div>	
+							</li>
+			</div>
+		</div>
+    <div class="good_shop_right">
+			<div><img  class="login_" src="//img.alicdn.com/tfs/TB1cmpCb3MPMeJjy1XdXXasrXXa-204-42.png" alt=""> <span>你的爱豆在直播等你哦！</span></div>
+			<div class="good_shop_message">
+					<li>
+							<p class="title_"><span>团车合肥</span><span> 1512观看</span> </p>
+						<div class="imgs">
+						<img src="//img.alicdn.com/tfscom/i2/O1CN01zmLREG1u1Vt0pyTuv_!!0-dgshop.jpg_180x180q90.jpg_.webp" alt="">
+					 <div>	
+						<img src="//img.alicdn.com/bao/uploaded/i4/3039259927/O1CN018y22bF2NCcLXfJVan_!!2-item_pic.png_100x100q90.jpg_.webp" alt="">
+						<img src="//img.alicdn.com/bao/uploaded/i4/3039259927/O1CN017PjImi2NCcLSh027K_!!2-item_pic.png_100x100q90.jpg_.webp" alt=""></div>
+					</div>	
+						</li>
+						<li>
+								<p class="title_"><span>伟讯优品</span><span> 339观看</span> </p>
+							<div class="imgs">
+							<img src="//img.alicdn.com/imgextra/i3/O1CN01dvT6ag1flZTukoJMh_!!0-tbCommonAudio.jpg_180x180q90.jpg_.webp" alt="">
+						 <div>	
+							<img src="//img.alicdn.com/bao/uploaded/i1/O1CN01ntcJq92MKZc2nO0Dm_!!0-fleamarket.jpg_100x100q90.jpg_.webp" alt="">
+							<img src="//img.alicdn.com/bao/uploaded/i1/O1CN01ntcJq92MKZc2nO0Dm_!!0-fleamarket.jpg_100x100q90.jpg_.webp" alt=""></div>
+						</div>	
+							</li>
+							<li>
+									<p class="title_"><span>韩星翻盖电子科</span><span> 277观看</span></p>
+								<div class="imgs">
+								<img src="//img.alicdn.com/tfscom/i4/O1CN01ajf4Gg1QWiOoOzkzD_!!0-dgshop.jpg_180x180q90.jpg_.webp" alt="">
+							 <div>	
+								<img src="//img.alicdn.com/bao/uploaded/i1/2045771984/O1CN016CtqWk1QWiOoMUHT9_!!0-item_pic.jpg_100x100q90.jpg_.webp" alt="">
+								<img src="//img.alicdn.com/bao/uploaded/i3/2045771984/O1CN01MqWB2r1QWiODZML6a_!!2045771984.jpg_100x100q90.jpg_.webp" alt=""></div>
+							</div>	
+								</li>
+								<li>
+										<p class="title_"><span>迅腾摩托车商行 </span><span>26观看</span> </p>
+									<div class="imgs">
+									<img src="//img.alicdn.com/imgextra/i2/O1CN017Odpy11POBOxyj6LM_!!0-tbCommonAudio.jpg_180x180q90.jpg_.webp" alt="">
+									<a href=""> <div>	
+									<img src="//img.alicdn.com/bao/uploaded/i3/758499535/O1CN01iuGN082KJ5280GRn5_!!758499535.jpg_100x100q90.jpg_.webp" alt="">
+									<img src="//img.alicdn.com/bao/uploaded/i1/758499535/O1CN01HN5Qmh2KJ5236TqB6_!!758499535.jpg_100x100q90.jpg_.webp" alt=""></div>
+								</div>	</a>
+									</li>
+			</div>
+		</div>
+	</div>
+
+
+
+	  
          <div class="main1 fashion">
 			 <div class="fashion_left">
 				<p class="taobao_tuijian"><span style="border-color:deeppink;color: deeppink; ">&emsp;时尚爆料王</span></p>	
@@ -284,7 +418,7 @@
 
      <div class="main1 goods_host" style="background: #fff;">
 			<p class="taobao_tuijian"><span style="border-color:darkkhaki;color: darkkhaki; ">&emsp;热卖单品</span></p>
-			<p class="goods_class"></p>
+			<p class="goods_class" style="background: #fff" ></p>
 			<ul class="goods_ul_host goods_ul">
 				<!-- <li>
 				<img src="https://gd4.alicdn.com/imgextra/i2/2459354798/O1CN012DOP181lJWsGPCH7h_!!2459354798.jpg_400x400.jpg" alt="">
@@ -292,15 +426,12 @@
 			  <h4><span>￥</span>799.00</h4>
 			  <h3><span>销量:</span>99</h3>
 		     </li> -->
-
 			</ul>
 	 </div>
 
 	<div class="main1" id="taobao_tuijian">
 		<p class="taobao_tuijian"><span style="border-color:fuchsia;color: fuchsia;">&emsp;淘宝推荐</span></p>
-	
 		<ul class="goods_ul goods_ul_tuijian">
-			
 			<!-- <li>
 			<img src="https://gd4.alicdn.com/imgextra/i2/2459354798/O1CN012DOP181lJWsGPCH7h_!!2459354798.jpg_400x400.jpg" alt="">
 			   <p>迈锐博304不锈钢转角水槽双槽套餐厨房洗菜盆圆槽水池淘菜盆M2008</p>
@@ -388,26 +519,25 @@
 <footer id="footer">
 
 	</footer>
-	<script type="text/javascript">
-		//在js中引入
-		$(document).ready(function () {
-			$('#footer').load('foot.html');
-		});
-	</script>
 
 
+</body>
 
-	<script>
-	 	$("html,body").stop(true).animate({
-              scrollTop:0
-        },300)
-	</script>
-	<script src="../taobao/js/index.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../taobao/js/index_header.js"></script>
-	<script src="../taobao/js/lun_.js"></script>
+<script type="text/javascript">
+	//在js中引入
+	$(document).ready(function () {
+		$('#footer').load('foot.html');
+	});
+</script>
+<script>
+	 $("html,body").stop(true).animate({
+						scrollTop:0
+			},300)
+</script>
+<script src="../taobao/js/index.js" type="text/javascript" charset="utf-8"  ></script>
+<script src="../taobao/js/index_header.js"  ></script>
+<script src="../taobao/js/lun_.js" ></script>
 <script src="../taobao/js/our_message.js"></script>
 <script src="./js/index2.js">
 </script>
-
-</body>
 </html>

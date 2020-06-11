@@ -33,40 +33,7 @@ var li = `
                                             <p>移入收藏夹</p> <p class="goods_remove">删除</p> <p class="operation_span">相似宝贝<span class="iconfont_taobao_2 iconfont_taobao"></span></p>
                                         </div> </p></li> </div></div>`
 var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat_two_id','cat_three_id','goods_price']
-                if(arrsid!=="null")
-                 new $.creatgoodslist_$({
-                   url: url + "php/data/goods_select_arrsid.php", 
-                   $fat: $(".shop_goods_li"), 
-                   li, 
-                   data:{
-                    arrsid,
-                    selfdata:{    // 自己另外加的属性。
-                        goods_num:arrnum
-                    }
-                   },
-                   arr,
-                   href:"none",
-                   success:function(data){
-                    data.id = [];
-                   //  给每个数组的 添加 id 属性 方便查询
-                   data.forEach((item,index)=>{
-                    data.id[index] = item.id
-                   })
 
-                    $(".goods_shopcarnum").html(data.length);
-                       //  回调成功添加数据的函数   
-                       // 需要事件 和 改变的 li 有4个位置 
-                 new $.$goods_data_change({
-                    $bettons:$(".goods_number_div span"),
-                     $input:$(".goods_number_div input"),
-                     $numAll:$(".goods_num_all"),
-                     $radius:$(".radius p[class!='iconfont_gif iconfont_gif_1']"),
-                     $remove:$(".goods_remove"),
-                     $removeAll:$(".goods_remove_all"),
-                     data
-                });
-            } 
-            }); 
 
 
 
@@ -199,8 +166,7 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
           // 按钮 点击后 的处理方法。 通过 辨别 所有点击的按钮 的类 来 镜像逻辑
           //  传入点击的按钮  进行 类甄别
            radiusinput(_checked){
-             // 提取选中的 所有 按钮 
-           let goods_id = _checked.parents(".goods_li").attr("value");
+           let goods_id = _checked.parents(".goods_li").attr("value");   // 提取选中的 所有 按钮 
            let goods_index = this.data.id.indexOf(goods_id); //  如果是-1 则是 全选 和 店铺
         //    console.log(goods_index)
 
@@ -334,7 +300,40 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
 
 
 
+     if(arrsid!=="null")
+     new $.creatgoodslist_$({
+       url: url + "php/data/goods_select_arrsid.php", 
+       $fat: $(".shop_goods_li"), 
+       li, 
+       data:{
+        arrsid,
+        selfdata:{    // 自己另外加的属性。
+            goods_num:arrnum
+        }
+       },
+       arr,
+       href:"none",
+       success:function(data){
+        data.id = [];
+       //  给每个数组的 添加 id 属性 方便查询
+       data.forEach((item,index)=>{
+        data.id[index] = item.id
+       })
 
+        $(".goods_shopcarnum").html(data.length);
+           //  回调成功添加数据的函数   
+           // 需要事件 和 改变的 li 有4个位置 
+     new $.$goods_data_change({
+        $bettons:$(".goods_number_div span"),
+         $input:$(".goods_number_div input"),
+         $numAll:$(".goods_num_all"),
+         $radius:$(".radius p[class!='iconfont_gif iconfont_gif_1']"),
+         $remove:$(".goods_remove"),
+         $removeAll:$(".goods_remove_all"),
+         data
+    });
+} 
+}); 
 
 
 

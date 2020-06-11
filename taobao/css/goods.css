@@ -55,7 +55,7 @@ line-height: 12px;font-size: 12px;text-align: center;top: 0;right: 0}
 .smallpic img{width: 400px;height: 400px;}
 .message .title{height: 20px;font-weight: 600;overflow: hidden;line-height: 20px;padding: 0 5px;}
  .message .title_adve{text-indent: 5px; font-size: 14px;color: #FF0036;}
- .main1_message .title_num{height: 65px;background: no-repeat url(../src/img/123.jpg);padding: 5px;
+ .main1_message .title_num{height: 65px;background: no-repeat url(../../src/img/123.jpg);padding: 5px;
  margin-top: 15px;background-size: cover;}
  .goods_price{display: flex;flex-wrap: wrap;align-content: center;}
   #goods_main .original_price{height: 20px;font-size: 14px;}

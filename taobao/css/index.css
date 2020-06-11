@@ -5,6 +5,8 @@
         height: 0;
         clear:both;
         visibility: hidden;}
+	 
+		.main1{background: #f5f5f5 !important; }
 
 	  .classheader{height: 30px;font-weight: 600;color: #fff;text-align: center;line-height: 30px;position: relative;}
 	  .classheader .title{width:190px;box-sizing:border-box;height: 30px;position: absolute;left: 0;top: 0;
@@ -36,11 +38,11 @@
 	.main_lun > li:nth-child(3){width: 290px;background: #fff;height: 510px;}
 	.main_lun .lun_max{width: 100%;height: 280px;margin-bottom:15px;position: relative;}
 	.main_lun .lun_min{width: 100%;height: 215px;position: relative;}
-	.main_lun .lun_max .left,.main_lun .lun_max .right{width: 35px;position: absolute;
+	.main_lun .lun_max .left,.main_lun .lun_max .right{width: 35px;position: absolute;display: none;
 	height: 35px;color: #fff;background: rgba(200, 200, 200, 0.7);font-size: 40px;line-height: 26px;text-align: center}
 	.main_lun  .left{border-top-right-radius: 50%;border-bottom-right-radius: 50%;}
 	.main_lun  .right{border-top-left-radius: 50%;border-bottom-left-radius: 50%;}
-	.main_lun .lun_min .left,.main_lun .lun_min .right{width: 28px;position: absolute;
+	.main_lun .lun_min .left,.main_lun .lun_min .right{width: 28px;position: absolute;display: none;
 	height: 28px;color: #fff;background: rgba(200, 200, 200, 0.7);font-size: 30px;line-height: 20px;text-align: center}
 	
 	/* 个人信息  以及分类 */
@@ -61,10 +63,10 @@
 	.our_message  .jubao{width: 100%;height: 26px;line-height: 26px;position: relative; background: pink;color: orangered;text-align: center;display: block;font-size: 13px;}
 	.our_message  .jubao span{font-size: 12px;position: absolute;right: 30px;line-height: 30px}
 	/* tables */
-	.our_message .table{width: 100%;font-size: 12px;}
+	.our_message .table{width: 100%;font-size: 12px;padding:0 20px;}
 	.our_message .table li{cursor: pointer;height: 29px;box-sizing: border-box}
 	.our_message .table1{padding-top: 10px;display: flex;justify-content:space-around;align-items: center}
-	.our_message .table li:last-child{margin-right: 20px}
+	.our_message .table li:last-child{margin-right: 0;}
 	.our_message .table2 ul{ margin: 0 12px;
     height: 50px;overflow: hidden;padding-top: 9px;   padding-bottom: 6px;}
 	.our_message .table2 ul li{ width: 260px;    float: left;
@@ -121,7 +123,8 @@
 
     /* <style> */
     .fixedtool{border-radius: 7px;overflow: hidden;transition: all .5s }
-    .fixedtool li{width: 50px;height: 50px;background: #fff;font-size: 13px;cursor: pointer;
+	.fixedtool li{width: 50px;height: 50px;background: #fff;font-size: 13px;cursor: pointer;
+		transition: all .3s;
         display: flex;justify-content: center;align-items: center;transition: all .1s;overflow: hidden;
     } 
     .fixedtool li:nth-child(1) a{color:orangered}
@@ -176,7 +179,7 @@
 		.fashion .fashion_left_title p:nth-child(1){    margin-top: 27px;  font-size: 18px;
 	color: #333; line-height: 26px; height: 26px; font-weight: normal;}
 	.fashion_left_title p:nth-child(1) a:hover {color: orange;}
-	.fashion .fashion_left_title p:nth-child(2){ font-size: 12px; margin-bottom: 15px;
+	.fashion .fashion_left_title p:nth-child(2){ font-size: 12px; padding-bottom: 15px;
 		  color: #999; line-height: 22px;height: 22px; overflow: hidden;}
 	.fashion .fashion_left_title p:nth-child(3){width: 238px;display: flex;
 	justify-content: space-between;}

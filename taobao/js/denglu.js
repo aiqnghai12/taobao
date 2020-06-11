@@ -142,3 +142,11 @@ var obj = {
    }
 }
 new userApassword(obj);
+
+const backgroundimg = document.querySelector(".backImg");
+
+//  垃圾代碼  隨機 背景圖
+let backgroundimgsarr = ['https://gtms01.alicdn.com/tps/i1/TB1GTCYLXXXXXcHXpXXcoeQ2VXX-2500-600.jpg',
+'https://img.alicdn.com/tfs/TB1KURxGFP7gK0jSZFjXXc5aXXa-2500-600.png']
+backgroundimg.style.backgroundImage = "url(" + backgroundimgsarr[Math.floor(Math.random()*2)] + ")" ;
+

@@ -188,7 +188,6 @@
 #classification .main_lun .our_message .our_img {
   width: 100%;
   padding: 3px 0 10px 0;
-  background: no-repeat url("../src/img/hear.jpg");
   background-size: cover;
   height: 132px;
   font: 12px/1.5 tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;

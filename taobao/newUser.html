@@ -19,12 +19,6 @@
     <!-- 页头导航栏    -->
     <div id="hearhtml"></div>
 	 
-    <script type="text/javascript">
-   //在js中引入
-   $(document).ready(function () {
-       $('#hearhtml').load('hear.html');
-   });
-</script>
    <!-- 页头导航栏    -->
    <link rel="stylesheet" href="./css/newUser.css">
 <div class="main1 logindiv"><img src="../src/img/Login.png" alt=""><p>邮箱注册</p></div>
@@ -58,9 +52,16 @@
 </div>
 
  <!-- 引入 脚页面 -->
- <footer id="footer">
+ <footer id="footer"></footer>
 
-</footer>
+</body>
+<script type="text/javascript">
+    //在js中引入
+    $(document).ready(function () {
+        $('#hearhtml').load('hear.html');
+    });
+ </script>
+
 <script type="text/javascript">
     //在js中引入
     $(document).ready(function () {
@@ -69,9 +70,8 @@
 </script>
 
 <!--  图片验证   -->
-<script src="./js/Image_authentication.js"></script>
+<script src="./js/Image_authentication.js" ></script>
 <!-- 发送信息 -->
-<script src="./js/newUser.js"></script>
+<script src="./js/newUser.js"  async="async" defer="defer"></script>
 <!-- 密码信息存储和验证1 -->
-</body>
 </html>

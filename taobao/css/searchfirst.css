@@ -1,0 +1,17 @@
+#suspension{background: #fff;width: 100%;height:80px;}
+#suspension .main1{height: 80px;display: flex;
+align-items: center;justify-content: space-between;}
+#suspension .main1 img{width: 80px;}
+#suspension .searchinput{float: right;
+    background: red;
+width: 370px;border: 2px solid orangered}
+.searchthis{float: right;margin-left:4px;height: 40px;background: pink;
+color: orangered;font-size: 12px;border: 1px solid orangered;
+width: 70px;text-align: center;line-height: 29px; height: 29px;}
+
+#suspension .searchinput .inputSearch{display:inline-block;text-indent: 5px;
+width: 299px;border: none;box-shadow: none;height: 27px;margin-left: 1px;
+}
+#suspension .searchinput span{display:inline-block; width: 70px;
+color: #fff;font-size: 12px;height: 25px;line-height: 25px;text-align: center
+}

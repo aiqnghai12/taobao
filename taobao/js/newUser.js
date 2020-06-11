@@ -70,15 +70,41 @@ eMail.onblur = e=>{
        function init(){
          email.innerHTML =sp;
          password[0].oninput = e=>{
-           if ((/^(?=\D+\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,16}$/).test(password[0].value)){
-             passwordOneSpan.innerHTML = " √ 字母开头含有数字 8-16位 ";
+            let passwordvalue = password[0].value;
+            let regnum = /\d+/;
+            let regupper = /[A-Z]+/;
+            let regnumber =  /[a-z]+/;
+            let regW = /[\W\_]+/; 
+            let $count = 0;//  技术
+            if(regnum.test(passwordvalue) ){ $count ++ ;}
+            if(regupper.test(passwordvalue) ){  $count ++ ;}
+            if(regnumber.test(passwordvalue) ){ $count ++ ;}
+            if(regW.test(passwordvalue)){$count ++ ;}
+           if ((/^(?=\D+\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9\W\_]{8,16}$/).test(password[0].value)){
+             passwordOneSpan.innerHTML = " √ 字母开头 含有数字 8-16位 ";
              passwordOneSpan.style.color = "green";
              passwordOneSpan.bool = true;
+             console.log(12);
+             console.log($count);
+             switch($count){
+                case 3: passwordOneSpan.innerHTML +="中";  passwordOneSpan.style.color = "orange";
+                break;
+                case 4: passwordOneSpan.innerHTML +="强";
+                break;
+            }
            }else{
-             passwordOneSpan.innerHTML = "× 字母开头含有数字 8-16位 ";
+             passwordOneSpan.innerHTML = "× 字母开头 含有数字 8-16位 ";
              passwordOneSpan.style.color = "red";
              passwordOneSpan.bool = false;
+             switch($count){
+                case 1: passwordOneSpan.innerHTML +="弱"; 
+                break;
+                case 2: passwordOneSpan.innerHTML +="中"; 
+                break;
+            }
            }
+           
+
          }
 
           password[1].oninput = e=>{

@@ -174,21 +174,30 @@
                 
             //  点击返回顶上的
                 if($(this).index(".fixedtool li")==5){
-                    scroolli($liList.eq(0),0);
+                    console.log(11);
+                    scroolli($liList.eq(0),1);
+                    
                 }
                 // 淘宝推荐
                 if($(this).index(".fixedtool li")==4){
                     let litop = $("#taobao_tuijian").offset().top;
                     scroolli(this,litop-50);
                 }
-    
                 // 热卖单品
-                            if($(this).index(".fixedtool li")==3){
+                     if($(this).index(".fixedtool li")==3){
                      let litop =  $(".goods_host").offset().top;
-                     scroolli(this,litop);
+                     scroolli(this,litop-50);
                 }
-    
-    
+                // 品质特色
+                if($(this).index(".fixedtool li")==2){
+                    let litop =  $(".fashion").offset().top;
+                    scroolli(this,litop-50);
+               }
+               // 好店直播
+               if($(this).index(".fixedtool li")==1){
+                let litop =  $(".good_shop").offset().top;
+                scroolli(this,litop-50);
+           }
     
                 // 动画结束后 开启滚动事件
             setTimeout(() => {
@@ -197,9 +206,9 @@
          })
         }
     function scroolli(_this,top){
+        if(top)
         $("html,body").stop(true).animate({scrollTop:top-50},300);
         prv.css("background","#fff").children("a").css("color",prv.attr("value"));
-        console.log(1);
         prv = $(_this).css("background","orangered").children("a").css("color","#fff").parent();
     }
     
@@ -211,19 +220,19 @@
                 if($(this).attr("value")!==prv.attr("value"))
                 $(this).css("background","#fff").children("a").css("color",$(this).attr("value"));
             })
-    
     }
     
     
     // 滚动事件开启
     function scrollwin(){
+        let fixedtoolli = $(".fixedtool li");
      let scroll = $(window).scrollTop();
          if(scroll>=top_ ){
              $fixedtool.css({
                  position:"absolute",
                  top:scroll+50+"px"
              })
-         $(".fixedtool li").eq(5).css({
+             fixedtoolli.eq(5).css({
                  height:"50px"
              })
          }else{
@@ -231,10 +240,24 @@
                  position:"absolute",
                  top:top_+"px"
              })
-         $(".fixedtool li").eq(5).css({
+             fixedtoolli.eq(5).css({
                  height:0
              })
          }
+         scroll +=300;
+         if(scroll>=  $("#taobao_tuijian").offset().top){
+            scroolli(fixedtoolli[4])  ;
+         }else if(scroll>= $(".goods_host").offset().top){
+            scroolli(fixedtoolli[3])  ;
+         }else if(scroll>= $(".fashion").offset().top){
+            scroolli(fixedtoolli[2])  ;
+         }else if(scroll>= $(".good_shop").offset().top){
+            scroolli(fixedtoolli[1])  ;
+         }else{
+            scroolli(fixedtoolli[0]) 
+         }
+          
+
     }
     }(jQuery)
     
