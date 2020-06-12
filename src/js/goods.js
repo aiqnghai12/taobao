@@ -138,7 +138,7 @@ function speciesquery(id,cat_two_id){
                 li: str,
                 data:{id,cat_two_id},   //  传入 id 和 二级分类  查询数据
                 arr:arr ,
-                href:url+"taobao/goods.html",
+                href:"./goods.html",
                 first:500
              });    
 }

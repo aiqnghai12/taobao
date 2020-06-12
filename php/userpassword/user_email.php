@@ -26,7 +26,7 @@ if($shopcar){
        echo json_encode($row);
 }else{
     if($row){
-        echo "1?http://10.31.162.16/taobao/index.html" ;
+        echo "1?http://10.31.162.16/src/index.html" ;
         }
         else
         echo "0?账号密码错误";

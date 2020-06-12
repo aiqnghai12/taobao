@@ -70,7 +70,7 @@
                         
                         $(".goods_li").children().css("cursor","pointer").on("click",function(){
             let goods_id = $(this).parents(".goods_li").val();
-            window.location.href =  url+"taobao/goods.html?"+goods_id;
+            window.location.href = "./goods.html?"+goods_id;
             })
     
             $(".goods_li").hover(function(){
@@ -138,7 +138,7 @@
           creatgoods_li_click(){
             $(".goods_li").children().css("cursor","pointer").on("click",function(){
             let goods_id = $(this).parents(".goods_li").val();
-            window.location.href =  url+"taobao/goods.html?"+goods_id;
+            window.location.href = "./goods.html?"+goods_id;
             })
             }
     

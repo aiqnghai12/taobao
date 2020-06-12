@@ -38,36 +38,36 @@ gulp.task('copyfile', () => {
 
 //3.压缩html文件 - 引入插件包
 gulp.task('uglifyhtml', () => {
-    return gulp.src('taobao/*.html')
+    return gulp.src('src/*.html')
         .pipe(html()) //执行html插件包
-        .pipe(gulp.dest('dist/taobao/'));
+        .pipe(gulp.dest('dist/src/'));
 });
 
 // 4.压缩css文件 - 引入插件包
 gulp.task('uglifycss', () => {
-    return gulp.src('taobao/css/*.css')
+    return gulp.src('src/css/*.css')
         .pipe(css()) //执行css插件包
-        .pipe(gulp.dest('dist/taobao/css'));
+        .pipe(gulp.dest('dist/src/css'));
 });
 
 //5.sass编译成css - 引入插件包
 gulp.task('compilesass', () => {
-    return gulp.src('taobao/sass/*.scss')
+    return gulp.src('src/sass/*.scss')
         .pipe(plugins.sourcemaps.init()) //初始化gulp-sourcemaps插件
         .pipe(plugins.sass({
             outputStyle: 'compressed' //压缩
         }))
         .pipe(plugins.sourcemaps.write('.')) //通过sourcemaps,生成.map文件
-        .pipe(gulp.dest('dist/taobao/sass_css'));
+        .pipe(gulp.dest('dist/src/sass_css'));
 });
 
 
 //6.压缩js文件 - 引入插件包
 gulp.task('uglifyjs', () => {
-    return gulp.src('taobao/js/*.js')
+    return gulp.src('src/js/*.js')
         .pipe(babel({ //先将es6转换成es5
             presets: ['es2015'] //es2015->es6  es2016->es7...
         }))
         .pipe(script()) //执行js压缩
-        .pipe(gulp.dest('dist/taobao/js'));
+        .pipe(gulp.dest('dist/src/js'));
 });

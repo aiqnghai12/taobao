@@ -44,6 +44,6 @@ while($bool){
     }
 }
 //   当邮箱验证完成后，则发送跳转页面，   前端就算直接进入，也要再次判断邮箱的really的值有没有验证为1. 有则注册并完成账号密码的写入，否则显示邮箱未完成。
-echo 'http://10.31.162.16/taobao/newUsermailPassword.html';
+echo 'http://10.31.162.16/src/newUsermailPassword.html';
 $conn -> close();
 
