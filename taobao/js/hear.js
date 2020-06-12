@@ -142,19 +142,6 @@
                     $fat: $(".CustomerService"),
                     direction: 1,
                     success:function(data){
-                    //    $.each(data,(index,item)=>{
-                    //     new $.$oneMenu({
-                    //         titleList: ['消费者客服','卖家客服'],
-                    //         hrefList: arr2,
-                    //         width:100,
-                    //         $fat: $(item),
-                    //         direction:0,
-                    //         directionbt:1,
-                    //         success:function(data){
-                         
-                    //         }
-                    //         })
-                    //     })
                        }
                    });
 
@@ -495,8 +482,6 @@ $.$userShopcar = userShopcar;
              cookie2.addCookie("arrsid",arrsid.join(","))
              cookie2.addCookie("arrnum",arrnum.join(","))
             ///   ------------ 输出 购物车合并的数据
-            // console.log(arrsid.join(","))
-            // console.log(arrnum.join(","))
           },error:function(error){
               console.log(error)
           }

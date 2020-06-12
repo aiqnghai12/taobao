@@ -15,10 +15,9 @@
                 this.init();         // 初始化 + 创建 + 添加
             }
             //  初始化
-            init(url) {
-     
+            init(url) { // 重新 渲染 传入 url 时调用
               if(url){
-                  this.url = url;
+                  this.url = url; 
               }
 
                 if(!this.data){

@@ -80,7 +80,7 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
           init(){  let _this = this;
             this.$radius.css("backgroundPosition","0 -20px");
             this.addradius_checked();
-              //  确定按钮 群 
+              //  确定按钮 群     选中按钮 添加 点击事件-----------------
             this.$radius.on("click",function(){
                 if($(this).css("backgroundPosition") == "0% 0%"  )
                 $(this).css("backgroundPosition","0 -20px");
@@ -90,7 +90,7 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
                 _this.radiusinput($(this));
             })
            // input 
-            this.$input.on("input",e=>{
+            this.$input.on("input",e=>{ //  数量输入标点input 添加输入事件----------------
                 let goods_index = this.data.id.indexOf($(e.target).parents(".goods_li").attr("value")) 
                  let goods =  this.data[goods_index];
          e.target.value = e.target.value.replace(/[^0-9]/g,"");
@@ -105,7 +105,7 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
             }) 
      
            // 左右点击数量
-             this.$bettons.on("click",function(){
+             this.$bettons.on("click",function(){ //  左右数量++ -- 的点击事件---------------
                  let goods_index = _this.data.id.indexOf($(this).parents(".goods_li").attr("value")) 
                  let goods =     _this.data[goods_index];
                  let $input = $(this).siblings("input");
@@ -120,12 +120,13 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
              })
 
             // 删除
-            this.$remove.on("click",function(){
+            this.$remove.on("click",function(){ //  删除 一个的按钮 添加点击事件-----------
                 let goods_index = _this.data.id.indexOf($(this).parents(".goods_li").attr("value"))             
                 //     console.log(_this.arrsid); 
                     _this.removegoods(goods_index);
             })
-            this.$removeAll.on("click",function(){
+            //  删除全部
+            this.$removeAll.on("click",function(){ //  删除全部   删除全部按钮 的点击事件添加------------
               this.arrindex = [];
               _this.addradius_checked().forEach((item,index)=>{
               this.arrindex[index] =  _this.data.id.indexOf($(item).parents(".goods_li").attr("value"))
@@ -134,7 +135,7 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
             })
 
             //  保存购买的商品的数量加成 + 删除   
-            $(".settlement").on("click",()=>{
+            $(".settlement").on("click",()=>{ //  结算按钮的事件添加 和 删除类似  但在数据库中追加了数量添加-------
                 this.arrindex = [];
                 this.arr_goods_number = [];
                 this.arr_goods_id = [];
@@ -156,6 +157,23 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
               })
               this.removegoods(this.arrindex);
             })
+            let offsetTop =   this.$Basic_information_bottom.offset().top
+            $(window).on("scroll",()=>{ //  滚动条事件 结算 根据自己原先的位置进行 固定定位  -----------------
+              let scrollTop =   $(window).scrollTop();
+             
+                 if(scrollTop < offsetTop-210){
+                    this.$Basic_information_bottom.css({
+                        position:"fixed",bottom:0,left:0,right:0,
+                        margin:"auto",zIndex:"1000"
+                    })
+                 }else{
+                    this.$Basic_information_bottom.css({
+                        position:"relative",
+                        margin:"0 auto"
+                    })
+                 }
+            })
+            // this.$Basic_information_bottom.
           }
            
     
@@ -317,6 +335,7 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
            //  回调成功添加数据的函数   
            // 需要事件 和 改变的 li 有4个位置 
      new $.$goods_data_change({
+         $Basic_information_bottom:$(".Basic_information_DIV"),
         $bettons:$(".goods_number_div span"),
          $input:$(".goods_number_div input"),
          $numAll:$(".goods_num_all"),
@@ -327,9 +346,6 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
     });
 } 
 }); 
-
-
-
 
 
   //  垃圾代码  轮播商品

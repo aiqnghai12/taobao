@@ -1,14 +1,14 @@
 
  
  !function($){
- // 垃圾代码
- const maindenglu = $(".maindenglu");
+ // 垃圾代码   利用 各种元素的点击事件 实现页面点击的效果
+ const maindenglu = $(".maindenglu");     
  const textSelect =$(".textSelect span");
  const inputText =$(".inputText");
  const otherA = $(".otherA a");
  const Switchicon = $(".Switchicon");
- const warning = $("#warning");
- init();
+ const warning = $("#warning"); //  显示 账号密码输入验证情况的 元素
+ init(); // 各种点击切换元素的点击事件
  function init(){
      textSelect.on("click",e=>{
         e.target.style.borderBottom = " 2px solid #000";
@@ -116,15 +116,15 @@ if(_this.user.val()==""){
     type:"post",
     url:_this.url,
     data:{
-      user:  _this.user.val(),
-      password:  hex_sha1( _this.password.val())
+      user:  _this.user.val(),  //传入 账号
+      password:  hex_sha1( _this.password.val())   // 传入密码 使用sha1密码加密 存入cookie的也是加密的
     },
     success:function(data){
         data  = data.split("?");
         if(data[0]=="1"){
-          _this.success(hex_sha1( _this.password.val()),_this.user.val());
-          window.location.href = data[1];
-        }else{
+          _this.success(hex_sha1( _this.password.val()),_this.user.val()); //回调函数  成功后返回账号和密码 
+          window.location.href = data[1];     //  成功后跳转页面
+        }else{ 
           warning.html(data[1]);
         }
     },

@@ -25,21 +25,21 @@
               <p>?goods_name?</p>
           </li>`;
  var arr = ['id','goods_img','goods_price','goods_name'];
- let bool = true;
+ let bool = true; // 防抖 标记，防止多次连续点击事件
     leftAright();
     dataAdd();
     function dataAdd(){
 let goods_id_message = 0;
-let sp =   window.location.search.substring(1);
-//  通过点击传过来的 域名id  通过ajax 获取响应的商品数据 
+let sp =   window.location.search.substring(1); //  通过点击传过来的 域名id  通过ajax 获取响应的商品数据 
  $.ajax({
      type:"post",
      url:url+"php/data/goods_select_id.php",
      dataType:"json",
      data:{
-         sid:sp
+         sid:sp  //  通过id 查询商品
      },success:function(data){
         goods_id_message = data;
+        /*详情页 元素添加 id 商品 的各种样式,以及一些方法的实现 */
         $("title").html(data.goods_name)
          speciesquery(data.id,data.cat_two_id)
         smallpicSf.prop("src" ,data.goods_img)
@@ -59,30 +59,29 @@ gouwuchejingru();
 
 //  加入购物车点击事件
  but.on("click",e=>{
-     
     if(!bool) return;
    bool = false;
      //   判断 是否 购物车有值 取值
-     if(cookie2.selectCookie('arrsid') && cookie2.selectCookie('arrnum')){
-         let arrsid = cookie2.selectCookie('arrsid').split(",");
+     if(cookie2.selectCookie('arrsid') && cookie2.selectCookie('arrnum')){ //  当cookie 中 有数据时
+         let arrsid = cookie2.selectCookie('arrsid').split(",");   
          let arrnum = cookie2.selectCookie('arrnum').split(",");
-         if(arrsid.indexOf(sp)!==-1){   //  如果
+         if(arrsid.indexOf(sp)!==-1){   //  如果 在cookie中有id 有这个商品  则追加数量
         
          arrnum[arrsid.indexOf(sp)] = parseInt(arrnum[arrsid.indexOf(sp)])+parseInt(goodsnumber.val());
-         if(arrnum[arrsid.indexOf(sp)]>100)
+         if(arrnum[arrsid.indexOf(sp)]>100)//  如果商品数量达到上限 则 追加到99
          arrnum[arrsid.indexOf(sp)]=99;
      }else{
-         arrsid.push(sp);
+         arrsid.push(sp);   // 没有就商品id 和 数量都追加
          arrnum.push(parseInt(goodsnumber.val()));
      }
-     cookie2.addCookie('arrsid',arrsid.join(","),100);
-     cookie2.addCookie('arrnum',arrnum.join(","),100);
+     cookie2.addCookie('arrsid',arrsid.join(","),100); // 重新存入 cookie
+     cookie2.addCookie('arrnum',arrnum.join(","),100); //  重新存入 cookie
      }else{  //如果 购物车没有值 则 把
          cookie2.addCookie('arrsid',new Array(`${sp}`),100) ;
          cookie2.addCookie('arrnum',new Array(`${parseInt(goodsnumber.val())}`),100) ;
       }    
 
-//  存入数据库  ?
+//  存入数据库  
         $.ajax({
             type:"post",
             url:url+"php/userpassword/user_shopcar_save.php",
@@ -108,7 +107,7 @@ gouwuchejingru();
 function creatshopeffect(img,positionX,positionY){
   
   // 创建
-  let elem = document.createElement("div");
+  let elem = document.createElement("div"); //创建
  Object.assign(elem.style,{
     width:"90px",height:"90px",background:"url("+img+")",borderRadius:"80%",
     backgroundSize:"cover",position:"fixed",top:positionY-45+"px",left:positionX-45+"px"
@@ -123,9 +122,9 @@ function creatshopeffect(img,positionX,positionY){
  },700)
  $("html,body").stop(true).animate({scrollTop:0},400);
 setTimeout(function(){
-    bool = true;
- $(elem).remove();
- gouwuchejingru();  
+    bool = true;     
+ $(elem).remove();   //  完成后销毁
+ gouwuchejingru();    //  更新小图标 头
 },700)
 
 }
@@ -137,7 +136,7 @@ function speciesquery(id,cat_two_id){
                 url: url + "php/data/goods_select_class.php", 
                 $fat: $(".m_r_goods_list"), 
                 li: str,
-                data:{id,cat_two_id},
+                data:{id,cat_two_id},   //  传入 id 和 二级分类  查询数据
                 arr:arr ,
                 href:url+"taobao/goods.html",
                 first:500

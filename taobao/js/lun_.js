@@ -91,7 +91,7 @@
 				//  大的ul
 				this.ul = this.ce("ul",Object.assign({position:"absolute",background:"rgba(255,255,255,0.8)",padding:"2px",borderRadius:"8px",
 				left:(this.w-7-this.imgs.length*(13))/2+"px",zIndex:"200",bottom:"20px"
-				},this.ulstyle),this.fat);
+				},this.ulstyle));
 				this.imgs.forEach((item,index)=>{
 					this.list[index] = this.ce("img",{position:"absolute",width:this.w+"px",height:this.y+"px",display:"none"},this.fat);
 					this.list[index].src = item;
@@ -109,7 +109,7 @@
 				this.fat.css("padding-top","16px");
 				//  小的ul
 				this.ul = this.ce("ul",{position:"absolute",zIndex:"200",top:"15px",background:"red"
-				},this.fat);
+				});
 					this.imgs.forEach((item,index)=>{
 					this.list[index] = this.ce("li",{position:"absolute",justifyContent:"center",alignItems: "center"
 					,width:this.w+"px",height:this.y-18+"px",background:"#fff",listStyle:"none",display:"none"},this.fat);
@@ -118,11 +118,10 @@
                     item.forEach(item=>{
 						this.ce("img",{width:this.w/len-20+"px",margin:"0 5px"},$(this.list[index])).src = item;
 					})
-
 					this.liList[index] = this.ce("li",{width:this.w/this.len+"px",height:"4px",background:"#000",cursor: "pointer",
 					float:"left"},$(this.ul));
 					this.liList[index].index =index;
-                    
+10  
 				})
 				// 理想生活上天猫
 				this._title = this.ce("p",{position:"absolute",width:"200px",height:"50px",lineHeight:"20px",fontSize:"12px",left:"80px",top:"-2px"},this.fat)
@@ -136,7 +135,7 @@
 			}
 		 
 		
-	     
+	     this.fat.append(this.ul);
 
 
 	     let Top = (this.y-$(this.leftandright.left).height())/2;
