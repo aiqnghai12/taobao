@@ -157,11 +157,11 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
               })
               this.removegoods(this.arrindex);
             })
-            let offsetTop =   this.$Basic_information_bottom.offset().top
+            this.offsetTop =   this.$Basic_information_bottom.offset().top;
+            let thisheight =   this.$Basic_information_bottom.height();
             $(window).on("scroll",()=>{ //  滚动条事件 结算 根据自己原先的位置进行 固定定位  -----------------
               let scrollTop =   $(window).scrollTop();
-             
-                 if(scrollTop < offsetTop-210){
+                 if(scrollTop < this.offsetTop+20+thisheight-document.documentElement.clientHeight){
                     this.$Basic_information_bottom.css({
                         position:"fixed",bottom:0,left:0,right:0,
                         margin:"auto",zIndex:"1000"
@@ -172,6 +172,10 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
                         margin:"0 auto"
                     })
                  }
+            })
+            this.$Basic_information_bottom.css({
+                position:"fixed",bottom:0,left:0,right:0,
+                margin:"auto",zIndex:"1000"
             })
             // this.$Basic_information_bottom.
           }
@@ -282,6 +286,7 @@ var arr = ['goods_small_logo','id','goods_state','goods_name','goods_class','cat
              $(document).ready(function () {
              $('#header').load('hear.html');
              });
+             this.offsetTop = this.$Basic_information_bottom.offset().top;
             }
             // 数据传入后  添加到数据库 
               mysqlupdate(){

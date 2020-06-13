@@ -123,7 +123,7 @@ if(_this.user.val()==""){
         data  = data.split("?");
         if(data[0]=="1"){
           _this.success(hex_sha1( _this.password.val()),_this.user.val()); //回调函数  成功后返回账号和密码 
-          window.location.href = data[1];     //  成功后跳转页面
+          window.location.href = "./index.html";     //  成功后跳转页面
         }else{ 
           warning.html(data[1]);
         }
